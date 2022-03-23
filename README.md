@@ -1,2 +1,2 @@
 # Sln_CBX_SISFOOD_Web
-Sistema de Control de Comedor
+Sistema de Control de Comedor Web
