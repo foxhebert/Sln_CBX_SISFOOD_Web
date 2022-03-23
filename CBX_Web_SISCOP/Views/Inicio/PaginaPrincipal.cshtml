@@ -1,0 +1,145 @@
+
+@{
+    ViewBag.Title = "PaginaPrincipal";
+}
+<!-- INICIO AÑADIDO HEBERT 19.07.2021-->
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>*@
+<script src="~/Scripts/html2canvas.min.js"></script>
+<div class="containerImagenCaptura" hidden>
+    <img style="max-width: 75%;max-height: 75%;" class="screen" id="base64image">
+    @*style="width:75%; "*@
+</div>
+<!-- FIN AÑADIDO HEBERT 19.07.2021 -->
+<!-- top tiles -->
+<div class="row tile_count">
+</div>
+<!-- /top tiles -->
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph">
+            <div class="row x_title">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <h3>Resumen de Consumos <small></small></h3>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-12">
+                    <button type="button" class="btn btn-primary full-width esconder-botones" id="btn-generar-report-grafico-dashboard-crystal" hidden>GRÁFICO</button>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-12">
+                    <button type="button" class="btn btn btn-danger full-width esconder-botones" id="btn-generar-report-grafico-dashboard-pdf" hidden>GRÁFICO PDF <i class="fa fa-file-pdf-o"></i></button>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-12">
+                    <button type="button" class="btn btn-primary full-width esconder-botones" id="btn-generar-report-resumen-dashboard-crystal" hidden>RESUMEN</button>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-12">
+                    <button type="button" class="btn btn-danger full-width esconder-botones" id="btn-generar-report-resumen-dashboard-pdf" hidden>RESUMEN PDF <i class="fa fa-file-pdf-o"></i></button>
+                </div>
+                <div class="col-md-2 col-sm-1 col-xs-12 p-0">
+                    <div id="campJerar" class="pull-right range-datepicker AusentFec" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                        <span>January 01, 2019 - January 28, 2019</span> <b class="caret"></b>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content1">
+                <div id="mainPrincipal" style="height:350px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <br />
+</div>
+
+<div class="row">
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Tipos de Servicio</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div id="echart_pie2" style="height:450px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Tipos de Menú</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div id="echart_pie3" style="height:450px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12 widget_tally_box">
+        <div class="x_panel fixed_height_400">
+            <div class="x_title">
+                <h2>Servicios</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div id="echart_pie4" style="height:450px;"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scripts/util/PaginaPrincipal.js"></script>
+
+    <style>
+        .bar-chart-legend {
+            text-align: center;
+        }
+
+            .bar-chart-legend .legend-item {
+                font-size: larger;
+            }
+
+            .bar-chart-legend .legend-color {
+                width: 20px;
+                height: 20px;
+                margin: 3px 5px;
+                display: inline-block;
+            }
+
+        #mainPrincipal {
+            width: 100% !important;
+            /*background-color:mediumvioletred;*/
+        }
+        /*width: 100% !important;*/
+
+
+        .right_colclass {
+            width: 1550px; /* Dimensiones del archivo png para incrustar*/
+            height: 950px;
+        }
+
+        .bodyClass {
+            background-color: #F7F7F7;
+        }
+
+        .right_colclass100 {
+            width: 1700px; /* Dimensiones del archivo png para incrustar 1300 x 950*/
+            height: 1170px;
+        }
+
+        .bodyClass100 {
+            background-color: #F7F7F7;
+        }
+
+        .right_colclass90 {
+            width: 1700px; /* Dimensiones del archivo png para incrustar 1400px*/
+            height: 1240px;
+        }
+
+        .bodyClass90 {
+            background-color: #F7F7F7;
+        }
+    </style>

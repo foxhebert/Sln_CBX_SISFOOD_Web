@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ReportesSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:35578/ReportesSrv.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:35578/ReportesSrv.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:35578/ReportesSrv.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:35578/ReportesSrv.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IReportesSrv_ListarCampoPlanilla_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoPlanilla" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ListarCampoPlanilla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoPlanillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ListarCampoFizcalizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoFizcalizacion" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ListarCampoFizcalizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoFizcalizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ConsultaReporte_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaReporte" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ConsultaReporte_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaReporteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteOficial_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteOficial" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteOficial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteOficialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteDiario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteDiario" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteDiario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteDiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteResumenTotal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteResumenTotal" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteResumenTotal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteResumenTotalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteFalta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteFalta" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteFalta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteFaltaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReportePuntualidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportePuntualidad" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReportePuntualidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportePuntualidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteTardanza_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteTardanza" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteTardanza_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteTardanzaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteRecordGeneral_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteRecordGeneral" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteRecordGeneral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteRecordGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteAusencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteAusencia" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteAusencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteAusenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteAsistencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteAsistencia" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteAsistencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteAsistenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_GetReportes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportes" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_GetReportes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteDiarioComedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteDiarioComedor" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteDiarioComedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteDiarioComedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteTotalComedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteTotalComedor" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteTotalComedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteTotalComedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteDiarioConcesionaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteDiarioConcesionaria" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteDiarioConcesionaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteDiarioConcesionariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteTotalConcesionaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteTotalConcesionaria" />
+  </wsdl:message>
+  <wsdl:message name="IReportesSrv_ReporteTotalConcesionaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReporteTotalConcesionariaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IReportesSrv">
+    <wsdl:operation name="ListarCampoPlanilla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ListarCampoPlanilla" message="tns:IReportesSrv_ListarCampoPlanilla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ListarCampoPlanillaResponse" message="tns:IReportesSrv_ListarCampoPlanilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoFizcalizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ListarCampoFizcalizacion" message="tns:IReportesSrv_ListarCampoFizcalizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ListarCampoFizcalizacionResponse" message="tns:IReportesSrv_ListarCampoFizcalizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReporte">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ConsultaReporte" message="tns:IReportesSrv_ConsultaReporte_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ConsultaReporteResponse" message="tns:IReportesSrv_ConsultaReporte_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteOficial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteOficial" message="tns:IReportesSrv_ReporteOficial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteOficialResponse" message="tns:IReportesSrv_ReporteOficial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteDiario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteDiario" message="tns:IReportesSrv_ReporteDiario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteDiarioResponse" message="tns:IReportesSrv_ReporteDiario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteResumenTotal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteResumenTotal" message="tns:IReportesSrv_ReporteResumenTotal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteResumenTotalResponse" message="tns:IReportesSrv_ReporteResumenTotal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteFalta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteFalta" message="tns:IReportesSrv_ReporteFalta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteFaltaResponse" message="tns:IReportesSrv_ReporteFalta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportePuntualidad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReportePuntualidad" message="tns:IReportesSrv_ReportePuntualidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReportePuntualidadResponse" message="tns:IReportesSrv_ReportePuntualidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteTardanza">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteTardanza" message="tns:IReportesSrv_ReporteTardanza_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteTardanzaResponse" message="tns:IReportesSrv_ReporteTardanza_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteRecordGeneral">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteRecordGeneral" message="tns:IReportesSrv_ReporteRecordGeneral_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteRecordGeneralResponse" message="tns:IReportesSrv_ReporteRecordGeneral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteAusencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteAusencia" message="tns:IReportesSrv_ReporteAusencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteAusenciaResponse" message="tns:IReportesSrv_ReporteAusencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteAsistencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteAsistencia" message="tns:IReportesSrv_ReporteAsistencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteAsistenciaResponse" message="tns:IReportesSrv_ReporteAsistencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/GetReportes" message="tns:IReportesSrv_GetReportes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/GetReportesResponse" message="tns:IReportesSrv_GetReportes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteDiarioComedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteDiarioComedor" message="tns:IReportesSrv_ReporteDiarioComedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteDiarioComedorResponse" message="tns:IReportesSrv_ReporteDiarioComedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteTotalComedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteTotalComedor" message="tns:IReportesSrv_ReporteTotalComedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteTotalComedorResponse" message="tns:IReportesSrv_ReporteTotalComedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteDiarioConcesionaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteDiarioConcesionaria" message="tns:IReportesSrv_ReporteDiarioConcesionaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteDiarioConcesionariaResponse" message="tns:IReportesSrv_ReporteDiarioConcesionaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteTotalConcesionaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportesSrv/ReporteTotalConcesionaria" message="tns:IReportesSrv_ReporteTotalConcesionaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportesSrv/ReporteTotalConcesionariaResponse" message="tns:IReportesSrv_ReporteTotalConcesionaria_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IReportesSrv" type="tns:IReportesSrv">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarCampoPlanilla">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ListarCampoPlanilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoFizcalizacion">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ListarCampoFizcalizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReporte">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ConsultaReporte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteOficial">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteOficial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteDiario">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteDiario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteResumenTotal">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteResumenTotal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteFalta">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteFalta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportePuntualidad">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReportePuntualidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteTardanza">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteTardanza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteRecordGeneral">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteRecordGeneral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteAusencia">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteAusencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteAsistencia">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteAsistencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportes">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/GetReportes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteDiarioComedor">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteDiarioComedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteTotalComedor">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteTotalComedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteDiarioConcesionaria">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteDiarioConcesionaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteTotalConcesionaria">
+      <soap:operation soapAction="http://tempuri.org/IReportesSrv/ReporteTotalConcesionaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReportesSrv">
+    <wsdl:port name="BasicHttpBinding_IReportesSrv" binding="tns:BasicHttpBinding_IReportesSrv">
+      <soap:address location="http://localhost:35578/ReportesSrv.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AsistenciaSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:35578/AsistenciaSrv.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:35578/AsistenciaSrv.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:35578/AsistenciaSrv.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:35578/AsistenciaSrv.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAsistenciaSrv_ListarCamposAdicionales_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionales" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarCamposAdicionales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarFeriados_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFeriados" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarFeriados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFeriadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarFeriado_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarFeriado" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarFeriado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarFeriadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUFeriado_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUFeriado" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUFeriado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUFeriadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroFeriado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroFeriado" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroFeriado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroFeriadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaDetalleDeOrgixFer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaDetalleDeOrgixFer" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaDetalleDeOrgixFer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaDetalleDeOrgixFerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarHorario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorario" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarHorario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUHorario_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUHorario" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUHorario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUHorarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarHorario_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarHorario" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarHorario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarHorarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerHorarioPorsuPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerHorarioPorsuPK" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerHorarioPorsuPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerHorarioPorsuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerHORXJORPorsuPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerHORXJORPorsuPK" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerHORXJORPorsuPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerHORXJORPorsuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarJornadaHorario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarJornadaHorario" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarJornadaHorario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarJornadaHorarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarTipoUM_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTipoUM" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarTipoUM_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTipoUMResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarConcepto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConcepto" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarConcepto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConceptoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarHorarioEspecifico_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorarioEspecifico" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarHorarioEspecifico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorarioEspecificoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarHorasExtras_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorasExtras" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarHorasExtras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorasExtrasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarConcepto_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarConcepto" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarConcepto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarConceptoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUVariable" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerConceptoPorsuPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerConceptoPorsuPK" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerConceptoPorsuPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerConceptoPorsuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarPrioritariosdeHorasExtras_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPrioritariosdeHorasExtras" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarPrioritariosdeHorasExtras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPrioritariosdeHorasExtrasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarHorarioEspecificos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorarioEspecificos" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarHorarioEspecificos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorarioEspecificosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarServicios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarServicios" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarServicios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarServiciosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUServicio" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarServicio" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistrodeServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistrodeServicio" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistrodeServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistrodeServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarRegNegCom_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRegNegCom" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarRegNegCom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRegNegComResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUNegocioCom_T_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUNegocioCom_T" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUNegocioCom_T_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUNegocioCom_TResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarReglaNegocioCom_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarReglaNegocioCom" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarReglaNegocioCom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarReglaNegocioComResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNegocioCom_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNegocioCom" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNegocioCom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNegocioComResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNegocioDetCom_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNegocioDetCom" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNegocioDetCom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNegocioDetComResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNedocioSubsiCom_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNedocioSubsiCom" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNedocioSubsiCom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNedocioSubsiComResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNedocioServCom_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNedocioServCom" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNedocioServCom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNedocioServComResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarReglaNegocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarReglaNegocio" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarReglaNegocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarReglaNegocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUNegocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUNegocio" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUNegocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUNegocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminmarReglaNegocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminmarReglaNegocio" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminmarReglaNegocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminmarReglaNegocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNedocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNedocio" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaNedocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaNedocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaDetalleDeNedocioHE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaDetalleDeNedocioHE" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerRegistroReglaDetalleDeNedocioHE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroReglaDetalleDeNedocioHEResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarJornada_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarJornada" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarJornada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarJornadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminmarJornada_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminmarJornada" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminmarJornada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminmarJornadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUJornada_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUJornada" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_IUJornada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUJornadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerJornadaPorsuPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerJornadaPorsuPK" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ObtenerJornadaPorsuPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerJornadaPorsuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarIntervalos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarIntervalos" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ListarIntervalos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarIntervalosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_GetEmpleados_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpleados" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_GetEmpleados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpleadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_GetAsistencias_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAsistencias" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_GetAsistencias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAsistenciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarMarca_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarMarca" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_EliminarMarca_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarMarcaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_Guardar_InputMessage">
+    <wsdl:part name="parameters" element="tns:Guardar" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_Guardar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_GetMarcasHorario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarcasHorario" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_GetMarcasHorario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarcasHorarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_getAsistenciaXID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAsistenciaXID" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_getAsistenciaXID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAsistenciaXIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ActualizarMarca_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarMarca" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_ActualizarMarca_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarMarcaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_GetUltimaMarca_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUltimaMarca" />
+  </wsdl:message>
+  <wsdl:message name="IAsistenciaSrv_GetUltimaMarca_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUltimaMarcaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAsistenciaSrv">
+    <wsdl:operation name="ListarCamposAdicionales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarCamposAdicionales" message="tns:IAsistenciaSrv_ListarCamposAdicionales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarCamposAdicionalesResponse" message="tns:IAsistenciaSrv_ListarCamposAdicionales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFeriados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarFeriados" message="tns:IAsistenciaSrv_ListarFeriados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarFeriadosResponse" message="tns:IAsistenciaSrv_ListarFeriados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarFeriado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarFeriado" message="tns:IAsistenciaSrv_EliminarFeriado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarFeriadoResponse" message="tns:IAsistenciaSrv_EliminarFeriado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUFeriado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUFeriado" message="tns:IAsistenciaSrv_IUFeriado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUFeriadoResponse" message="tns:IAsistenciaSrv_IUFeriado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroFeriado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroFeriado" message="tns:IAsistenciaSrv_ObtenerRegistroFeriado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroFeriadoResponse" message="tns:IAsistenciaSrv_ObtenerRegistroFeriado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaDetalleDeOrgixFer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaDetalleDeOrgixFer" message="tns:IAsistenciaSrv_ObtenerRegistroReglaDetalleDeOrgixFer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaDetalleDeOrgixFerResponse" message="tns:IAsistenciaSrv_ObtenerRegistroReglaDetalleDeOrgixFer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarHorario" message="tns:IAsistenciaSrv_ListarHorario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarHorarioResponse" message="tns:IAsistenciaSrv_ListarHorario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUHorario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUHorario" message="tns:IAsistenciaSrv_IUHorario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUHorarioResponse" message="tns:IAsistenciaSrv_IUHorario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarHorario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarHorario" message="tns:IAsistenciaSrv_EliminarHorario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarHorarioResponse" message="tns:IAsistenciaSrv_EliminarHorario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerHorarioPorsuPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerHorarioPorsuPK" message="tns:IAsistenciaSrv_ObtenerHorarioPorsuPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerHorarioPorsuPKResponse" message="tns:IAsistenciaSrv_ObtenerHorarioPorsuPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerHORXJORPorsuPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerHORXJORPorsuPK" message="tns:IAsistenciaSrv_ObtenerHORXJORPorsuPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerHORXJORPorsuPKResponse" message="tns:IAsistenciaSrv_ObtenerHORXJORPorsuPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarJornadaHorario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarJornadaHorario" message="tns:IAsistenciaSrv_ListarJornadaHorario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarJornadaHorarioResponse" message="tns:IAsistenciaSrv_ListarJornadaHorario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoUM">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarTipoUM" message="tns:IAsistenciaSrv_ListarTipoUM_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarTipoUMResponse" message="tns:IAsistenciaSrv_ListarTipoUM_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarConcepto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarConcepto" message="tns:IAsistenciaSrv_ListarConcepto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarConceptoResponse" message="tns:IAsistenciaSrv_ListarConcepto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorarioEspecifico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarHorarioEspecifico" message="tns:IAsistenciaSrv_ListarHorarioEspecifico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarHorarioEspecificoResponse" message="tns:IAsistenciaSrv_ListarHorarioEspecifico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorasExtras">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarHorasExtras" message="tns:IAsistenciaSrv_ListarHorasExtras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarHorasExtrasResponse" message="tns:IAsistenciaSrv_ListarHorasExtras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarConcepto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarConcepto" message="tns:IAsistenciaSrv_EliminarConcepto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarConceptoResponse" message="tns:IAsistenciaSrv_EliminarConcepto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUVariable" message="tns:IAsistenciaSrv_IUVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUVariableResponse" message="tns:IAsistenciaSrv_IUVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConceptoPorsuPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerConceptoPorsuPK" message="tns:IAsistenciaSrv_ObtenerConceptoPorsuPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerConceptoPorsuPKResponse" message="tns:IAsistenciaSrv_ObtenerConceptoPorsuPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPrioritariosdeHorasExtras">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarPrioritariosdeHorasExtras" message="tns:IAsistenciaSrv_ListarPrioritariosdeHorasExtras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarPrioritariosdeHorasExtrasResponse" message="tns:IAsistenciaSrv_ListarPrioritariosdeHorasExtras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorarioEspecificos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarHorarioEspecificos" message="tns:IAsistenciaSrv_ListarHorarioEspecificos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarHorarioEspecificosResponse" message="tns:IAsistenciaSrv_ListarHorarioEspecificos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarServicios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarServicios" message="tns:IAsistenciaSrv_ListarServicios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarServiciosResponse" message="tns:IAsistenciaSrv_ListarServicios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUServicio" message="tns:IAsistenciaSrv_IUServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUServicioResponse" message="tns:IAsistenciaSrv_IUServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarServicio" message="tns:IAsistenciaSrv_EliminarServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarServicioResponse" message="tns:IAsistenciaSrv_EliminarServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistrodeServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistrodeServicio" message="tns:IAsistenciaSrv_ObtenerRegistrodeServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistrodeServicioResponse" message="tns:IAsistenciaSrv_ObtenerRegistrodeServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarRegNegCom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarRegNegCom" message="tns:IAsistenciaSrv_ListarRegNegCom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarRegNegComResponse" message="tns:IAsistenciaSrv_ListarRegNegCom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUNegocioCom_T">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUNegocioCom_T" message="tns:IAsistenciaSrv_IUNegocioCom_T_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUNegocioCom_TResponse" message="tns:IAsistenciaSrv_IUNegocioCom_T_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarReglaNegocioCom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarReglaNegocioCom" message="tns:IAsistenciaSrv_EliminarReglaNegocioCom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarReglaNegocioComResponse" message="tns:IAsistenciaSrv_EliminarReglaNegocioCom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNegocioCom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNegocioCom" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNegocioCom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNegocioComResponse" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNegocioCom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNegocioDetCom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNegocioDetCom" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNegocioDetCom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNegocioDetComResponse" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNegocioDetCom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNedocioSubsiCom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocioSubsiCom" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNedocioSubsiCom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocioSubsiComResponse" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNedocioSubsiCom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNedocioServCom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocioServCom" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNedocioServCom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocioServComResponse" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNedocioServCom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarReglaNegocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarReglaNegocio" message="tns:IAsistenciaSrv_ListarReglaNegocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarReglaNegocioResponse" message="tns:IAsistenciaSrv_ListarReglaNegocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUNegocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUNegocio" message="tns:IAsistenciaSrv_IUNegocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUNegocioResponse" message="tns:IAsistenciaSrv_IUNegocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminmarReglaNegocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminmarReglaNegocio" message="tns:IAsistenciaSrv_EliminmarReglaNegocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminmarReglaNegocioResponse" message="tns:IAsistenciaSrv_EliminmarReglaNegocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNedocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocio" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNedocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocioResponse" message="tns:IAsistenciaSrv_ObtenerRegistroReglaNedocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaDetalleDeNedocioHE">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaDetalleDeNedocioHE" message="tns:IAsistenciaSrv_ObtenerRegistroReglaDetalleDeNedocioHE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaDetalleDeNedocioHEResponse" message="tns:IAsistenciaSrv_ObtenerRegistroReglaDetalleDeNedocioHE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarJornada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarJornada" message="tns:IAsistenciaSrv_ListarJornada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarJornadaResponse" message="tns:IAsistenciaSrv_ListarJornada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminmarJornada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminmarJornada" message="tns:IAsistenciaSrv_EliminmarJornada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminmarJornadaResponse" message="tns:IAsistenciaSrv_EliminmarJornada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUJornada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUJornada" message="tns:IAsistenciaSrv_IUJornada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/IUJornadaResponse" message="tns:IAsistenciaSrv_IUJornada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerJornadaPorsuPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerJornadaPorsuPK" message="tns:IAsistenciaSrv_ObtenerJornadaPorsuPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ObtenerJornadaPorsuPKResponse" message="tns:IAsistenciaSrv_ObtenerJornadaPorsuPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarIntervalos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarIntervalos" message="tns:IAsistenciaSrv_ListarIntervalos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ListarIntervalosResponse" message="tns:IAsistenciaSrv_ListarIntervalos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpleados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/GetEmpleados" message="tns:IAsistenciaSrv_GetEmpleados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/GetEmpleadosResponse" message="tns:IAsistenciaSrv_GetEmpleados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAsistencias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/GetAsistencias" message="tns:IAsistenciaSrv_GetAsistencias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/GetAsistenciasResponse" message="tns:IAsistenciaSrv_GetAsistencias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMarca">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarMarca" message="tns:IAsistenciaSrv_EliminarMarca_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/EliminarMarcaResponse" message="tns:IAsistenciaSrv_EliminarMarca_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Guardar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/Guardar" message="tns:IAsistenciaSrv_Guardar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/GuardarResponse" message="tns:IAsistenciaSrv_Guardar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarcasHorario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/GetMarcasHorario" message="tns:IAsistenciaSrv_GetMarcasHorario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/GetMarcasHorarioResponse" message="tns:IAsistenciaSrv_GetMarcasHorario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAsistenciaXID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/getAsistenciaXID" message="tns:IAsistenciaSrv_getAsistenciaXID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/getAsistenciaXIDResponse" message="tns:IAsistenciaSrv_getAsistenciaXID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarMarca">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/ActualizarMarca" message="tns:IAsistenciaSrv_ActualizarMarca_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/ActualizarMarcaResponse" message="tns:IAsistenciaSrv_ActualizarMarca_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUltimaMarca">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsistenciaSrv/GetUltimaMarca" message="tns:IAsistenciaSrv_GetUltimaMarca_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsistenciaSrv/GetUltimaMarcaResponse" message="tns:IAsistenciaSrv_GetUltimaMarca_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAsistenciaSrv" type="tns:IAsistenciaSrv">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarCamposAdicionales">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarCamposAdicionales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFeriados">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarFeriados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarFeriado">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/EliminarFeriado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUFeriado">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/IUFeriado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroFeriado">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroFeriado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaDetalleDeOrgixFer">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaDetalleDeOrgixFer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorario">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarHorario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUHorario">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/IUHorario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarHorario">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/EliminarHorario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerHorarioPorsuPK">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerHorarioPorsuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerHORXJORPorsuPK">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerHORXJORPorsuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarJornadaHorario">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarJornadaHorario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoUM">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarTipoUM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarConcepto">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarConcepto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorarioEspecifico">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarHorarioEspecifico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorasExtras">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarHorasExtras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarConcepto">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/EliminarConcepto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUVariable">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/IUVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConceptoPorsuPK">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerConceptoPorsuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPrioritariosdeHorasExtras">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarPrioritariosdeHorasExtras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorarioEspecificos">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarHorarioEspecificos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarServicios">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarServicios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUServicio">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/IUServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarServicio">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/EliminarServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistrodeServicio">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistrodeServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRegNegCom">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarRegNegCom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUNegocioCom_T">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/IUNegocioCom_T" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarReglaNegocioCom">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/EliminarReglaNegocioCom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNegocioCom">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNegocioCom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNegocioDetCom">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNegocioDetCom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNedocioSubsiCom">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocioSubsiCom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNedocioServCom">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocioServCom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarReglaNegocio">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarReglaNegocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUNegocio">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/IUNegocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminmarReglaNegocio">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/EliminmarReglaNegocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaNedocio">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaNedocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroReglaDetalleDeNedocioHE">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerRegistroReglaDetalleDeNedocioHE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarJornada">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarJornada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminmarJornada">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/EliminmarJornada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUJornada">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/IUJornada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerJornadaPorsuPK">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ObtenerJornadaPorsuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarIntervalos">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ListarIntervalos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpleados">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/GetEmpleados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAsistencias">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/GetAsistencias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMarca">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/EliminarMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guardar">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/Guardar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarcasHorario">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/GetMarcasHorario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAsistenciaXID">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/getAsistenciaXID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarMarca">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/ActualizarMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUltimaMarca">
+      <soap:operation soapAction="http://tempuri.org/IAsistenciaSrv/GetUltimaMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AsistenciaSrv">
+    <wsdl:port name="BasicHttpBinding_IAsistenciaSrv" binding="tns:BasicHttpBinding_IAsistenciaSrv">
+      <soap:address location="http://localhost:35578/AsistenciaSrv.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

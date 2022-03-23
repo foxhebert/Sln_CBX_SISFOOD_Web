@@ -1,0 +1,201 @@
+﻿/*body {
+}*/
+
+/*@import url(https://use.fontawesome.com/releases/v5.0.6/css/all.css);*/
+
+/**, *:before, *:after {
+    font-family: 'Roboto light';
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}*/
+
+.color-pink {
+    background: linear-gradient(to bottom right, #1abb9c, #66798e);/*COLOR BOTONES*/
+}
+
+.color-btn-consumo-disponible {
+    background: linear-gradient(to bottom right, /*#302650, #299a71,*/ #4076f1,#4076f1); /*COLOR BOTONES*/
+    color: white;
+    border: 2px solid #cacaca;
+    border-radius: 7%;
+    font-weight: bold;
+}
+.color-btn-consumo-no-disponible {
+    background: linear-gradient(to bottom right, /*#e25b1e, #939a29*/ #ff7171, #ff7171); /*COLOR BOTONES*/
+    color: white;
+}
+
+/*  COMETADO HG 11.03.21 16:27PM
+    .btn {
+    border: none;
+    height: 45px;
+    color: #ffffff;
+    width: 30px;
+    border-radius: 2px;
+}*/
+.btn { /*Añadido*/
+
+    color: #fff;
+    
+   
+}
+    /*.btn:hover {
+        border: solid 1px #66798e;
+        height: 45px;
+        font-family: Roboto;
+        color: #66798e;
+        background: #ffffff;
+        width: 30px;
+        border-radius: 2px;
+    }*/
+    .up {
+    margin-top: 40px;
+}
+
+.img {
+    width: 280px;
+}
+
+.container {
+    /*width: 960px;*/
+    margin: 0 auto;
+    padding: 0px;
+    /*position: relative;*/
+}
+
+    .container:after, .container:before {
+        content: " ";
+        display: table;
+    }
+
+    .container:after {
+        clear: both;
+    }
+
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12, .grid-13, .grid-14, .grid-15, .grid-16, .grid-1-3 {
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.grid-1 {
+    width: 40px;
+}
+
+.grid-2 {
+    width: 100px;
+}
+
+.grid-3 {
+    width: 160px;
+}
+
+.grid-4 {
+    width: 220px;
+}
+
+.grid-5 {
+    width: 280px;
+}
+
+.grid-6 {
+    width: 340px;
+}
+
+.grid-7 {
+    width: 400px;
+}
+
+.grid-8 {
+    width: 460px;
+}
+
+.grid-9 {
+    width: 520px;
+}
+
+.grid-10 {
+    width: 580px;
+}
+
+.grid-11 {
+    width: 640px;
+}
+
+.grid-12 {
+    width: 700px;
+}
+
+.grid-13 {
+    width: 760px;
+}
+
+.grid-14 {
+    width: 820px;
+}
+
+.grid-15 {
+    width: 880px;
+}
+
+.grid-16 {
+    width: 940px;
+}
+
+.grid-1-3 {
+    width: 300px;
+}
+
+
+
+/*cards*/
+/*body {
+    background: #e2e1e0;
+    text-align: center;
+}*/
+
+.card {
+    background: #fff;
+    border-radius: 6px;
+    display: inline-block;
+    height: 400px;
+    margin: 1rem;
+    position: relative;
+    width: 100%;
+}
+
+.card-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+    .card-1:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+.card-2 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-3 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.card-4 {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-5 {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
+.card-elevation {
+    /*sombra*/
+    -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.25);
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.25);
+    
+}
+

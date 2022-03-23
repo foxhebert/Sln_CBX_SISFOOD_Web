@@ -1,0 +1,1387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:35578/PersonalSrv.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+  <xs:import schemaLocation="http://localhost:35578/PersonalSrv.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="ListarConsumosXid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q1:Session_Movi" />
+        <xs:element minOccurs="0" name="intId" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarConsumosXidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarConsumosXidResult" nillable="true" type="q2:ArrayOfConsumo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q3:Session_Movi" />
+        <xs:element minOccurs="0" name="intTipoOperacion" type="xs:int" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaConsumoSelects" nillable="true" type="q4:ArrayOfConsumo" />
+        <xs:element minOccurs="0" name="bitFlConsumido" type="xs:int" />
+        <xs:element minOccurs="0" name="evento" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGCResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateGCResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportMasivoPermiso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="session" nillable="true" type="q5:Session_Movi" />
+        <xs:element minOccurs="0" name="nombreExcel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idProceso" type="xs:int" />
+        <xs:element minOccurs="0" name="cboPlantilla" type="xs:int" />
+        <xs:element minOccurs="0" name="cboFormato" type="xs:int" />
+        <xs:element minOccurs="0" name="checkActualizar" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rutaDirectorioExcel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportMasivoPermisoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ImportMasivoPermisoResult" nillable="true" type="q6:ArrayOfPermisoMasivo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarMasivoPermiso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="session" nillable="true" type="q7:Session_Movi" />
+        <xs:element minOccurs="0" name="idProceso" type="xs:int" />
+        <xs:element minOccurs="0" name="nombreExcel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RutaMasivoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarMasivoPermisoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="GuardarMasivoPermisoResult" nillable="true" type="q8:ArrayOfPermisoMasivo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsistenciaDiaria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q9:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="dttFechaIni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttFechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsistenciaDiariaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarAsistenciaDiariaResult" nillable="true" type="q10:ArrayOfTSPTAASISTENCIA" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarDiasAusencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q11:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="dttFechaIni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttFechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarDiasAusenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarDiasAusenciaResult" nillable="true" type="q12:ArrayOfDiaAusen" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCabeceras">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q13:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="dttFechaIni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttFechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCabecerasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarCabecerasResult" nillable="true" type="q14:ArrayOfHomeCabe" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarHorasDescontadas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q15:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="dttFechaIni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttFechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarHorasDescontadasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarHorasDescontadasResult" nillable="true" type="q16:ArrayOfHorasDesc" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarHorasExtras">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q17:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="dttFechaIni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttFechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarHorasExtrasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarHorasExtrasResult" nillable="true" type="q18:ArrayOfHorasDesc" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaAsusencias">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="fechaInicio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaAsusenciasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListaAsusenciasResult" nillable="true" type="q19:ArrayOfTGPER_CON_DET" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaAsistencias">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="fechaInicio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaAsistenciasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListaAsistenciasResult" nillable="true" type="q20:ArrayOfTGPER_CON_DET" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaPersonalResponsabilidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="fechaInicio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaPersonalResponsabilidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListaPersonalResponsabilidadResult" nillable="true" type="q21:ArrayOfTGPER_RESP" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPersonal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intActivoFilter" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdUniOrg" type="xs:int" />
+        <xs:element minOccurs="0" name="strfilter" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttfiltrofch1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttfiltrofch2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BitFecha" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPersonalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarPersonalResult" nillable="true" type="q22:ArrayOfPersonalData" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCombos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="strEntidad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intIdFiltroGrupo" type="xs:int" />
+        <xs:element minOccurs="0" name="strGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strSubGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCombosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarCombosResult" nillable="true" type="q23:ArrayOfTGTipoEN" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarComboJerar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="strEntidad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intIdFiltroGrupo" type="xs:int" />
+        <xs:element minOccurs="0" name="strGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strSubGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarComboJerarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarComboJerarResult" nillable="true" type="q24:ArrayOfTGTipoEN" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEmpleadoPorsuPK">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEmpleadoPorsuPKResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ObtenerEmpleadoPorsuPKResult" nillable="true" type="q25:ArrayOfPersonal" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarDocIdentidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdTipDoc" type="xs:int" />
+        <xs:element minOccurs="0" name="strNumDoc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarDocIdentidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ValidarDocIdentidadResult" nillable="true" type="q26:ArrayOfValidarIdentidad_ENT" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReenviarCorreo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q27:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReenviarCorreoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ReenviarCorreoResult" nillable="true" type="q28:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActivarUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q29:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActivarUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActivarUsuarioResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q30:Session_Movi" />
+        <xs:element minOccurs="0" name="numDoc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidarEmailResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdUsuario" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminarEmpleadoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objDatos" nillable="true" type="q31:Personal" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaDetallesCorreos" nillable="true" type="q32:ArrayOfTGPERCORRDET" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaDetallesTelefonos" nillable="true" type="q33:ArrayOfTGPERTELEFDET" />
+        <xs:element minOccurs="0" name="intIdUsuario" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdUsuarModif" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActualizarEmpleadoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarOActualizarEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objDatos" nillable="true" type="q34:Personal" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ObjMarcaConDni" nillable="true" type="q35:MarcaDni" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaDetallesCorreos" nillable="true" type="q36:ArrayOfTGPERCORRDET" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaDetallesTelefonos" nillable="true" type="q37:ArrayOfTGPERTELEFDET" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaDetallesResponsabilidad" nillable="true" type="q38:ArrayOfTGPERRESPDET" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaDetallesMarcadores" nillable="true" type="q39:ArrayOfTGPERMARCDET" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaCoor" nillable="true" type="q40:ArrayOfTGPERCOOR" />
+        <xs:element minOccurs="0" name="intIdUsuario" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdUsuarModif" type="xs:int" />
+        <xs:element minOccurs="0" name="activaUsuario" type="xs:boolean" />
+        <xs:element minOccurs="0" name="desactivaUsuario" type="xs:boolean" />
+        <xs:element minOccurs="0" name="activarAdmin" type="xs:boolean" />
+        <xs:element minOccurs="0" name="intTipoOperacion" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarOActualizarEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarOActualizarEmpleadoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMarcadoresPersonal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPerMarc" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMarcadoresPersonalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarMarcadoresPersonalResult" nillable="true" type="q41:ArrayOfTGPERMARCDET" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCorreosPersonal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCorreosPersonalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarCorreosPersonalResult" nillable="true" type="q42:ArrayOfTGPERCORRDET" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTelefonosPersonal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTelefonosPersonalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarTelefonosPersonalResult" nillable="true" type="q43:ArrayOfTGPERTELEFDET" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarCoordenadas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarCoordenadasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listarCoordenadasResult" nillable="true" type="q44:ArrayOfTGPERCOOR" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarResponsabilidadPersonal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarResponsabilidadPersonalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarResponsabilidadPersonalResult" nillable="true" type="q45:ArrayOfTGPERRESPDET" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarComboGeneral">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="strEntidad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intIdFiltroGrupo" type="xs:int" />
+        <xs:element minOccurs="0" name="strGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strSubGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarComboGeneralResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarComboGeneralResult" nillable="true" type="q46:ArrayOfCombosGlobal" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCamposAdicionales">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="strNoEntidad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCamposAdicionalesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarCamposAdicionalesResult" nillable="true" type="q47:ArrayOfCamposAdicionalesGlobal" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarComboGeneral_FiltroPerson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="strEntidad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intIdFiltroGrupo" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdFiltroPerson" type="xs:int" />
+        <xs:element minOccurs="0" name="strGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strSubGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarComboGeneral_FiltroPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarComboGeneral_FiltroPersonResult" nillable="true" type="q48:ArrayOfCombosGlobal" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerAsistenciaXFecha">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrojer_ini" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="filtrojer_fin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerAsistenciaXFechaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ObtenerAsistenciaXFechaResult" nillable="true" type="q49:ArrayOfTSPTAASISTENCIA" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEmpleadoConMarcaDNI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEmpleadoConMarcaDNIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ObtenerEmpleadoConMarcaDNIResult" nillable="true" type="q50:ArrayOfMarcaDni" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListGrupoLiquidacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="session" nillable="true" type="q51:Session_Movi" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="lista" nillable="true" type="q52:EmpleadoMasivo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListGrupoLiquidacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListGrupoLiquidacionResult" nillable="true" type="q53:ArrayOfEmpleadoMasivo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportMasivoEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="session" nillable="true" type="q54:Session_Movi" />
+        <xs:element minOccurs="0" name="nombreExcel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idProceso" type="xs:int" />
+        <xs:element minOccurs="0" name="cboPlantilla" type="xs:int" />
+        <xs:element minOccurs="0" name="cboFormato" type="xs:int" />
+        <xs:element minOccurs="0" name="checkActualizar" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rutaDirectorioExcel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportMasivoEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ImportMasivoEmpleadoResult" nillable="true" type="q55:ArrayOfEmpleadoMasivo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarMasivoEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="session" nillable="true" type="q56:Session_Movi" />
+        <xs:element minOccurs="0" name="idProceso" type="xs:int" />
+        <xs:element minOccurs="0" name="nombreExcel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RutaMasivoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarMasivoEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="GuardarMasivoEmpleadoResult" nillable="true" type="q57:ArrayOfEmpleadoMasivo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarDocCambioIdentidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q58:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdTipDoc" type="xs:int" />
+        <xs:element minOccurs="0" name="strNumDoc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarDocCambioIdentidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ValidarDocCambioIdentidadResult" nillable="true" type="q59:ValidarIdentidad_DI" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCambioDI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q60:Session_Movi" />
+        <xs:element minOccurs="0" name="buscarId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="empresaId" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrojer_ini" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="filtrojer_fin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCambioDIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarCambioDIResult" nillable="true" type="q61:ArrayOfCambioDI" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarCambioDI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q62:Session_Movi" />
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="personalCDI" nillable="true" type="q63:PersonalCDI" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarCambioDIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActualizarCambioDIResult" type="xs:int" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAusentismoDet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q64:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPerHor" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrojer_ini" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="filtrojer_fin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAusentismoDetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarAusentismoDetResult" nillable="true" type="q65:ArrayOfAusentismos" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarAusentismo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q66:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPerCon" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarAusentismoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="EliminarAusentismoResult" nillable="true" type="q67:ArrayOfstring" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerAusentismoPorPK">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q68:Session_Movi" />
+        <xs:element minOccurs="0" name="intId" type="xs:int" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerAusentismoPorPKResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ObtenerAusentismoPorPKResult" nillable="true" type="q69:Ausentismo" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UAusentismos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q70:Session_Movi" />
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objDatos" nillable="true" type="q71:Ausentismo" />
+        <xs:element minOccurs="0" name="flgDESM" type="xs:boolean" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UAusentismosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UAusentismosResult" type="xs:int" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IAusentismos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q72:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdProceso" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IAusentismosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IAusentismosResult" nillable="true" type="q73:ArrayOfint" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EAusentismos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q74:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdProceso" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EAusentismosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EAusentismosResult" type="xs:int" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PreIAusentismos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q75:Session_Movi" />
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objDatos" nillable="true" type="q76:Ausentismo" />
+        <xs:element xmlns:q77="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="listPersonal" nillable="true" type="q77:ArrayOfint" />
+        <xs:element minOccurs="0" name="flgDESM" type="xs:boolean" />
+        <xs:element minOccurs="0" name="dttFechaIni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttFechaFin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PreIAusentismosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="PreIAusentismosResult" nillable="true" type="q78:ArrayOfEmpleadoObs" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarDocumentos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Archivo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ruta" nillable="true" type="xs:string" />
+        <xs:element xmlns:q79="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="listPapeletas" nillable="true" type="q79:ArrayOfint" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarDocumentosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarDocumentosResult" type="xs:int" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarDocumentosEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Archivo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ruta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intIdPapeleta" type="xs:int" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarDocumentosEditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarDocumentosEditResult" type="xs:int" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComprobarDocumentos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q80:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPapeleta" type="xs:int" />
+        <xs:element xmlns:q81="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="listPapeletas" nillable="true" type="q81:ArrayOfstring" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComprobarDocumentosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ComprobarDocumentosResult" nillable="true" type="q82:ArrayOfstring" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHabGeo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHabGeoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetHabGeoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsigHor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q83:Session_Movi" />
+        <xs:element minOccurs="0" name="intActivoFilter" type="xs:int" />
+        <xs:element minOccurs="0" name="strfilter" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IntIdEmp" type="xs:int" />
+        <xs:element minOccurs="0" name="dttfiltrofch1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttfiltrofch2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsigHorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarAsigHorResult" nillable="true" type="q84:ArrayOfAsigHorarioData" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsigHorDet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q85:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPerHor" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrojer_ini" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="filtrojer_fin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsigHorDetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarAsigHorDetResult" nillable="true" type="q86:ArrayOfAsigHorario" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarAsigHor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q87:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPerHor" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarAsigHorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminarAsigHorResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IUAsigHor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q88:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdPerHor" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdHorario" type="xs:int" />
+        <xs:element minOccurs="0" name="dttFecAsig" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IUAsigHorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IUAsigHorResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IUREGAsigHor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q89:Session_Movi" />
+        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listaDetalleHorAsigEmp" nillable="true" type="q90:ArrayOfTT_TGPERS_HORARIO_DET" />
+        <xs:element minOccurs="0" name="intIdHorario" type="xs:int" />
+        <xs:element minOccurs="0" name="dttFecAsig" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IUREGAsigHorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="IUREGAsigHorResult" nillable="true" type="q91:ArrayOfEmpleadoObs" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IUREGAsigHorPost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q92:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdProceso" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IUREGAsigHorPostResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q93="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IUREGAsigHorPostResult" nillable="true" type="q93:ArrayOfint" />
+        <xs:element minOccurs="0" name="intResult" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjDB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MaestroMaxCaracteres">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strTableName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MaestroMaxCaracteresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q94="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="MaestroMaxCaracteresResult" nillable="true" type="q94:ArrayOfMaestroCaracteres" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UTomaMarcador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+        <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdUsuario" type="xs:int" />
+        <xs:element minOccurs="0" name="intTipoOperacion" type="xs:int" />
+        <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objDatos" nillable="true" type="q95:Marcador" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UTomaMarcadorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UTomaMarcadorResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerRegistroConsumo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q96="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q96:Session_Movi" />
+        <xs:element minOccurs="0" name="IntIdAsistencia" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerRegistroConsumoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q97="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ObtenerRegistroConsumoResult" nillable="true" type="q97:ArrayOfConsumo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarConsumo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q98="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q98:Session_Movi" />
+        <xs:element minOccurs="0" name="intTipoOperacion" type="xs:int" />
+        <xs:element xmlns:q99="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objDatos" nillable="true" type="q99:Consumo" />
+        <xs:element minOccurs="0" name="bitTodosTS" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intValida" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarConsumoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarConsumoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intValida" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularServicioRegistrado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q100="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q100:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdAsistencia" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdServicio" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intValida" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularServicioRegistradoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AnularServicioRegistradoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intValida" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarConsumo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q101="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q101:Session_Movi" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarConsumoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q102="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarConsumoResult" nillable="true" type="q102:ArrayOfConsumo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarReglaNegocioServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q103:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdAsistencia" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarReglaNegocioServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q104="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarReglaNegocioServicioResult" nillable="true" type="q104:ArrayOfTGREGLANEG_SERV_DET" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarServicioComplementario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q105="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q105:Session_Movi" />
+        <xs:element minOccurs="0" name="intIdAsistencia" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarServicioComplementarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q106="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarServicioComplementarioResult" nillable="true" type="q106:ArrayOfTGREGLANEG_SERV_DET" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarMarcaConDni">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q107="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q107:Session_Movi" />
+        <xs:element minOccurs="0" name="intTipoOperacion" type="xs:int" />
+        <xs:element xmlns:q108="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objDatos" nillable="true" type="q108:ComedorMarcaConDni" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idAsistencia" type="xs:int" />
+        <xs:element minOccurs="0" name="idConsumoAuto" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarMarcaConDniResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarMarcaConDniResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idAsistencia" type="xs:int" />
+        <xs:element minOccurs="0" name="idConsumoAuto" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGestionConsumo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q109="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q109:Session_Movi" />
+        <xs:element minOccurs="0" name="dttFiltroFchI" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dttFiltroFchF" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strDescripcion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="intConsumido" type="xs:int" />
+        <xs:element minOccurs="0" name="intTipoServ" type="xs:int" />
+        <xs:element minOccurs="0" name="intTipoMenu" type="xs:int" />
+        <xs:element minOccurs="0" name="IntIdEmp" type="xs:int" />
+        <xs:element minOccurs="0" name="intIdMarcador" type="xs:int" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGestionConsumoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q110="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarGestionConsumoResult" nillable="true" type="q110:ArrayOfConsumo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGestionConsumo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q111="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q111:Session_Movi" />
+        <xs:element minOccurs="0" name="intTipoOperacion" type="xs:int" />
+        <xs:element xmlns:q112="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objDatos" nillable="true" type="q112:Consumo" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGestionConsumoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateGestionConsumoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGestionMasivoConsumo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q113="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objSession" nillable="true" type="q113:Session_Movi" />
+        <xs:element minOccurs="0" name="intTipoOperacion" type="xs:int" />
+        <xs:element xmlns:q114="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="listPersonal" nillable="true" type="q114:ArrayOfint" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGestionMasivoConsumoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateGestionMasivoConsumoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strMsjUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

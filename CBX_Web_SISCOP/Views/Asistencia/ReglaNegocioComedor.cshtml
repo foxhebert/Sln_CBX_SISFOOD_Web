@@ -1,0 +1,580 @@
+
+<!-- Hay otra Regla de Negocio, pero para SISFOOD - LAIVE se está utilizando éste html -->
+<!-- Detalle - "Subsidios por Empresa Agregados" para Nuevo y Editar no está en partial sino en este html -->
+
+
+@{    ViewBag.Title = "Regla de Negocio Comedor";    } 
+
+
+<div id="ReglaNegCom" >
+    <div class="row">
+        <!--INICIO PANEL-->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <!--Inicio de código para solucionar observación 1.2  HG 24.02.2021-->
+                <!--AÑADIDO-->
+                <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
+                    <label class="" style="text-align: right !important;">Buscar </label>
+                    <input type="text" id="BusqRegNeg" class="form-control" placeholder="Buscar por Código y Descripción">
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                    <label class="control-label" style="text-align:right !important">Dependencia</label>
+                    <select class="form-control" id="cboJerarRN">
+                        <option value="0" selected>Todos</option>
+                    </select>
+                </div>
+                <!--AÑADIDO-->
+                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                    <label class="control-label" style="text-align: right !important;">Estado</label>
+                    <select class="form-control" id="ActvRegNegCom">
+                        <option value="2">Todos</option>
+                        <option value="1" selected>Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+                </div>
+                <!--Fin de código para solucionar observación 1.2  HG 24.02.2021-->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="breadcrumb">
+                <a class="breadcrumb__step breadcrumb__step--active" href="#">Comedor</a>
+                <a class="breadcrumb__step"  href="#" style="width: 90%;">Regla de Negocio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLA LISTADO PRINCIPAL -->
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Listado de Regla de Negocio Comedor</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button"  id="btn-new-ReglaNegocioCom" class="btn btn-primary" value="Nueva Regla">
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="TablaRegCom" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" width="100%">
+                        <thead>
+
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Dependencia</th>
+                                <th>Und. Organizacional</th>
+                                @*<th>Tipo de Consumo</th>*@
+                                <th>Subsidio</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                                <th style="display:none">ID</th>
+
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+            <div class="form-hide-ReglaNegocio-Comedor" hidden>
+
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Información de la Regla de Negocio</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <input type="button" id="btn-update-ReglaNegocioCom" class="btn btn-success" value="Actualizar">
+                                <input type="button" id="btn-save-change-ReglaNegocioCom" class="btn btn-primary" value="Guardar">
+                                @*<input type="button" id="viernes26" class="btn btn-success" value="PRUEBA SUBSIDIOS">*@
+                            </li>
+                            <li>
+                                <input type="button" id="btn-cancel-ReglaNegocioCom" class="btn btn-dark" value="Cancelar">
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="wizardCom" class="form_wizard wizard_horizontal">
+                            <ul class="wizard_steps">
+                                <li id="primer_sitch_li">
+                                    <a id="primer_sitch_form" href="#step-8">
+                                        <span class="step_no" id="span_01" >1</span>
+                                        <span class="step_descr" >
+                                            Comedor
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="segundo_sitch_form" href="#step-9">
+                                        <span class="step_no" id="span_02">2</span>
+                                        <span class="step_descr">
+                                            Servicios
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                         
+                            <div id="step-8">
+                                <form class="form-horizontal form-label-left">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <label>
+                                                <input type="checkbox" class="flat" id="checkPrincipal"> Principal
+                                            </label>
+                                        </div>
+                                        <div id="11" style="text-align:right;">
+                                        </div>
+                                    </div>
+                                    @* añadido 22.09.2021 *@
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Dependencia Jerárquica (*)</label>
+                                                <select class="form-control" id="cboJerarquia"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label style="text-align:left;">Und. Organizacional</label>
+                                                <select id="cboUndOrg" class="form-control" disabled>
+                                                    <option value="0" selected>Seleccione</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="border-section">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group" id="strCoRegNeg">
+                                                    <label>Código (*)</label>
+                                                    <input type="text" id="txt_cod_RegNegCom" class="form-control" placeholder="Nº" onkeypress="validarCodigoAll(event)">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group" id="strDesRegNeg">
+                                                    <label>Descripción (*)</label>
+                                                    <input type="text" id="txt_desc_RegNegCom" class="form-control" placeholder="Descripción" onkeypress="validarDescripcionAll(event)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+
+
+                                    <!--===================== CONTENEDOR DETALLE =======================-->
+                                    <div class="row">
+                                        <div class="border-section">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Tipo de Control de Consumo (*)</label>
+                                                    <select class="form-control" id="TipControlConsumo"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group">
+                                                    @*<label>Cantidad por Tipo de Control de Consumo (*)</label>*@
+                                                    <label>Cantidad por Tipo de Control (*)</label>
+                                                    <input id="txtCantConsumo" class="form-control"
+                                                           type="number" maxlength="3"
+                                                           placeholder="Cantidad de Consumo"
+                                                           @*onkeypress="CampoTxtCantConsumo(event)"*@
+                                                           onkeypress="return filterEnter(event,this);"
+                                                           min="1" max="999" />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Tiempo de Tolerancia en la Toma de Consumo</label>
+                                                    <input type="time" id="tiempo_tol" value="00:00"
+                                                           min="00:00" max="18:00"
+                                                           class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div id="DivCamposAdicionalesPeriodo">
+                                                <!--CONTENEDOR DE CAMPOS ADICIONALES -->
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <br />
+                                                <div class="form-group">
+                                                    <center>
+                                                        <label>
+                                                            <input type="checkbox" class="icheckbox_flat-blue " id="ConSubsi">&nbsp;&nbsp;&nbsp;<a>CON SUBSIDIO</a>
+
+                                                        </label>
+                                                    </center>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <!--Inicio de código para solucionar observación 1.11  HG 25.02.2021-->
+                                    <!-- INICIO CONTENEDOR CON SUBSIDIO -->
+                                    <div id="Subsidio" hidden>
+
+                                        <div class="border-section">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Tipo de Subsidio</label>
+                                                    <select class="form-control" id="TipoSubs"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="form-group" id="porcentaje_general">
+                                                    <label>Porcentaje General (%)</label>
+                                                    <input type="number" class="form-control" id="pocent_general" onkeypress="CampoPorcentajeSinNegativos(event)"
+                                                           placeholder="Porcentaje %" oninput="javascript: if (this.value.length >  this.maxLength) this.value = this.value.slice(0, this.maxLength);if (this.value > 100) this.value = 100;if (this.value == 0) this.value = 1;  " maxlength="3" max="100">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!--- Primer Switch Form COMEDOR - TIPO DE SUBSIDIO POR EMPRESA --->
+                                        <div class="col-md-12 col-sm-12 col-xs-12" id="PEmpresa" hidden>
+                                            <h2>Subsidios Específicos Agregados</h2><!--Inicio Fin de código para solucionar observación 1.12  HG 25.02.2021-->
+                                            <div class="border-section">
+                                                <div class="x_content">
+                                                    <br />
+                                                    <div class="row">
+
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="form-group">
+                                                                <label>Empresa (*)</label>
+                                                                <select class="form-control" id="IdEmp"></select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="form-group">
+                                                                <label>Porcentaje de Subsidio (%)</label>
+                                                                <input type="number" id="txtPorce" class="form-control" onkeypress="CampoPorcentajeSinNegativos(event)"
+                                                                       oninput="javascript: if (this.value.length >  this.maxLength) this.value = this.value.slice(0, this.maxLength);if (this.value > 100) this.value = 100;if (this.value == 0) this.value = 1;" maxlength="3" placeholder="%">
+                                                            </div>
+                                                        </div>
+
+                                                        <!--- HG 16.03.21 Añadido - martes16 ) --->
+                                                        <!--- SUBSIDIO (Tipo de Servicio) --->
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="form-group">
+                                                                <label>Tipo de Servicio (*)</label>
+                                                                <select class="form-control" id="TipServiciosRNC"></select>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <!--Inicio de código para solucionar observación 1.15  HG 24.02.2021-->
+                                                        <!--- SUBSIDIO (Tipo de Menu) --->
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="form-group">
+                                                                <label>Tipo de Menú (*)</label>
+                                                                <select class="form-control" id="TipoMen"></select>
+                                                            </div>
+                                                        </div>
+                                                        <!--Fin de código para solucionar observación 1.15  HG 24.02.2021-->
+
+
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                                        </div>
+
+
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <center>
+                                                                <br />
+                                                                <label>&nbsp;</label>
+                                                                <input type="button" class="btn btn-primary" value="Agregar" id="Reg_Subs">
+                                                            </center>
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                    <!--- TABLA DETALLE SERVICIO EMPRESA --->
+                                                    <br />
+
+                                                    <table id="TablaDetReg" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" width="100%">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <th style="display:none;">Código</th>
+                                                                <th>Empresa</th>
+                                                                <th>Tipo de Servicio</th>
+                                                                <th>Tipo de Menú</th>
+                                                                <th>%</th>
+                                                                <th>Acción</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>  <!--FIN CONTENEDOR CON SUBSIDIO-->
+                                    <!--Fin de código para solucionar observación 1.11  HG 25.02.2021-->
+
+
+                                </form>
+                            </div>
+
+
+
+                            <div id="step-9">
+                                <form class="form-horizontal form-label-left">
+
+                                            <div class="row">
+
+                                                <div class="">
+                                                    
+                                                    <div class="col-md-3 col-sm-3 col-xs-3" style="width:50%;" >
+                                                        <label>&nbsp;</label>
+                                                        <label style="text-align:left !important; margin-top:7px;" >Buscar en Lista de Servicios</label>
+                                                        <input type="text" id="filtro2" class="form-control" placeholder="Buscar por Código y Descripción" >
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="">
+                                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                                        <label style="text-align:left !important; margin-top:7px;">Tipo de Servicio</label>
+                                                        <label>&nbsp;</label>
+                                                        <br />
+                                                        <select class="form-control" id="TipMenuRN"></select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="">
+                                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                                        <label style="text-align:left !important; margin-top:7px;">Tipo de Menú</label>
+                                                        <label>&nbsp;</label>
+                                                        <br />
+                                                        <select class="form-control" id="TipServicioRN"></select>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+
+                                            <br />
+
+                                            <div class="row">
+
+                                                <!---Segundo Switch Form SERVICIO - TABLA LISTA DE SERVICIOS --->
+                                                <h2>Lista de Servicios</h2>
+                                                @*<div class="ln_solid" style="padding-bottom:-5px;"></div>*@
+
+                                                    <table id="TablaServ" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Código</th>
+                                                                <th>Descripción</th>                                                               
+                                                                <th>Tipo Serv.</th>
+                                                                <th>Tipo Menú</th>
+                                                                <th>Acción</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                <br><br>
+
+                                                <h2>Servicios Agregados</h2>                                                
+                                                @*<div class="ln_solid" style="padding-bottom:-5px;"></div>*@                                                
+                                              
+
+                                                <!--- Segundo Switch Form SERVICIO -  TABLA SERVICIOS AÑADIDOS --->                                               
+                                                    <table id="TablaDetServ" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Código</th>
+                                                                <th>Descripción</th>
+                                                                <th>Tipo Serv</th>
+                                                                <th>Tipo Menú.</th>
+                                                                <th >Acción</th>
+                                                                <th hidden>Acción</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+
+                                                    </table>                                             
+
+                                            </div>
+                                   </form>                                
+                            </div>
+
+                            <input type="hidden" id="IdRegNegCom" />
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+    <script>
+
+
+        //Inicio de código para solucionar observación 1.13  HG 25.02.2021 
+        //onkeypress="CampoPorcentajeSinNegativos(event)"
+        function CampoPorcentajeSinNegativos(event) {
+            if (event.key == "-" || event.key == "+") {
+                event.preventDefault();
+                return false;
+            }
+        }
+        //Fin de código para solucionar observación 1.13 HG 25.02.2021
+
+
+        //Inicio de código para solucionar observación 1.8  HG 01.03.2021
+        //onkeypress="CampoPorcentajeSinNegativos(event)"
+        function CantidadDeConsumo(event) {
+            if (event.key == "0" || event.key == "-") {
+                event.preventDefault();
+                return false;
+            }
+        }
+        //
+        function filterEnter(evt, input) {
+            // Backspace = 8, Enter = 13, ‘0′ = 48, ‘9′ = 57, ‘.’ = 46, ‘-’ = 43
+            var key = window.Event ? evt.which : evt.keyCode;
+            var chark = String.fromCharCode(key);
+            var tempValue = input.value + chark;
+
+                if (key >= 48 && key <= 57) {
+                    if (filterE(tempValue) === false) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    if (key == 8 || key == 13 || key == 0) {
+                        return true;
+                    } else if (key == 46) {
+                        if (filterE(tempValue) === false) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+        }
+
+        function filterE(__val__) {
+            var pregE = /^([1-9]{1,2})$/;
+
+            if (pregE.test(__val__) === true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    //
+        //---------------------------------------------------------------
+        //Usarlo como: onkeypress="CampoTxtCantConsumo(event)"
+        function CampoTxtCantConsumo(evt) { 
+
+            var theEvent = evt || window.event;
+
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /[0-9]/;
+            if (!regex.test(key)) {
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+        //--------------------------------------------------------------------------
+
+   
+        //Fin de código para solucionar observación 1.8 HG 01.03.2021
+                                                            
+        
+        $(document).ready(function () {
+            $.post(
+                '/Organizacion/ComboDependenciaFiltro', //'/Asistencia/LlenarTipoUM', //modificado 02.09.2021
+                {}, //{ strEntidad: 'TGJERARQORG', intIdFiltroGrupo: 0, strGrupo: 'DEPEN', strSubGrupo: '' },
+                (response) => {
+                    $('#cboJerarRN').empty();
+                    if (response.length > 1) {
+                        $('#cboJerarRN').append(' <option value="0"> Todos </option>');
+                    }
+                    response.forEach(element => {
+                        $('#cboJerarRN').append(
+                            ' <option value="' + element.intidTipo + '">' + element.strDeTipo + '</option>'
+                        );
+                    });
+                    TablarReglaNegCom();    //LISTADO PRINCIPAL - SÍ ESTA IMPLEMENTADO; SE ENCARGA DE LLENAR EL LISTADO PRINCIPAL
+                }
+            );
+            //TablarReglaNegServDet();//SÍ USADO Y SÍ IMPLEMENTADO//COMENTADO MIERCOLES24---para nuevo y editar//COMENTADO 23.09.2021
+            //CombosReglaDeNegociocOM();//INICIALIZAR DESE ACA//COMENTADO 23.09.2021
+            init_SmartWizard_RegNegCom();
+        });
+
+        ////Usarlo como onkeypress = "return avoidSpaceInput(event)"
+        //function avoidSpaceInput(event) {
+        //    let k = event ? event.which : window.event.keyCode;
+        //    if (k == 32) return false;
+        //}
+
+
+      //// BUSCAR ELEMENTOS DE TODAS LAS FILAS DE LA TABLA SERVICIOS
+      //  // input id = "filtro2"
+      //  $("#filtro2").on("keyup", function () {
+      //              var value = $(this).val().toLowerCase();
+      //              $("#TablaServ tr").filter(function () {
+      //                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      //                  $("#TablaServ tr:first").show();//Mostrar siempre  el primer row
+      //              });
+      //  });
+
+
+
+    </script>

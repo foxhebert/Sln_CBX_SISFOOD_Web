@@ -1,0 +1,178 @@
+@model object[]
+<form class="form-horizontal form-label-left">
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+        </div>
+        <div style="text-align:right;">
+            <label id="_lbl_"></label>
+            <input type="checkbox" id="chck_activo_fer" class="js-switch" checked />
+        </div>
+    </div>
+    <div class="row">
+        <div class="border-section">
+            <div class="row">
+                <div class="x_content">
+                    <div class="x_content">
+
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label>Concepto (*)</label>
+                                <select class="form-control" id="idConcep"></select>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group" id="Valdes">
+                                <label>Descripción (*)</label>
+                                <input type="text" class="form-control" id="txt_desc_fer" placeholder="Descripción" onkeypress="validarDescripcionAll(event)">
+                                <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Fecha (*)</label>
+                <div class="control-group">
+                    @*<div class="controls" hidden>
+                            <div class="input-prepend input-group" id="FechaIniFer">
+                                <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                <input type="text" id="txtFechaIniFer" class="form-control" value="" />
+                            </div>
+                        </div>*@
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                        <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                        <input type="date" class="form-control has-feedback-left" id="txtFechaIniFer" style="padding-left: 70px;border: 1px solid #ccc;" max="9999-12-31" value="">
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $(function () {
+                        $('#FechaIniFer').datetimepicker({
+                            viewMode: 'days',
+                            format: 'DD/MM/YYYY'
+                        });
+                    });
+                </script>
+
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <div>
+                    <label class="col-md-7 col-sm-7 col-xs-6"> Régimen (*)</label>
+
+                </div>
+                <select class="form-control" id="idRegi"></select>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Horario Entrada</label>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend input-group" id="HoraIniFer">
+                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-clock-o"></i></span>
+                            <input id="txtHoraIniFer" type="text" class="form-control" value="" />
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(function () {
+                        $('#HoraIniFer').datetimepicker({
+                            format: 'LT'
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Horario Salida</label>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend input-group" id="HoraFinFer">
+                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-clock-o"></i></span>
+                            <input id="txtHoraFinFer" type="text" class="form-control" value="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                $(function () {
+                    $('#HoraFinFer').datetimepicker({
+                        format: 'LT'
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <input type="checkbox" id="chck_bitRecursiv" class="flat" />  Repetir anualmente
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <input type="checkbox" id="chck_bitEspecifica" class="flat" />  Feriado por Localidad
+        </div>
+
+    </div>
+
+    <div class="border-section">
+
+        <div class="x_content">
+
+
+
+
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Dependencia Jerárquica (*)</label>
+                    <select class="form-control" id="cboJerar"></select>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <div class="form-group">
+
+                    <p>Seleccionar varios presionando SHIFT sin soltar </p>
+                    <select class="select2_multiple form-control" id="cboUndOrg" multiple="multiple" style="height: 150px !important" disabled></select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ln_solid"></div>
+
+    <div id="containerCampose"></div>
+
+</form>

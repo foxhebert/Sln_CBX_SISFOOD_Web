@@ -1,0 +1,332 @@
+
+@{
+    ViewBag.Title = "Feriado";
+}
+
+@*<div class="loader"></div>
+    <style>
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background:url(../../images/pageLoader.gif) 50% 50% no-repeat rgb(249,249,249);
+            opacity: .95;
+        }
+    </style>*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+@*<script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        });
+
+    </script>*@
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <label class="" style="text-align: right !important;">Buscar </label>
+                <input type="text" id="filtroFeriado" class="form-control" placeholder="Buscar por Descripción">
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+                <label style="text-align:right;" class="control-label">Estado</label>
+                <select class="form-control" id="filActiFeriado">
+                    <option value="2">Todos</option>
+                    <option value="1" selected>Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <label style="text-align:right;" class="control-label">Rango de Fechas</label>
+                <div id="campJerar" class="form-control range-datepicker" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                    <span>January 01, 2019 - January 28, 2019</span> <b class="caret"></b>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Asistencia</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Feriado</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <!-- PANEL TABLA -->
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Feriados</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <input type="button" id="btn-new-feriado" class="btn btn-primary" value="Nuevo Feriado">
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="tablaFeriado" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;">
+                    @*<table id="tablaFeriado" class="table table-striped table-bordered table-responsive nowrap " cellspacing="0" width="100%">*@
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th>Régimen - Recursividad</th>
+                            <th>Por Localidad</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                            <th style="display:none">Acción</th>
+                            <th style="display:none">Acción</th>
+                            <th style="display:none">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBodyFeriado"></tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SEGUNDO PANEL -->
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="form-hide-feriado" hidden>
+
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Información del Feriado</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-save-change-feriado" class="btn btn-primary" value="Guardar">
+                            <input type="button" id="btn-update-feriado" class="btn btn-success" value="Actualizar">
+                        </li>
+                        <li>
+                            <input type="button" id="btn-cancel-feriado" class="btn btn-dark" value="Cancelar">
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    @*<form class="form-horizontal form-label-left">
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Recursividad (*)</label>
+                                        <select class="form-control">
+                                            <option>Seleccione</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <div class="mt-2">
+                                            <label class="col-md-7 col-sm-7 col-xs-6"> Regimen </label>
+                                            <div class="col-md-5 col-sm-5 col-xs-6 text-right">
+                                                <input type="checkbox" class="js-switch" checked /> Activo
+                                            </div>
+                                        </div>
+
+                                        <select class="form-control">
+                                            <option>Seleccione</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="border-section">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Descripción (*)</label>
+                                            <input type="text" class="form-control" placeholder="Nº Terminal">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Concepto (*)</label>
+                                            <input type="text" class="form-control" placeholder="Descripción ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Fecha</label>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="input-prepend input-group">
+                                                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                                    <input id="date_desde" type="text" class="form-control" value="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Fecha Fin</label>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="input-prepend input-group">
+                                                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                                    <input id="date_hasta" type="text" class="form-control" value="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Horario Entrada Juan cer </label>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="input-prepend input-group">
+                                                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-clock-o"></i></span>
+                                                    <input id="time_desde" type="text" class="form-control " value="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Horario Salida</label>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="input-prepend input-group">
+                                                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-clock-o"></i></span>
+                                                    <input id="time_hasta" type="text" class="form-control" value="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="flat" checked="checked"> Aplicación específica (por Und. Org.)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Dependencia Jerárquica (*)</label>
+                                        <select class="form-control">
+                                            <option>Locales</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <p>Seleccionar Und. Organizacional</p>
+                                        <select class="select2_multiple form-control" multiple="multiple">
+                                            <option>RESPONSABLE</option>
+                                            <option>UBIGEO</option>
+                                            <option>LOGO</option>
+                                            <option>CAMPO 1</option>
+                                            <option>CAMPO 2</option>
+                                            <option>CAMPO 3</option>
+                                            <option>CAMPO 4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 1</label>
+                                        <input type="text" class="form-control" placeholder="campo 1">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 2</label>
+                                        <input type="text" class="form-control" placeholder="campo 2">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 3</label>
+                                        <input type="text" class="form-control" placeholder="campo 3">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 4</label>
+                                        <input type="text" class="form-control" placeholder="campo 4">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 5</label>
+                                        <input type="text" class="form-control" placeholder="campo 5">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                </div>
+                            </div>
+
+                        </form>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        const fechaInicioFeriado = moment().startOf('year').format('DD/MM/YYYY') + ' 00:00:00';
+        const fechaFinFeriado = moment().endOf("year").format('DD/MM/YYYY') + ' 23:59:59';
+        console.log(fechaInicioFeriado)
+        console.log(fechaFinFeriado)
+        if ($("#tablaFeriado").length) {
+            traerDatosFeriados(fechaInicioFeriado, fechaFinFeriado);
+        }
+    }
+    );
+</script>

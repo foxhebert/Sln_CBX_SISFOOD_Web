@@ -1,0 +1,1313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PersonalSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:35578/PersonalSrv.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:35578/PersonalSrv.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:35578/PersonalSrv.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:35578/PersonalSrv.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPersonalSrv_ListarConsumosXid_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConsumosXid" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarConsumosXid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConsumosXidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UpdateGC_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGC" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UpdateGC_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGCResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ImportMasivoPermiso_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportMasivoPermiso" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ImportMasivoPermiso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportMasivoPermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_GuardarMasivoPermiso_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarMasivoPermiso" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_GuardarMasivoPermiso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarMasivoPermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarAsistenciaDiaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsistenciaDiaria" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarAsistenciaDiaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsistenciaDiariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarDiasAusencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDiasAusencia" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarDiasAusencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDiasAusenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCabeceras_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCabeceras" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCabeceras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCabecerasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarHorasDescontadas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorasDescontadas" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarHorasDescontadas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorasDescontadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarHorasExtras_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorasExtras" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarHorasExtras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarHorasExtrasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListaAsusencias_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListaAsusencias" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListaAsusencias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListaAsusenciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListaAsistencias_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListaAsistencias" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListaAsistencias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListaAsistenciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListaPersonalResponsabilidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListaPersonalResponsabilidad" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListaPersonalResponsabilidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListaPersonalResponsabilidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarPersonal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPersonal" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarPersonal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPersonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCombos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCombos" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCombos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCombosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarComboJerar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarComboJerar" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarComboJerar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarComboJerarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerEmpleadoPorsuPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEmpleadoPorsuPK" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerEmpleadoPorsuPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEmpleadoPorsuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ValidarDocIdentidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarDocIdentidad" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ValidarDocIdentidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarDocIdentidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ReenviarCorreo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReenviarCorreo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ReenviarCorreo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReenviarCorreoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ActivarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActivarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ActivarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActivarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ValidarEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarEmail" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ValidarEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_EliminarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_EliminarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ActualizarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ActualizarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarOActualizarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarOActualizarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarOActualizarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarOActualizarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarMarcadoresPersonal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMarcadoresPersonal" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarMarcadoresPersonal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMarcadoresPersonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCorreosPersonal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCorreosPersonal" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCorreosPersonal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCorreosPersonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarTelefonosPersonal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTelefonosPersonal" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarTelefonosPersonal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTelefonosPersonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_listarCoordenadas_InputMessage">
+    <wsdl:part name="parameters" element="tns:listarCoordenadas" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_listarCoordenadas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listarCoordenadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarResponsabilidadPersonal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarResponsabilidadPersonal" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarResponsabilidadPersonal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarResponsabilidadPersonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarComboGeneral_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarComboGeneral" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarComboGeneral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarComboGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCamposAdicionales_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionales" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCamposAdicionales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarComboGeneral_FiltroPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarComboGeneral_FiltroPerson" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarComboGeneral_FiltroPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarComboGeneral_FiltroPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerAsistenciaXFecha_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAsistenciaXFecha" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerAsistenciaXFecha_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAsistenciaXFechaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerEmpleadoConMarcaDNI_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEmpleadoConMarcaDNI" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerEmpleadoConMarcaDNI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEmpleadoConMarcaDNIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListGrupoLiquidacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListGrupoLiquidacion" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListGrupoLiquidacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListGrupoLiquidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ImportMasivoEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportMasivoEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ImportMasivoEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportMasivoEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_GuardarMasivoEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarMasivoEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_GuardarMasivoEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarMasivoEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ValidarDocCambioIdentidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarDocCambioIdentidad" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ValidarDocCambioIdentidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarDocCambioIdentidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCambioDI_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCambioDI" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarCambioDI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCambioDIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ActualizarCambioDI_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCambioDI" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ActualizarCambioDI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCambioDIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarAusentismoDet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAusentismoDet" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarAusentismoDet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAusentismoDetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_EliminarAusentismo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAusentismo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_EliminarAusentismo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAusentismoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerAusentismoPorPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAusentismoPorPK" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerAusentismoPorPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAusentismoPorPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UAusentismos_InputMessage">
+    <wsdl:part name="parameters" element="tns:UAusentismos" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UAusentismos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UAusentismosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_IAusentismos_InputMessage">
+    <wsdl:part name="parameters" element="tns:IAusentismos" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_IAusentismos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IAusentismosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_EAusentismos_InputMessage">
+    <wsdl:part name="parameters" element="tns:EAusentismos" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_EAusentismos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EAusentismosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_PreIAusentismos_InputMessage">
+    <wsdl:part name="parameters" element="tns:PreIAusentismos" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_PreIAusentismos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PreIAusentismosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarDocumentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarDocumentos" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarDocumentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarDocumentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarDocumentosEdit_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarDocumentosEdit" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarDocumentosEdit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarDocumentosEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ComprobarDocumentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarDocumentos" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ComprobarDocumentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarDocumentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_GetHabGeo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHabGeo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_GetHabGeo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHabGeoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarAsigHor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsigHor" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarAsigHor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsigHorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarAsigHorDet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsigHorDet" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarAsigHorDet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsigHorDetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_EliminarAsigHor_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAsigHor" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_EliminarAsigHor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAsigHorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_IUAsigHor_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUAsigHor" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_IUAsigHor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUAsigHorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_IUREGAsigHor_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUREGAsigHor" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_IUREGAsigHor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUREGAsigHorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_IUREGAsigHorPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUREGAsigHorPost" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_IUREGAsigHorPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUREGAsigHorPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_MaestroMaxCaracteres_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaestroMaxCaracteres" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_MaestroMaxCaracteres_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaestroMaxCaracteresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UTomaMarcador_InputMessage">
+    <wsdl:part name="parameters" element="tns:UTomaMarcador" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UTomaMarcador_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UTomaMarcadorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerRegistroConsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroConsumo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ObtenerRegistroConsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroConsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarConsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarConsumo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarConsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarConsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_AnularServicioRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:AnularServicioRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_AnularServicioRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AnularServicioRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarConsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConsumo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarConsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarReglaNegocioServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarReglaNegocioServicio" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarReglaNegocioServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarReglaNegocioServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarServicioComplementario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarServicioComplementario" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarServicioComplementario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarServicioComplementarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarMarcaConDni_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarMarcaConDni" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_RegistrarMarcaConDni_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarMarcaConDniResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarGestionConsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGestionConsumo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_ListarGestionConsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGestionConsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UpdateGestionConsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGestionConsumo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UpdateGestionConsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGestionConsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UpdateGestionMasivoConsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGestionMasivoConsumo" />
+  </wsdl:message>
+  <wsdl:message name="IPersonalSrv_UpdateGestionMasivoConsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGestionMasivoConsumoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPersonalSrv">
+    <wsdl:operation name="ListarConsumosXid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarConsumosXid" message="tns:IPersonalSrv_ListarConsumosXid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarConsumosXidResponse" message="tns:IPersonalSrv_ListarConsumosXid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGC">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/UpdateGC" message="tns:IPersonalSrv_UpdateGC_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/UpdateGCResponse" message="tns:IPersonalSrv_UpdateGC_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportMasivoPermiso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ImportMasivoPermiso" message="tns:IPersonalSrv_ImportMasivoPermiso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ImportMasivoPermisoResponse" message="tns:IPersonalSrv_ImportMasivoPermiso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarMasivoPermiso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/GuardarMasivoPermiso" message="tns:IPersonalSrv_GuardarMasivoPermiso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/GuardarMasivoPermisoResponse" message="tns:IPersonalSrv_GuardarMasivoPermiso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsistenciaDiaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarAsistenciaDiaria" message="tns:IPersonalSrv_ListarAsistenciaDiaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarAsistenciaDiariaResponse" message="tns:IPersonalSrv_ListarAsistenciaDiaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDiasAusencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarDiasAusencia" message="tns:IPersonalSrv_ListarDiasAusencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarDiasAusenciaResponse" message="tns:IPersonalSrv_ListarDiasAusencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCabeceras">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCabeceras" message="tns:IPersonalSrv_ListarCabeceras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCabecerasResponse" message="tns:IPersonalSrv_ListarCabeceras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorasDescontadas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarHorasDescontadas" message="tns:IPersonalSrv_ListarHorasDescontadas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarHorasDescontadasResponse" message="tns:IPersonalSrv_ListarHorasDescontadas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorasExtras">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarHorasExtras" message="tns:IPersonalSrv_ListarHorasExtras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarHorasExtrasResponse" message="tns:IPersonalSrv_ListarHorasExtras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaAsusencias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListaAsusencias" message="tns:IPersonalSrv_ListaAsusencias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListaAsusenciasResponse" message="tns:IPersonalSrv_ListaAsusencias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaAsistencias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListaAsistencias" message="tns:IPersonalSrv_ListaAsistencias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListaAsistenciasResponse" message="tns:IPersonalSrv_ListaAsistencias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaPersonalResponsabilidad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListaPersonalResponsabilidad" message="tns:IPersonalSrv_ListaPersonalResponsabilidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListaPersonalResponsabilidadResponse" message="tns:IPersonalSrv_ListaPersonalResponsabilidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPersonal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarPersonal" message="tns:IPersonalSrv_ListarPersonal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarPersonalResponse" message="tns:IPersonalSrv_ListarPersonal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCombos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCombos" message="tns:IPersonalSrv_ListarCombos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCombosResponse" message="tns:IPersonalSrv_ListarCombos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarComboJerar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarComboJerar" message="tns:IPersonalSrv_ListarComboJerar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarComboJerarResponse" message="tns:IPersonalSrv_ListarComboJerar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEmpleadoPorsuPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerEmpleadoPorsuPK" message="tns:IPersonalSrv_ObtenerEmpleadoPorsuPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerEmpleadoPorsuPKResponse" message="tns:IPersonalSrv_ObtenerEmpleadoPorsuPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarDocIdentidad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ValidarDocIdentidad" message="tns:IPersonalSrv_ValidarDocIdentidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ValidarDocIdentidadResponse" message="tns:IPersonalSrv_ValidarDocIdentidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReenviarCorreo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ReenviarCorreo" message="tns:IPersonalSrv_ReenviarCorreo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ReenviarCorreoResponse" message="tns:IPersonalSrv_ReenviarCorreo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ActivarUsuario" message="tns:IPersonalSrv_ActivarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ActivarUsuarioResponse" message="tns:IPersonalSrv_ActivarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ValidarEmail" message="tns:IPersonalSrv_ValidarEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ValidarEmailResponse" message="tns:IPersonalSrv_ValidarEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/EliminarEmpleado" message="tns:IPersonalSrv_EliminarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/EliminarEmpleadoResponse" message="tns:IPersonalSrv_EliminarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ActualizarEmpleado" message="tns:IPersonalSrv_ActualizarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ActualizarEmpleadoResponse" message="tns:IPersonalSrv_ActualizarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarOActualizarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarOActualizarEmpleado" message="tns:IPersonalSrv_RegistrarOActualizarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarOActualizarEmpleadoResponse" message="tns:IPersonalSrv_RegistrarOActualizarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMarcadoresPersonal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarMarcadoresPersonal" message="tns:IPersonalSrv_ListarMarcadoresPersonal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarMarcadoresPersonalResponse" message="tns:IPersonalSrv_ListarMarcadoresPersonal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCorreosPersonal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCorreosPersonal" message="tns:IPersonalSrv_ListarCorreosPersonal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCorreosPersonalResponse" message="tns:IPersonalSrv_ListarCorreosPersonal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTelefonosPersonal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarTelefonosPersonal" message="tns:IPersonalSrv_ListarTelefonosPersonal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarTelefonosPersonalResponse" message="tns:IPersonalSrv_ListarTelefonosPersonal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listarCoordenadas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/listarCoordenadas" message="tns:IPersonalSrv_listarCoordenadas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/listarCoordenadasResponse" message="tns:IPersonalSrv_listarCoordenadas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarResponsabilidadPersonal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarResponsabilidadPersonal" message="tns:IPersonalSrv_ListarResponsabilidadPersonal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarResponsabilidadPersonalResponse" message="tns:IPersonalSrv_ListarResponsabilidadPersonal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarComboGeneral">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarComboGeneral" message="tns:IPersonalSrv_ListarComboGeneral_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarComboGeneralResponse" message="tns:IPersonalSrv_ListarComboGeneral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCamposAdicionales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCamposAdicionales" message="tns:IPersonalSrv_ListarCamposAdicionales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCamposAdicionalesResponse" message="tns:IPersonalSrv_ListarCamposAdicionales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarComboGeneral_FiltroPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarComboGeneral_FiltroPerson" message="tns:IPersonalSrv_ListarComboGeneral_FiltroPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarComboGeneral_FiltroPersonResponse" message="tns:IPersonalSrv_ListarComboGeneral_FiltroPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAsistenciaXFecha">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerAsistenciaXFecha" message="tns:IPersonalSrv_ObtenerAsistenciaXFecha_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerAsistenciaXFechaResponse" message="tns:IPersonalSrv_ObtenerAsistenciaXFecha_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEmpleadoConMarcaDNI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerEmpleadoConMarcaDNI" message="tns:IPersonalSrv_ObtenerEmpleadoConMarcaDNI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerEmpleadoConMarcaDNIResponse" message="tns:IPersonalSrv_ObtenerEmpleadoConMarcaDNI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListGrupoLiquidacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListGrupoLiquidacion" message="tns:IPersonalSrv_ListGrupoLiquidacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListGrupoLiquidacionResponse" message="tns:IPersonalSrv_ListGrupoLiquidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportMasivoEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ImportMasivoEmpleado" message="tns:IPersonalSrv_ImportMasivoEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ImportMasivoEmpleadoResponse" message="tns:IPersonalSrv_ImportMasivoEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarMasivoEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/GuardarMasivoEmpleado" message="tns:IPersonalSrv_GuardarMasivoEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/GuardarMasivoEmpleadoResponse" message="tns:IPersonalSrv_GuardarMasivoEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarDocCambioIdentidad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ValidarDocCambioIdentidad" message="tns:IPersonalSrv_ValidarDocCambioIdentidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ValidarDocCambioIdentidadResponse" message="tns:IPersonalSrv_ValidarDocCambioIdentidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCambioDI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCambioDI" message="tns:IPersonalSrv_ListarCambioDI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarCambioDIResponse" message="tns:IPersonalSrv_ListarCambioDI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCambioDI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ActualizarCambioDI" message="tns:IPersonalSrv_ActualizarCambioDI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ActualizarCambioDIResponse" message="tns:IPersonalSrv_ActualizarCambioDI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAusentismoDet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarAusentismoDet" message="tns:IPersonalSrv_ListarAusentismoDet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarAusentismoDetResponse" message="tns:IPersonalSrv_ListarAusentismoDet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAusentismo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/EliminarAusentismo" message="tns:IPersonalSrv_EliminarAusentismo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/EliminarAusentismoResponse" message="tns:IPersonalSrv_EliminarAusentismo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAusentismoPorPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerAusentismoPorPK" message="tns:IPersonalSrv_ObtenerAusentismoPorPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerAusentismoPorPKResponse" message="tns:IPersonalSrv_ObtenerAusentismoPorPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UAusentismos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/UAusentismos" message="tns:IPersonalSrv_UAusentismos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/UAusentismosResponse" message="tns:IPersonalSrv_UAusentismos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IAusentismos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/IAusentismos" message="tns:IPersonalSrv_IAusentismos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/IAusentismosResponse" message="tns:IPersonalSrv_IAusentismos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EAusentismos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/EAusentismos" message="tns:IPersonalSrv_EAusentismos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/EAusentismosResponse" message="tns:IPersonalSrv_EAusentismos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PreIAusentismos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/PreIAusentismos" message="tns:IPersonalSrv_PreIAusentismos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/PreIAusentismosResponse" message="tns:IPersonalSrv_PreIAusentismos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarDocumentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarDocumentos" message="tns:IPersonalSrv_RegistrarDocumentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarDocumentosResponse" message="tns:IPersonalSrv_RegistrarDocumentos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarDocumentosEdit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarDocumentosEdit" message="tns:IPersonalSrv_RegistrarDocumentosEdit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarDocumentosEditResponse" message="tns:IPersonalSrv_RegistrarDocumentosEdit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarDocumentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ComprobarDocumentos" message="tns:IPersonalSrv_ComprobarDocumentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ComprobarDocumentosResponse" message="tns:IPersonalSrv_ComprobarDocumentos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHabGeo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/GetHabGeo" message="tns:IPersonalSrv_GetHabGeo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/GetHabGeoResponse" message="tns:IPersonalSrv_GetHabGeo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsigHor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarAsigHor" message="tns:IPersonalSrv_ListarAsigHor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarAsigHorResponse" message="tns:IPersonalSrv_ListarAsigHor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsigHorDet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarAsigHorDet" message="tns:IPersonalSrv_ListarAsigHorDet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarAsigHorDetResponse" message="tns:IPersonalSrv_ListarAsigHorDet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAsigHor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/EliminarAsigHor" message="tns:IPersonalSrv_EliminarAsigHor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/EliminarAsigHorResponse" message="tns:IPersonalSrv_EliminarAsigHor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUAsigHor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/IUAsigHor" message="tns:IPersonalSrv_IUAsigHor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/IUAsigHorResponse" message="tns:IPersonalSrv_IUAsigHor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUREGAsigHor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/IUREGAsigHor" message="tns:IPersonalSrv_IUREGAsigHor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/IUREGAsigHorResponse" message="tns:IPersonalSrv_IUREGAsigHor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUREGAsigHorPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/IUREGAsigHorPost" message="tns:IPersonalSrv_IUREGAsigHorPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/IUREGAsigHorPostResponse" message="tns:IPersonalSrv_IUREGAsigHorPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaestroMaxCaracteres">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/MaestroMaxCaracteres" message="tns:IPersonalSrv_MaestroMaxCaracteres_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/MaestroMaxCaracteresResponse" message="tns:IPersonalSrv_MaestroMaxCaracteres_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UTomaMarcador">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/UTomaMarcador" message="tns:IPersonalSrv_UTomaMarcador_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/UTomaMarcadorResponse" message="tns:IPersonalSrv_UTomaMarcador_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroConsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerRegistroConsumo" message="tns:IPersonalSrv_ObtenerRegistroConsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ObtenerRegistroConsumoResponse" message="tns:IPersonalSrv_ObtenerRegistroConsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarConsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarConsumo" message="tns:IPersonalSrv_RegistrarConsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarConsumoResponse" message="tns:IPersonalSrv_RegistrarConsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AnularServicioRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/AnularServicioRegistrado" message="tns:IPersonalSrv_AnularServicioRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/AnularServicioRegistradoResponse" message="tns:IPersonalSrv_AnularServicioRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarConsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarConsumo" message="tns:IPersonalSrv_ListarConsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarConsumoResponse" message="tns:IPersonalSrv_ListarConsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarReglaNegocioServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarReglaNegocioServicio" message="tns:IPersonalSrv_ListarReglaNegocioServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarReglaNegocioServicioResponse" message="tns:IPersonalSrv_ListarReglaNegocioServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarServicioComplementario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarServicioComplementario" message="tns:IPersonalSrv_ListarServicioComplementario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarServicioComplementarioResponse" message="tns:IPersonalSrv_ListarServicioComplementario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMarcaConDni">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarMarcaConDni" message="tns:IPersonalSrv_RegistrarMarcaConDni_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/RegistrarMarcaConDniResponse" message="tns:IPersonalSrv_RegistrarMarcaConDni_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarGestionConsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/ListarGestionConsumo" message="tns:IPersonalSrv_ListarGestionConsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/ListarGestionConsumoResponse" message="tns:IPersonalSrv_ListarGestionConsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGestionConsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/UpdateGestionConsumo" message="tns:IPersonalSrv_UpdateGestionConsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/UpdateGestionConsumoResponse" message="tns:IPersonalSrv_UpdateGestionConsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGestionMasivoConsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPersonalSrv/UpdateGestionMasivoConsumo" message="tns:IPersonalSrv_UpdateGestionMasivoConsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPersonalSrv/UpdateGestionMasivoConsumoResponse" message="tns:IPersonalSrv_UpdateGestionMasivoConsumo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPersonalSrv" type="tns:IPersonalSrv">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarConsumosXid">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarConsumosXid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGC">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/UpdateGC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportMasivoPermiso">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ImportMasivoPermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarMasivoPermiso">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/GuardarMasivoPermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsistenciaDiaria">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarAsistenciaDiaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDiasAusencia">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarDiasAusencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCabeceras">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarCabeceras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorasDescontadas">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarHorasDescontadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarHorasExtras">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarHorasExtras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaAsusencias">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListaAsusencias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaAsistencias">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListaAsistencias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaPersonalResponsabilidad">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListaPersonalResponsabilidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPersonal">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarPersonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCombos">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarCombos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarComboJerar">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarComboJerar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEmpleadoPorsuPK">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ObtenerEmpleadoPorsuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarDocIdentidad">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ValidarDocIdentidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReenviarCorreo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ReenviarCorreo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ActivarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarEmail">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ValidarEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpleado">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/EliminarEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEmpleado">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ActualizarEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarOActualizarEmpleado">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/RegistrarOActualizarEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMarcadoresPersonal">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarMarcadoresPersonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCorreosPersonal">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarCorreosPersonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTelefonosPersonal">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarTelefonosPersonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarCoordenadas">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/listarCoordenadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarResponsabilidadPersonal">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarResponsabilidadPersonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarComboGeneral">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarComboGeneral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCamposAdicionales">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarCamposAdicionales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarComboGeneral_FiltroPerson">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarComboGeneral_FiltroPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAsistenciaXFecha">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ObtenerAsistenciaXFecha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEmpleadoConMarcaDNI">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ObtenerEmpleadoConMarcaDNI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListGrupoLiquidacion">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListGrupoLiquidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportMasivoEmpleado">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ImportMasivoEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarMasivoEmpleado">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/GuardarMasivoEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarDocCambioIdentidad">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ValidarDocCambioIdentidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCambioDI">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarCambioDI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCambioDI">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ActualizarCambioDI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAusentismoDet">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarAusentismoDet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAusentismo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/EliminarAusentismo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAusentismoPorPK">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ObtenerAusentismoPorPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UAusentismos">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/UAusentismos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAusentismos">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/IAusentismos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EAusentismos">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/EAusentismos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreIAusentismos">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/PreIAusentismos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarDocumentos">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/RegistrarDocumentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarDocumentosEdit">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/RegistrarDocumentosEdit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarDocumentos">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ComprobarDocumentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHabGeo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/GetHabGeo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsigHor">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarAsigHor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsigHorDet">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarAsigHorDet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAsigHor">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/EliminarAsigHor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUAsigHor">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/IUAsigHor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUREGAsigHor">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/IUREGAsigHor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUREGAsigHorPost">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/IUREGAsigHorPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaestroMaxCaracteres">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/MaestroMaxCaracteres" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UTomaMarcador">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/UTomaMarcador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroConsumo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ObtenerRegistroConsumo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarConsumo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/RegistrarConsumo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularServicioRegistrado">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/AnularServicioRegistrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarConsumo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarConsumo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarReglaNegocioServicio">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarReglaNegocioServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarServicioComplementario">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarServicioComplementario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMarcaConDni">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/RegistrarMarcaConDni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarGestionConsumo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/ListarGestionConsumo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGestionConsumo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/UpdateGestionConsumo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGestionMasivoConsumo">
+      <soap:operation soapAction="http://tempuri.org/IPersonalSrv/UpdateGestionMasivoConsumo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PersonalSrv">
+    <wsdl:port name="BasicHttpBinding_IPersonalSrv" binding="tns:BasicHttpBinding_IPersonalSrv">
+      <soap:address location="http://localhost:35578/PersonalSrv.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

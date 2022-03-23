@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es-pe">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="~/images/logo_icon.png" />
+    <title>
+        @ViewBag.Title | @if (Session["webNameSoft"] != null)
+        {
+            @Session["webNameSoft"]
+        }
+    </title>
+    <!-- styles -->
+    @Styles.Render("~/Content/css")
+
+    <!-- jQuery -->
+    @Scripts.Render("~/bundles/jquery")
+
+    <script>
+        var idUsuar = @Session["intIdUsuarioSesion"]
+        var idSoftw = @Session["intIdSoftSesion"]
+        var intIdSe = @Session["intIdSesionSesion"]
+        window.SISCOP = {
+            "session": @if (Session["jsonUserInfoSesion"] != null) { @Html.Raw(Json.Encode(@Session["jsonUserInfoSesion"]))  }else{ <text>{}</text> },
+            "name": "Siscop",
+            "foto": "@Session["imgfoto"]",
+            "url": "@Request.Url.AbsoluteUri",
+            "isAuthenticated": @if (Session["isAuthenticated"] != null){ @Session["isAuthenticated"] }else{ <text>false</text> },
+            "profile": @if (Session["jsonPerfilMenu"] != null) { @Html.Raw(Json.Encode(@Session["jsonPerfilMenu"]))  }else{ <text>[]</text> },
+            "csrf": "",
+            "version": "",
+            "intIdPersonal": "@Session["intIdPersonal"]"
+        }
+    </script>
+
+</head>
+
+<body id="body_tc" class="nav-md">
+    <div id="app">
+        <div class="container body">
+            <div class="main_container">
+                <div class="col-md-3 left_col" id="col-md-3_tc"> @*style="display:none"*@
+                    <div class="left_col scroll-view">
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a href="/Inicio/PaginaPrincipal" class="site_title">
+                                <img src="@System.Configuration.ConfigurationManager.AppSettings["rutaImages"]logo_layout.png" alt="Logo" />
+                            </a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <!-- menu profile quick info -->
+                        <div class="profile clearfix">
+                            <div class="profile_pic">
+                                <img src="@System.Configuration.ConfigurationManager.AppSettings["rutaFotoEmpleado"]@if (Session["imgfoto"] != null)
+                            {
+                                    @Session["imgfoto"]
+                            } else {
+                                @Session["imgfotoDefault"]
+                            }" alt="" class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <span>Bienvenido Usuario</span>
+                                <h2>
+                                    @if (Session["strUserNameSesion"] != null)
+                                    {
+                                        <strong> @Session["strUserNameSesion"]</strong>
+                                    }
+                                </h2>
+                            </div>
+                        </div>
+                        <!-- /menu profile quick info -->
+
+                        <br />
+
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section">
+                                <ul class="nav side-menu">
+                                    <li class="M00" style="display:none">
+                                        <a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/Inicio/PaginaPrincipal">Página Principal</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="M0001" style="display:none">
+                                        <a><i class="fa fa-cogs"></i> Configuración <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            @*<li><a href="general_elements.html">General del Sistema</a></li>
+                                                <li><a href="media_gallery.html">Módulo de Asistencia</a></li>*@
+                                            <li id="M1004" class="clickmenugetid" style="display:none"><a href="/Configuracion/JerarquiaOrganizacional" class="submenuitem">Jerarquía Organizacional</a></li>
+                                            @*<li><a href="/Configuracion/CamposAdicionales">Campos Adicionales</a></li>*@
+                                        </ul>
+                                    </li>
+                                    <li class="M02" style="display:none">
+                                        <a><i class="fa fa-building-o"></i> Organización <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li id="M0201" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Organizacion/UnidadOrganizacional">Unidad Organizacional</a></li>
+                                            <li id="M0207" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Organizacion/Cargo">Cargo</a></li>
+                                            <li id="M0208" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Organizacion/Categoria" onclick="TablaCategoria();">Categoría</a></li>
+                                            <li id="M0210" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Organizacion/TipoPersonal">Tipo de Personal</a></li>
+                                            <li id="M0211" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Organizacion/Grupo">Grupo</a></li>
+                                            <li id="M0209" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Organizacion/Planilla">Planilla</a></li>
+                                            <li id="M0212" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Organizacion/CentroCosto">Centro de Costo</a></li>
+                                            <li id="M0219" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Organizacion/Marcador">Marcador</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="M06" style="display:none">
+                                        <a><i class="fa fa-calendar"></i> Asistencia <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li id="M0604" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Asistencia/Feriado">Feriado</a></li>
+                                            <li id="M0605" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Asistencia/Variable">Variable</a></li>
+                                            <li id="M0607" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Asistencia/JornadaDiaria">Jornada Diaria</a></li>
+                                            <li id="M0608" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Asistencia/Horario">Horario</a></li>
+                                            <li id="M0609" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Asistencia/ReglaNegocio">Regla de Negocio</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="M07" style="display:none">
+                                        <a><i class="fa fa-group"></i> Personal <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li id="M0701" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Personal/Empleado">Empleado</a></li>
+                                            <li id="M0702" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Personal/Perfil">Mi Ficha Empleado</a></li>
+                                            <li id="M0703" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Personal/CambioDI">Cambio de Documento de Identidad</a></li>
+                                            <li id="M0704" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Personal/PapeletaSalida">Papeleta de Salida</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="M08" style="display:none">
+                                        <a><i class="fa fa-circle-o-notch"></i>Proceso <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li id="M0801" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Proceso/PeriodoPago">Periodo de Pago</a></li>
+                                            <li id="M0802" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Proceso/GrupoLiquidacion">Grupo de Liquidación</a></li>
+                                            <li id="M0803" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Proceso/CalculoManual">Cálculo Manual</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="M09" style="display:none">
+                                        <a><i class="fa fa-file-pdf-o"></i>Reportes <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li id="M0901" class="clickmenugetid" style="display:none"><a class="submenuitem" href="/Reportes/Reportes">Reportes</a></li>
+                                            @*<li><a href="fixed_footer.html">Reporte de Ausencias </a></li>
+                                                <li><a href="fixed_footer.html">Reporte Resumen Diario</a></li>
+                                                <li><a href="fixed_footer.html">Reporte Resumen Totalizado</a></li>*@
+                                            <li id="M0801" class="clickmenugetid" style="display:none"><a class="submenuitem" href="~/Views/Proceso/PruebaImagen.cshtml">Graficos</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- /sidebar menu -->
+                        <!-- /menu footer buttons -->
+                        <div class="sidebar-footer hidden-small">
+                            <h4 style="text-align:center;">
+                                @if (Session["webVersionSesion"] != null)
+                                {
+                                    @Session["webVersionSesion"]
+                                }
+                            </h4>
+                        </div>
+                        <!-- /menu footer buttons -->
+                    </div>
+                </div>
+
+                <!-- top navigation -->
+                <div id="top_nav_tc" class="top_nav">
+                    <div class="nav_menu">
+                        <nav>
+                            <div class="nav toggle">
+                                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                            </div>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="@System.Configuration.ConfigurationManager.AppSettings["rutaFotoEmpleado"]@if (Session["imgfoto"] != null)
+                                    {
+                                            @Session["imgfoto"]
+                                    } else {
+                                        @Session["imgfotoDefault"]
+                                    }" alt="">
+                                        @if (Session["strNombreUsuarioSesion"] != null)
+                                        {
+                                            @Session["strNombreUsuarioSesion"]
+                                        }
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="javascript:;" id="btnContra">Cambiar Contraseña</a></li>
+                                                                                    <!-- <li>
+                                                    <a href="javascript:;">
+                                                        <span class="badge bg-red pull-right">50%</span>
+                                                        <span>Settings</span>
+                                                    </a>
+                                                </li>
+                                                <li><a href="javascript:;">Help</a></li>-->
+                                        <li><a href="/LoginSiscop/CerrarSesion"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- /top navigation -->
+                <!-- page content -->
+                <div class="right_col" role="main" style="min-height:100vh;">
+                    <div class="" style="min-height:100vh;" id="contenedor-render-body">
+                        @RenderBody()
+                    </div>
+                </div>
+                <!-- /page content -->
+                <!-- footer content -->
+                <footer>
+                    <div class="pull-right">
+                        Control de Comedor SISFOOD
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-lg" id="modalContra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="height:370px;">
+            <div class="modal-content" style="padding: 10px; height:100%; ">
+                <div class="modal-header">
+                    <div class="x_title" style="border-bottom: none; padding: 0; margin-bottom: 0;">
+                        <h2>Cambiar Contraseña</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <input type="button" id="btn-save-change-contra" class="btn btn-primary" value="Guardar">
+                            </li>
+                            <li>
+                                <input type="button" id="btn-cancel-contra" class="btn btn-dark" value="Cancelar">
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="modal-body mb-4 pb-4 min-height-350">
+                    <div class="x_content">
+                        <form action="/LoginSiscop/CambiarClave" class="mt-3" method="post" id="claveForm">
+                            @Html.AntiForgeryToken()
+                            <div class="form-group  text-left p-relativee">
+                                <label>Contraseña Actual</label>
+                                <div class="input-group" style="display:flex">
+                                    <input type="password" id="ps_edit_uno" class="form-control" maxlength="50" required autocomplete="current-password" placeholder="Contraseña Actual" name="contraseña" onkeypress="return avoidSpaceInput(event)">
+                                    <button id="buttomshowpassedit1" onclick="mostrarClaveEdit1(this)" type="button" class="buttom-show"><i class="fa fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-group  text-left p-relative">
+                                <label>Nueva Contraseña</label>
+                                <div class="input-group" style="display:flex">
+                                    <input type="password" id="ps_edit_dos" validationpass="false" class="form-control" maxlength="50" required autocomplete="current-password" placeholder="Nueva Contraseña" name="nuevacontraseña" onkeypress="return avoidSpaceInput(event)">
+                                    <button id="buttomshowpassedit2" onclick="mostrarClaveEdit2(this)" type="button" class="buttom-show"><i class="fa fa-eye"></i></button>
+                                </div>
+                                <div id="contraneValidate" style="display:none;border: thin solid gray;padding: 1%;">
+                                    <h5>La contraseña debería cumplir con las siguientes políticas:</h5>
+                                    <div>
+                                        <span id="capital">Debe tener al menos <strong>una Mayúscula</strong><br /></span>
+                                        <span id="letter">Debe tener al menos <strong>una Minúscula</strong><br /></span>
+                                        <span id="number">Debe tener al menos <strong>un Número</strong><br /></span>
+                                        <span id="especial">Debe tener al menos <strong>un Caracter Especial (@@ # $ % () * - _ / .)</strong><br /></span>
+                                        <span id="length">Debe ser como mínimo <strong>8 dígitos</strong><br /></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group  text-left p-relativee">
+                                <label>Confirmar Nueva Contraseña</label>
+                                <div class="input-group" style="display:flex">
+                                    <input type="password" id="ps_edit_tres" validationpass="false" class="form-control" maxlength="50" required autocomplete="current-password" placeholder="Confirmar Contraseña" name="contraseña" onkeypress="return avoidSpaceInput(event)">
+                                    <button id="buttomshowpassedit3" onclick="mostrarClaveEdit3(this)" type="button" class="buttom-show"><i class="fa fa-eye"></i></button>
+                                </div>
+                                <div id="contraneValidate2" style="display:none;color: red;padding: 0.5%;">
+                                    @*<div>*@
+                                        <span id="igual">La contraseña no coincide</span>
+                                    @*</div>*@
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/javascript")
+    <script>
+        var menu = ''
+        SISCOP.profile.forEach(element => {
+
+            //menu += '<li>' +//Original comentado 19.07.21
+            menu += '<li id="' + element.strCoMenuRela + 'LI" >' + //añadido por Hebert 13.07.2021
+                '<a><i class="' + element.strNomFormu + '"></i> ' + element.strMenu + ' <span class="fa fa-chevron-down"></span></a>' +
+                '<ul  id="' + element.strCoMenuRela + 'UL"  class="nav child_menu">'
+                //'<ul class="nav child_menu">'//Original Comentado 19.07.2021
+
+
+            element.menu.forEach(element2 => {
+                menu += `<li><a  id="${element2.strCoMenuRela}" class="submenuitem" href="${element2.strDesFormu + "?intIdMenu=" + element2.intIdMenu + "&strCodMenu=" + element2.strCoMenu}"> ${element2.strSubMenu} </a></li>`//Añadido Hebert 13.07.2021
+                //menu += `<li><a class="submenuitem" href="${element2.strDesFormu + "?intIdMenu=" + element2.intIdMenu + "&strCodMenu=" + element2.strCoMenu}"> ${element2.strSubMenu} </a></li>`//Comentado 19.07.2021
+                //menu += `<li><a class="submenuitem" href="${element2.strDesFormu + "?intIdMenu=" + element2.intIdMenu}"> ${element2.strSubMenu} </a></li>`
+            })
+            menu += '</ul>' +
+                '</li>'
+
+        })
+
+        $('.side-menu').html(menu)
+
+        //if (window.SISCOP && SISCOP.profile) {
+        //    const dataMenu = SISCOP.profile;
+        //    dataMenu.forEach((item, key) => {
+        //        debugger;
+        //        document.getElementsByClassName(`${item.strCoMenuRela}`)[0].style.display = "block"
+        //        document.getElementById(`${item.strCoMenu}`).style.display = "block"
+        //        document.getElementById(`${item.strCoMenu}`).setAttribute("submenuid", `${item.intIdMenu}`);
+        //        let hrefLink = document.querySelectorAll(`#${item.strCoMenu} a`)[0];
+        //        hrefLink.innerHTML = item.strSubMenu;
+        //        hrefLink.setAttribute("submenuid", `${item.intIdMenu}`);
+        //    });
+        //}
+    </script>
+    <script>
+        document.querySelectorAll("li.clickmenugetid").forEach(el => {
+            el.addEventListener("click", function (ev) {
+                let menuId = this.getAttribute("submenuid")
+                localStorage.setItem('idsubmenu', menuId)
+            })
+        })
+    </script>
+    @RenderSection("vue", required: false)
+    <script src="~/Scripts/all.js" charset="utf-8"></script>@*//Revisado el 22.02.21 HG*@
+    @RenderSection("scripts", required: false)
+
+    @*<!-- FastClick -->
+                                <script src="~/Scripts/fastclick/fastclick.js"></script>
+                                <!-- NProgress -->
+                                <script src="~/Scripts/nprogress/nprogress.js"></script>
+                                <!-- jQuery Smart Wizard -->
+                                <script src="~/Scripts/jQuery-Smart-Wizard/jquery.smartWizard.js"></script>
+                                <!-- bootstrap-progressbar -->
+                                <script src="~/Scripts/bootstrap-progressbar/bootstrap-progressbar.js"></script>
+                                <!-- iCheck -->
+                                <script src="~/Scripts/iCheck/icheck.js"></script>
+                                <!-- Datatables -->
+                                <script src="~/Scripts/datatables.net/jquery.dataTables.js"></script>
+                                <script src="~/Scripts/datatables.net/dataTables.bootstrap.js"></script>
+                                <script src="~/Scripts/datatables.net/dataTables.responsive.js"></script>
+                                <!-- bootstrap-daterangepicker -->
+                                <script src="~/Scripts/moment/moment.min.js"></script>
+                                <script src="~/Scripts/bootstrap-daterangepicker/daterangepicker.js"></script>
+                                <!-- jQuery Tags Input -->
+                                <script src="~/Scripts/jquery.tagsinput/jquery.tagsinput.js"></script>
+                                <!-- jquery.inputmask -->
+                                <script src="~/Scripts/jquery.inputmask/jquery.inputmask.bundle.min.js"></script>
+                                <!-- Switchery -->
+                                <script src="~/Scripts/switchery/switchery.js"></script>
+                                <!-- Select2 -->
+                                <script src="~/Scripts/select2/select2.full.js"></script>
+                                <!-- Parsley -->
+                                <script src="~/Scripts/parsleyjs/parsley.js"></script>
+                                <!-- Autosize -->
+                                <script src="~/Scripts/autosize/autosize.min.js"></script>
+                                <!-- sweetalert2 -->
+                                <script src="~/Scripts/dialog/sweetalert2.min.js"></script>
+                                <!-- PNotify -->
+                                <script src="~/Scripts/pnotify/pnotify.js"></script>
+                                <script src="~/Scripts/pnotify/pnotify.buttons.js"></script>
+                                <script src="~/Scripts/pnotify/pnotify.nonblock.js"></script>
+                                <!-- jQuery autocomplete -->
+                                <script src="~/Scripts/autocomplete/jquery.autocomplete.min.js"></script>
+                                <!-- ECharts -->
+                                <script src="~/Scripts/echarts/echarts.min.js"></script>
+                                <!-- morris.js -->
+                                <script src="~/Scripts/raphael/raphael.min.js"></script>
+                                <script src="~/Scripts/moris.js/morris.min.js"></script>
+                                <!-- Design page loaded -->
+                                <script src="~/Scripts/site.js"></script>
+                        <img src="~/Content/fonts/fontawesome-webfont.svg" />
+        <a href="~/Content/fonts/glyphicons-halflings-regular.woff">~/Content/fonts/glyphicons-halflings-regular.woff</a>
+                <a href="~/Content/fonts/glyphicons-halflings-regular.ttf">~/Content/fonts/glyphicons-halflings-regular.ttf</a>
+                                <!-- Custom Theme Scripts -->*@
+    <link href="~/Content/calendar/fullcalendar.print.css" rel="stylesheet" />
+
+    <link href="~/Content/calendar/fullcalendar.min.css" rel="stylesheet" />
+    <link href="~/Scripts/jquery.autocomplete.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.autocomplete.js"></script>
+    <link href="~/Content/dropzone.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/dropzone.js"></script>
+    <link href="~/Content/bootstrap-colorpicker.min.css" type="text/css" rel="stylesheet" />
+    @*<img src="~/Content/fonts/glyphicons-halflings-regular.svg" style="height: 35px;" />*@  @*HG 18.03.21*@
+    @*<script src="~/Scripts/calendar/fullcalendar.js"></script>*@
+    <script src="~/Scripts/bootstrap-colorpicker.min.js"></script>
+    @*<script src="://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>*@
+    <link href="~/Content/normalize.css" rel="stylesheet" type="text/css" />
+    @*<script src="~/Scripts/calendar/fullcalendar.min.js"></script>*@
+    <link href="~/Content/ion.rangeSlider.skinFlat.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/ion.rangeSlider.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/ion.rangeSlider.min.js"></script>
+    @*<script src="~/Scripts/calendar/moment.min.js"></script>*@
+    <script src="~/Scripts/moment/moment-with-locales.js"></script>
+    <link href="~/fonts/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.easypiechart.min.js"></script>
+    <script src="~/Scripts/util/Layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<form class="form-horizontal form-label-left">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <center><h3>Tipo y Número de Documento de Identidad a Cambiar</h3></center>
+        </div>
+        <div class="border-section">
+            <br />
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label>Tipo y Número de Doc. Identidad (*)</label>
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <select class="btn btn-default btn-primary" id="TipoDoc">
+                                <option value="0">Tipo Doc.</option>
+                            </select>
+                        </div>
+                        <input type="text" id="txtNumDoc" class="form-control" style="width:70%" placeholder="N° de Documento" onkeypress="return validarSoloNumCDI(event)" required>
+                        <div id="msgVerifDoc"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label></label>
+                    <div class="input-group">
+                        @*<br />*@
+                        <label id="leyenda_" style="color:darkblue;">Digite el Documento y presione Enter para Validar Existencia.</label>
+                    </div>
+                </div>
+            </div>
+            <input type="text" id="intIdPersonal" hidden>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Nuevo Tipo de Documento (*)</label>
+                <select class="form-control" id="newTipoDocId" disabled>
+                    <option value="0">Seleccione</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Nuevo N° de Documento (*)</label>
+                <input type="text" class="form-control" id="newNumDocId" placeholder="Nuevo N° de Documento" onkeypress="return validarSoloNumCDINew(event)" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Apellidos</label>
+                <input type="text" class="form-control" placeholder="" id="apeId" disabled>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Nombres</label>
+                <input type="text" class="form-control" placeholder="" id="nomId" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <label>Código de Empleado - N° Registro</label>
+            <div class="row">
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="" id="codEmpId" disabled>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="" id="numRegId" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Fotocheck</label>
+                <input type="text" class="form-control" placeholder="" id="fotocheckId" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Unidad Organizacional</label>
+                <input type="text" class="form-control" placeholder="" id="uniOrgId" disabled>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Fecha Nacimiento (*)</label>
+                <div class="control-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                        <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                        <input type="date" class="form-control has-feedback-left" id="txtfechaNacId_" style="padding-left: 70px;border: 1px solid #ccc;" value="" max="9999-12-31">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    @*<div class="ln_solid"></div>*@
+</form>

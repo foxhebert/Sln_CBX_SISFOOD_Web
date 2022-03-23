@@ -1,0 +1,64 @@
+
+@model object[]
+
+
+
+<form class="form-horizontal form-label-left">
+    <div class="row">
+        <div style="text-align:right;">
+            <label id="_lbl_"></label>
+            <input id="chk-activo-Categoria" type="checkbox" class=" js-switch" checked />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Dependencia Jerárquica (*)</label>
+                @Html.DropDownList("cboJerarquia", (SelectList)ViewBag.CampJerar, "Seleccione", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <div>
+                    <label class="col-md-7 col-sm-7 col-xs-6"> Und. Organizacional </label>
+
+                </div>
+
+                <select id="cbounidsupe" class="form-control" disabled>
+                    <option>Seleccione</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group" id="ValCode">
+                    <label>Código (*)</label>
+                    <input id="txt-cod-Categoria" type="text" name="codigo" class="form-control" @*pattern="^([A-Za-z0-9])+"*@ maxlength="8" placeholder="Código" onkeypress="validarCodigoAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;">
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group" id="Valdes">
+                    <label>Descripción (*)</label>
+                    <input id="txt-desc-Categoria" type="text" class="form-control" @*pattern="^([A-Za-z0-9])+"*@ placeholder="Descripción " onkeypress="validarDescripcionAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div id="containerCamposea">
+    </div>
+    <script>
+
+
+        // Validaciones();
+        BuscarUnidades();
+    </script>
+</form>

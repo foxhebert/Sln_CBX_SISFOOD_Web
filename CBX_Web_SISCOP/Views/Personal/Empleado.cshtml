@@ -1,0 +1,191 @@
+
+@{
+    /**/
+
+    ViewBag.Title = "Empleado";
+}
+
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
+                <label class="" style="text-align: right !important;">Buscar </label>
+                <input type="text" id="filtroEmpleado" class="form-control" placeholder="Buscar por Código o N° Documento, Nombres o Apellidos">
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label">Und. Organizacional</label>
+                <select class="form-control" id="intIdUniOrg">
+                    <option value="0" selected>Todos</option>
+                </select>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label">Estado</label>
+                <select class="form-control" id="filActiEmpleado">
+                    <option value="2">Todos</option>
+                    <option value="1" selected>Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+
+                <div class="form-check">
+                    <div id="salto"><br /></div>
+                    <input type="checkbox" class="flat" id="chk_fecha">
+                    @*<label class="form-check-label" for="exampleCheck1"> </label>*@
+                    <label class="control-label">Fecha de Admisión &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div id="filtroFechaRangeEmpleado" class="form-control range-datepicker-class AusentFec" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc" hidden>
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                    <span>January 01, 2019 - January 28, 2019</span> <b class="caret"></b>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Personal</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Empleado</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- PANEL TABLA -->
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Empleados</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <input type="button" id="btn-new-empleado" class="btn btn-primary" value="Nuevo Empleado">
+                    </li>
+
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="TablaPersonal" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;">
+                    @*<table id="TablaPersonal" class="table table-striped table-bordered table-responsive nowrap " cellspacing="0" width="100%">*@
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Apellidos y Nombres</th>
+                            <th>N° Documento</th>
+                            <th>Fecha de Admisión</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                            <th style="display:none">Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody> </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SEGUNDO PANEL -->
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div id="loaderEditPersonal" class="x_panel " style="min-height:650px; display:none"></div>
+        <div class="form-hide-empleado" hidden>
+
+            <div id="personal_information" class="x_panel">
+                <div class="x_title">
+                    <h2>Información del Empleado</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-save-change-empleado" class="btn btn-primary" value="Guardar">
+                        </li>
+                        <li>
+                            <input type="button" id="btn-editar-empleado" class="btn btn-success" value="Actualizar" style="display:none">
+                        </li>
+
+                        <li>
+                            <input type="button" id="btn-cancel-empleado" class="btn btn-dark" value="Cancelar">
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-6">
+                        <h5 class="modal-title" id="exampleModalLabel"><strong>UBIGEO</strong></h5>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6 text-right">
+                        <button type="button" class="btn btn-primary" id="btnGuardarUbigeo" data-dismiss="modal">Seleccionar</button>
+                        <button type="button" class="btn btn-secondary" id="btnCerrarUbigeo" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>País</label>
+                            <select class="form-control" id="CboPais"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Región</label>
+                            <select class="form-control" id="CboRegion">
+                                <option>Seleccione</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>
+                                Provincia
+                            </label>
+                            <select class="form-control" id="CboProvincia">
+                                <option>Seleccione</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Distrito</label>
+                            <select class="form-control" id="CboDistrito">
+                                <option>Seleccione</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

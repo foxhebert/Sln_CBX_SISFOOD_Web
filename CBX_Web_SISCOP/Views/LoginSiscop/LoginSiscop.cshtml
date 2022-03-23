@@ -1,0 +1,240 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="~/images/logo_icon.png" />
+
+    <title>Login SISFOOD</title>
+
+    @*<!-- Bootstrap -->
+        <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/feather/css/feather.css" rel="stylesheet" />
+        <!-- Font Awesome -->
+
+        <link href="~/Content/font-awesome/font-awesome.min.css" rel="stylesheet" />
+        <!-- NProgress -->
+        <!--<link href="../vendors/nprogress/nprogress.css" rel="stylesheet">-->
+        <!-- Animate.css -->
+        <link href="~/Content/animate/animate.min.css" rel="stylesheet" />
+
+        <!-- Custom Theme Style -->
+        <link href="~/Content/site-login.css" rel="stylesheet" />*@
+
+
+    @*<!-- jQuery -->
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <!-- BS JavaScript -->*@
+
+    <script src="~/Scripts/jquery/jquery.min.js"></script>
+    @*<script src="~/Scripts/jquery/jquery-3.3.1.js"></script>*@
+    <script src="~/Scripts/bootstrap/bootstrap.js"></script>
+    <link href="~/Scripts/jquery.autocomplete.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.autocomplete.js"></script>
+    <script src="~/Scripts/bootstrap-colorpicker.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/feather/css/feather.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+
+    <link href="~/Content/font-awesome/font-awesome.min.css" rel="stylesheet" />
+    <!-- Animate.css -->
+    <link href="~/Content/animate/animate.min.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    <link href="~/Content/site-login.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="content">
+            <div class="auth-wrapper">
+                <div class="auth-content">
+                    @*<div class="auth-bg">
+                            <span class="r"></span>
+                            <span class="r s"></span>
+                            <span class="r s"></span>
+                            <span class="r"></span>
+                        </div>*@
+                    <div class="card-rounded" style="background-color: #f7f7f7;border: 1px solid;">
+                        <div class="card-body text-center divLogin">
+                            <div class="mb-4">
+                                <img src="~/images/logo.png" class="logo-login" />
+                            </div>
+                            <!--<h3 class="mb-4">Login</h3>-->
+                            <form action="/LoginSiscop/LoginSiscop" method="post" id="loginForm">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group  text-left">
+                                    @{
+                                        string messageNameInput = TempData["strUsuerNameInput"] as string;
+                                    }
+                                    <label>Usuario</label>
+                                    <input type="text" value="@(messageNameInput ?? "")" id="txt_usu" class="form-control" minlength="1" maxlength="50" required autocomplete="username" placeholder="Usuario" name="usuario"  onkeypress="validarCodigoAll(event)" @*onkeypress="return avoidSpaceInput(event)"*@>
+                                </div>
+                                <div class="form-group  text-left p-relative">
+                                    <label>Contraseña</label>
+                                    <div class="input-group" style="display:flex">
+                                        <input type="password" id="txt_psw" class="form-control" maxlength="50" required autocomplete="current-password" placeholder="Contraseña" name="contraseña" onkeypress="return avoidSpaceInput(event)">
+                                        @* value="Admin123*" *@
+                                        <button id="buttomshowpass" onclick="mostrarClave(this)" type="button" class="buttom-show"><i class="fa fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="form-group text-danger text-right">
+                                    <span style="cursor: pointer;" id="olvideContrasena"><b>¿Olvidaste tu contraseña?</b></span>
+                                </div>
+                                @*<div class="form-group text-left">
+                                        <div class="checkbox checkbox-fill d-inline">
+                                            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
+                                            <label for="checkbox-fill-a1" class="cr"> Recordar Contraseña</label>
+                                        </div>
+                                    </div>*@
+
+                                <button class="btn btn-login" id="btnIngreso" type="submit">Ingresar</button>
+
+                            </form>
+                            <form action="/LoginSiscop/CambiarClave" class="mt-3" method="post" id="claveForm" style="display:none">
+                                <h3 class="mb-3 mt-3" style="color: #5f5c5c;font-weight: 600;">Actualización de Contraseña</h3>
+                                @Html.AntiForgeryToken()
+                                <div class="form-group  text-left p-relativee">
+                                    <label>Contraseña actual</label>
+                                    <div class="input-group" style="display:flex">
+                                        <input type="password" id="ps_edit_uno" class="form-control" maxlength="50" required autocomplete="current-password" placeholder="Contraseña actual" name="contraseña" onkeypress="return avoidSpaceInput(event)">
+                                        <button id="buttomshowpassedit1" onclick="mostrarClaveEdit1(this)" type="button" class="buttom-show"><i class="fa fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="form-group  text-left p-relative">
+                                    <label>Nueva Contraseña</label>
+                                    <div class="input-group" style="display:flex">
+                                        <input type="password" id="ps_edit_dos" validationpass="false" class="form-control" maxlength="50" required autocomplete="current-password" placeholder="Nueva Contraseña" name="nuevacontraseña" onkeypress="return avoidSpaceInput(event)">
+                                        <button id="buttomshowpassedit2" onclick="mostrarClaveEdit2(this)" type="button" class="buttom-show"><i class="fa fa-eye"></i></button>
+                                    </div>
+                                    <div id="contraneValidate" style="display:none;border: thin solid gray;padding: 1%;">
+                                        <h5>La contraseña debería cumplir con las siguientes políticas:</h5>
+                                        <div>
+                                            <span id="capital">Debe tener al menos <strong>una Mayúscula</strong><br /></span>
+                                            <span id="letter">Debe tener al menos <strong>una Minúscula</strong><br /></span>
+                                            <span id="number">Debe tener al menos <strong>un Número</strong><br /></span>
+                                            <span id="especial">Debe tener al menos <strong>un Caracter Especial (@@ # $ % () * - _ / .)</strong><br /></span>
+                                            <span id="length">Debe ser como mínimo <strong>8 dígitos</strong><br /></span>
+                                        </div>
+                                        @*<ul>
+                                                <li id="capital">Debe tener al menos </li>
+                                                <li id="letter">Debe tener al menos <strong>una Minúscula</strong></li>
+                                                <li id="number">Debe tener al menos <strong>un Número</strong></li>
+                                                <li id="especial">Debe tener al menos <strong>un Caracter Especial (@@ # $ % () * - _ / .)</strong></li>
+                                                <li id="length">Debe ser como mínimo <strong>8 dígitos</strong></li>
+                                            </ul>*@
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-login" id="btnCambiar" type="submit">Actualizar</button>
+                                <button class="btn btn-default default-login mt-0 mb-2" style="background:#4b5f71; width:100%;color: #fff;" id="btnCancelar" type="button">Cancelar</button>
+                            </form>
+                            <div style="text-align: end;color: #cacaca;">
+                                <label>
+                                    @if (Session["wsVersionSesion"] != null)
+                                    {
+                                        @Session["wsVersionSesion"]
+                                    }
+                                </label>
+                                <br />
+                                <label>
+                                    @if (Session["webVersionSesion"] != null)
+                                    {
+                                        @Session["webVersionSesion"]
+                                    }
+                                </label>
+                            </div>
+                            <div id="responseError">
+                                @{
+                                    string messageError = TempData["strMensajeError"] as string;
+                                    if (messageError != null && messageError != "")
+                                    {
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            @messageError
+                                        </div>
+                                    }
+                                }
+
+                                @{
+                                    string messageErrorAlert = TempData["strMsgAlert"] as string;
+                                    if (messageErrorAlert != null && messageErrorAlert != "")
+                                    {
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            @messageErrorAlert
+                                        </div>
+                                    }
+                                }
+                            </div>
+                            @*<div class="text-right"><a href="" class="link-login">¿Olvidaste la contraseña?</a></div>*@
+                            <!--<h5 class="text-muted text-right link-login">¿No tienes una cuenta? <a href="auth-signup.html"> Regístrate</a></h5>-->
+                        </div>
+                        <div class="card-body text-center divCambiarContra" hidden>
+                            <div class="row" style="border-bottom: #010092 2px solid;">
+                                <h4>Restablecer la contraseña</h4>
+                            </div>
+                            <div class="row" style="padding-top: 5%;">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group text-left">
+                                        <label>Usuario</label>
+                                        <input type="text" value="" id="txt_numDoc" class="form-control" name="correo"  onkeypress="validarCodigoAll(event)">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group text-left">
+                                        <label>Correo</label>
+                                        <input type="text" value="" id="txt_correo" class="form-control" name="correo">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top: 5%;">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <button class="btn btn-primary" id="btnValidaCorreo" type="submit">Validar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div>
+                    <img src="~/images/logo_footer.png" class="logo-login" style="max-width: 250px !important" />
+                </div>
+                <p>Copyright ©️2021 TECFLEX S.A.C. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </div>
+    @*@Scripts.Render("~/bundles/jquery")
+        <script src="~/Scripts/login.js"></script>
+        <script src="~/Scripts/pnotify/pnotify.js"></script>
+        <script src="~/Scripts/pnotify/pnotify.buttons.js"></script>
+        <script src="~/Scripts/pnotify/pnotify.nonblock.js"></script>
+        <link href="~/Content/pnotify/pnotify.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="~/Content/pnotify/pnotify.buttons.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="~/Content/pnotify/pnotify.nonblock.css" media="all" rel="stylesheet" type="text/css" />*@
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/login.js"></script>
+    <script src="~/Scripts/pnotify/pnotify.js"></script>
+    <script src="~/Scripts/pnotify/pnotify.buttons.js"></script>
+    <script src="~/Scripts/pnotify/pnotify.nonblock.js"></script>
+    <link href="~/Content/pnotify/pnotify.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="~/Content/pnotify/pnotify.buttons.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="~/Content/pnotify/pnotify.nonblock.css" media="all" rel="stylesheet" type="text/css" />
+    @*<script src="~/Scripts/jquery/jquery.min.js"></script>*@
+    <script src="~/Scripts/dialog/sweetalert2.min.js"></script>
+    <link href="~/Content/dialog/sweetalert2.min.css" media="all" rel="stylesheet" type="text/css" />
+
+</body>
+</html>

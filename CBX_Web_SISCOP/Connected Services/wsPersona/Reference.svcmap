@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ad79a6c4-7911-417c-b0c6-44217b7b22d9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:35578/PersonalSrv.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PersonalSrv11.xsd" MetadataType="Schema" ID="16949f13-7863-4c25-9a75-5441d49ac658" SourceId="1" SourceUrl="http://localhost:35578/PersonalSrv.svc?xsd=xsd1" />
+    <MetadataFile FileName="PersonalSrv.xsd" MetadataType="Schema" ID="78022146-2c47-4c0e-8393-81f7b32acfe3" SourceId="1" SourceUrl="http://localhost:35578/PersonalSrv.svc?xsd=xsd0" />
+    <MetadataFile FileName="PersonalSrv.wsdl" MetadataType="Wsdl" ID="8769d08d-03ad-412b-8443-780a405935cb" SourceId="1" SourceUrl="http://localhost:35578/PersonalSrv.svc?wsdl" />
+    <MetadataFile FileName="PersonalSrv2.xsd" MetadataType="Schema" ID="6b4b1154-2837-417f-a3e8-661d813d3797" SourceId="1" SourceUrl="http://localhost:35578/PersonalSrv.svc?xsd=xsd3" />
+    <MetadataFile FileName="PersonalSrv1.xsd" MetadataType="Schema" ID="8f03c2c3-631c-4ffc-9e54-005ea9fa8fe3" SourceId="1" SourceUrl="http://localhost:35578/PersonalSrv.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,225 @@
+
+@{
+    ViewBag.Title = "Grupo";
+}
+
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <label class="" style="text-align: right !important;">Buscar </label>
+                <input id="filtroGrupo" type="text" class="form-control" placeholder="Buscar por Código y Descripción">
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <label class="control-label" style="text-align:right">Dependencia</label>
+                <select class="form-control" id="cboDepenGrupo">
+                    <option value="0" selected>Todos</option>
+                </select>
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <label class="control-label" style="text-align:right">Estado</label>
+                <select class="form-control" id="filActiGrupo">
+                    <option value="2">Todos</option>
+                    <option value="1" selected>Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Organización</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Grupo</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- PANEL TABLA -->
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Grupos</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <input type="button" id="btn-new-grupo" class="btn btn-primary" value="Nuevo Grupo">
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="tablaGrupo" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;">
+                    @*<table id="tablaGrupo" class="table table-striped table-bordered table-responsive nowrap" cellspacing="0" width="100%">*@
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th>Dependencia</th>
+                            <th>Und. Organizacional</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                            <th style="display:none">bitFlActivo</th>
+                            <th style="display:none">intIdCargo</th>
+                            <th style="display:none">strCargoCampo1</th>
+                            <th style="display:none">strCargoCampo2</th>
+                            <th style="display:none">strCargoCampo3</th>
+                            <th style="display:none">strCargoCampo4</th>
+                            <th style="display:none">strCargoCampo5</th>
+                            <th style="display:none">intIdUniOrg</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBodyGrupo"></tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SEGUNDO PANEL -->
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="form-hide-grupo" hidden>
+
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Información del Grupo</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-save-change-grupo" class="btn btn-primary" value="Guardar">
+                            <input type="button" id="btn-update-grupo" class="btn btn-success" value="Actualizar" hidden>
+                        </li>
+                        <li>
+                            <input type="button" id="btn-cancel-grupo" class="btn btn-dark" value="Cancelar">
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left">
+
+                        @*<div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Dependencia Jerárquica (*)</label>
+                                        <select class="form-control">
+                                            <option>Seleccione</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <div>
+                                            <label class="col-md-7 col-sm-7 col-xs-6"> Und. Organizacional </label>
+                                            <div class="col-md-5 col-sm-5 col-xs-6 text-right">
+                                                <input type="checkbox" class=" js-switch" checked /> Activo
+                                            </div>
+                                        </div>
+
+                                        <select class="form-control">
+                                            <option>Seleccione</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="border-section">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Código (*)</label>
+                                            <input type="text" class="form-control" placeholder="Nº Terminal">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Descripción (*)</label>
+                                            <input type="text" class="form-control" placeholder="Descripción ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 1</label>
+                                        <input type="text" class="form-control" placeholder="campo 1">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 2</label>
+                                        <input type="text" class="form-control" placeholder="campo 2">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 3</label>
+                                        <input type="text" class="form-control" placeholder="campo 3">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 4</label>
+                                        <input type="text" class="form-control" placeholder="campo 4">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Campo 5</label>
+                                        <input type="text" class="form-control" placeholder="campo 5">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                </div>
+                            </div>*@
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $.post(
+            '/Organizacion/ComboDependenciaFiltro', // * GetCampJerar *///modificado 02.09.2021
+            {},
+            (response) => {
+                $('#cboDepenGrupo').empty();
+                if (response.length > 1) {
+                    $('#cboDepenGrupo').append(' <option value="0"> Todos </option>');
+                }
+                response.forEach(element => {
+                    $('#cboDepenGrupo').append(
+                        ' <option value="' + element.intidTipo + '">' + element.strDeTipo + '</option>'
+                        //' <option value="' + element.IntIdJerOrg + '">' + element.strNomJerOrg + '</option>'
+                    );
+                });
+                TablaGrupo();
+            }
+        );
+    });
+</script>

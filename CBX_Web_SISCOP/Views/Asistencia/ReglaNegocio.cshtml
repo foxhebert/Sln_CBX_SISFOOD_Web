@@ -1,0 +1,1110 @@
+<!--Hay otra Regla de Negocio Comedor, ésta es una copia de reserva(original qun estuvo funcionando en Siscop)-->
+@{
+
+    ViewBag.Title = "ReglaNegocio";
+}
+
+<div class="loader"></div>
+<style>
+    .loader {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(../../images/pageLoader.gif) 50% 50% no-repeat rgb(249,249,249);
+        opacity: .95;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $(".loader").fadeOut("slow");
+    });
+
+</script>
+
+
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
+                <label class="control-label">&nbsp;</label>
+                <input type="text" id="filtroRegNeg" class="form-control" placeholder="Buscar por Código y Descripción">
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label" style="text-align:right !important">Dependencia</label>
+                <select class="form-control" id="cboJerar">
+                    <option value="0" selected>Todos</option>
+                </select>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label" style="text-align:right !important">Estado</label>
+                <select class="form-control" id="filActivoRegNeg">
+                    <option value="2">Todos</option>
+                    <option value="1" selected>Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Asistencia</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Regla de Negocio</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- PANEL TABLA -->
+    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Reglas de Negocio</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <input type="button" id="btn-new-ReglaNegocio" class="btn btn-primary" value="Nueva Regla">
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+
+                <table id="TablaReg" class="table table-striped table-bordered table-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+
+                        <tr>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th>Dependencia</th>
+                            <th>Unidad Org.</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+                            <th style="display:none">ID</th>
+
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+
+                </table>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SEGUNDO PANEL -->
+    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-hide-ReglaNegocio" hidden>
+
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2 style="width:100%">Información de la Regla de Negocio</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-update-ReglaNegocio" class="btn btn-success" value="Actualizar" disabled>
+                            <input type="button" id="btn-save-change-ReglaNegocio" class="btn btn-primary" value="Guardar">
+                        </li>
+                        <li>
+                            <input type="button" id="btn-cancel-ReglaNegocio" class="btn btn-dark" value="Cancelar">
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="wizard" class="form_wizard wizard_horizontal">
+                        <ul class="wizard_steps">
+                            <li>
+                                <a href="#step-1">
+                                    <span class="step_no">1</span>
+                                    <span class="step_descr">
+                                        Paso 1<br />
+                                        Asistencia
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#step-2">
+                                    <span class="step_no">2</span>
+                                    <span class="step_descr">
+                                        Paso 2<br />
+                                        Horas Extras
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div id="step-1">
+
+                            <form class="form-horizontal form-label-left">
+                                <div class="row">
+                                    <div style="text-align:right;">
+                                        <label>Activo</label>
+                                        <input type="checkbox" class="js-switch" id="chk-activo-JO" checked />
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Dependencia Jerárquica (*)</label>
+                                            <select class="form-control">
+                                                <option>Seleccione</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label style="text-align:left;">Und. Organizacional</label>
+                                            <select class="form-control">
+                                                <option>Seleccione</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="border-section">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Código (*)</label>
+                                                <input type="text" class="form-control" placeholder="Nº">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Descripción (*)</label>
+                                                <input type="text" class="form-control" placeholder="Descripción">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist" style="height: auto;">
+                                        <li role="presentation" class="active">
+                                            <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Asistencia 1</a>
+                                        </li>
+                                        <li role="presentation" class="">
+                                            <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Asistencia 2</a>
+                                        </li>
+                                        <li role="presentation" class="">
+                                            <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Asistencia 3</a>
+                                        </li>
+                                        <li role="presentation" class="">
+                                            <a href="#tab_content4" role="tab" id="profile-tab4" data-toggle="tab" aria-expanded="false">Asistencia 4</a>
+                                        </li>
+                                    </ul>
+                                    <div id="myTabContent" class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                            <br />
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="checkbox" class="flat" /> Validar la primera marca
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="checkbox" class="flat" /> Validar marcas de refrigerio
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <br />
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="checkbox" class="flat" /> Asumir marcas de refrigerio por marcaje incompleto
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                </div>
+                                            </div>
+
+                                            <div class="ln_solid"></div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Tiempo mínimo de horas trabajadas para descuento de refrigerio (HH:MM):</label>
+                                                        <input type="text" class="form-control" placeholder="Descripción">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Tiempo mínimo para validación de marcas de refrigerio (HH:MM):</label>
+                                                        <input type="text" class="form-control" placeholder="Descripción">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Descontar Tiempo de Refrigerio en Dia de Descanso (HH:MM)</label>
+                                                        <input type="text" class="form-control" placeholder="Descripción">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                </div>
+                                            </div>
+                                            <div class="ln_solid"></div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <br />
+                                                    <input type="checkbox" class="flat" /> Validar Bonificación autorizada
+
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="checkbox" class="js-switch" checked /> El Horario se aplicará según el día de la semana, respetando el Día de inicio que se le registró el Horario.
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="checkbox" class="flat" /> Validar Asignación de Marcadores <br />
+                                                    <br />
+                                                    <input type="checkbox" class="flat" /> Considerar excepciones para personal que no tiene cargo ejecutivo
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <p class="legend-border" style="width:230px;">
+                                                        <input type="checkbox" class="js-switch" checked /> Considerar Feriado Sobre el Horario
+                                                    </p>
+                                                    <div class="border-section">
+                                                        <div class="x_content">
+                                                            <div class="x_content">
+                                                                <input style="text-align:center:" type="checkbox" class="flat" /> Considerar Falta, Si no asiste en dìa Feriado
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end recent activity -->
+
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+
+                                            <!-- start user projects -->
+                                            <div class="row">
+                                                <div class="x_content">
+
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <br />
+                                                        <input type="checkbox" class="js-switch" /> Tardanza en el Ingreso desde la Tolerancia
+                                                        <br />
+                                                        <br />
+                                                        <input type="checkbox" class="js-switch" /> Tardanza en el Refrigerio desde la Tolerancia
+                                                        <br />
+                                                        <br />
+                                                        <input type="checkbox" class="flat" /> Se aplicarán Castigos por Tardanza en el Ingreso
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="x_content">
+                                                            <br />
+                                                            <p class="legend-border" style="width:175px;">Uso Máximo de la Tolerancia</p>
+                                                            <div class="border-section">
+                                                                <div class="x_content">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="radio" class="flat" checked name="iCheck"> Por Semana
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="radio" class="flat" checked name="iCheck"> Por Periodo
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 col-sm-10 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <label>Doc.Identidad (*)</label>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-btn">
+                                                                                        <select class="btn btn-default">
+                                                                                            <option>Por Tiempo</option>
+                                                                                            <option>1</option>
+                                                                                            <option>2</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                            <input type="checkbox" class="flat" /> Generar Tardanza a partir del Máximo de Tolerancia
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <br />
+                                                <p class="legend-border" style="width:125px;">Horas Trabajadas (HT)</p>
+                                                <div class="border-section">
+                                                    <div class="x_content">
+
+                                                        <div class="row">
+                                                            <br />
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <input type="checkbox" class="flat" /> Considerar las ausencias con Justificación diaria (por dia completo)
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <input type="checkbox" class="flat" /> Considerar los Feriados sin asistencia
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <br />
+                                                                <div class="form-group">
+                                                                    <input type="checkbox" class="flat" /> Considerar el Dominical, con un Tiempo por defecto de (Hrs):
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <br />
+                                                                <div class="form-group">
+                                                                    <input type="checkbox" class="flat" /> Considerar el Tiempo  del Refrigerio, con un Tiempo máximo de (Hrs):
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input type="checkbox" class="flat" /> Descontar por no marcar salida y retorno del refrigerio (Castigo en Hrs por defecto):
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+
+
+                                            <!-- end user projects -->
+
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                                            <!--inicio pestaña 3-->
+
+                                            <div class="row">
+                                                <p class="legend-border" style="width:125px;">Horas Adicionales</p>
+                                                <div class="border-section">
+                                                    <div class="row">
+                                                        <div class="x_content">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <label>Permitir Antes del Horario(Tiempo Mínimo)</label>
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <label>Permitir Después del Horario(Tiempo mínimo)</label>
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <label>Durante Días Laborables(Tiempo mínimo)</label>
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input type="checkbox" class="flat" /> Permitir en Días Justificados(Tiempo mínimo en Justificación completa):
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input type="checkbox" class="flat" style="font-size:900px;" /> Permitir en Refrigerios (Tiempo Mínimo):
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <p class="legend-border" style="width:125px;">Días Trabajados</p>
+                                                <div class="border-section">
+                                                    <div class="row">
+                                                        <div class="x_content">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <label>Tiempo mínimo trabajado efectivo para conseiderarse como Día Trabajado</label>
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                    <label>Tiempo mínimo de Horas adicionales efectivas para considerarse como Día Trabajado</label>
+                                                                    <input type="text" class="form-control" placeholder="01:00">
+                                                                </div>
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="checkbox" class="flat" /> Sábados
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="checkbox" class="flat" /> Domingos
+                                                                </div>
+                                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="checkbox" class="flat" /> Días de Descanso
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                                    <input type="checkbox" class="flat" /> Días Feriados
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- final pestaña 3-->
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+
+                                            <p class="legend-border" style="width:240px;">Configuración Horarios y Procesamiento</p>
+                                            <div class="border-section">
+                                                <div class="row">
+                                                    <div class="x_content">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <br />
+                                                                <input type="checkbox" class="js-switch" checked /> Sin Horario
+                                                                <br />
+                                                                <br />
+
+                                                                <input type="checkbox" class="js-switch" checked /> Personal Sí trabaja de amanecida
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <br />
+                                                                <input type="checkbox" class="js-switch" checked /> Procesar asistencia y Tareo
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="legend-border" style="width:240px;">Gestion de Marcaciones de Refrigerios</p>
+                                            <div class="border-section">
+                                                <div class="row">
+                                                    <div class="x_content">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <br />
+                                                            <input type="checkbox" class="flat" /> Habilitar Gestión de Marcaciones Incompletas en Refrigerio
+
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <label>Tiempo de Holgura (Inicio Refrigerio)</label>
+                                                                <input type="text" class="form-control" placeholder="01:00">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Tiempo de Holgura (Fin Refrigerio)</label>
+                                                                <input type="text" class="form-control" placeholder="01:00">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="legend-border" style="width:220px;">Gestion por Tardanzas en el Ingreso</p>
+
+                                            <div class="border-section">
+                                                <div class="row">
+                                                    <div class="x_content">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <label>Rango de Tardanza#1</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                            <label>Rango de Tardanza#2</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                            <label>Tadanza mayor a:</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <label>Castigo #1</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                            <label>Castigo #2</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                            <label>Castigo #3</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </form>
+
+                        </div>
+                        <div id="step-2">
+                            <form class="form-horizontal form-label-left">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Dependencia Jerárquica (*)</label>
+                                            <select class="form-control">
+                                                <option>Seleccione</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Und. Organizacional</label>
+                                            <select class="form-control">
+                                                <option>Seleccione</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="border-section">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Código (*)</label>
+                                                <input type="text" class="form-control" placeholder="Nº">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Descripción (*)</label>
+                                                <input type="text" id="txt_desc_RegNeg" class="form-control" placeholder="Descripción">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a href="#tab_content2_1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">H.Extras 1</a>
+                                        </li>
+                                        <li role="presentation" class="">
+                                            <a href="#tab_content2_2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">H.Extras 2</a>
+                                        </li>
+                                        <li role="presentation" class="">
+                                            <a href="#tab_content2_3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">H.Extras 3</a>
+                                        </li>@*
+                                            <li role="presentation" class="">
+                                                <a href="#tab_content2_4" role="tab" id="profile-tab4" data-toggle="tab" aria-expanded="false">H.Extras 4</a>
+                                            </li>*@
+                                    </ul>
+                                    <div id="myTabContent" class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content2_1" aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Configuración de Horas Extras por Tipo de Día</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-btn">
+                                                                <select class="btn btn-default">
+                                                                    <option>Tipo Día</option>
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                </select>
+                                                            </div>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Horario Normal</label>
+                                                            <select class="form-control">
+                                                                <option>Seleccione</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <br />
+                                                        <br />
+                                                        <button type="button" class="btn btn-info btn-sm">Agregar</button>
+                                                        <br />
+                                                        <br />
+                                                        <div class="form-group">
+                                                            <label>      </label>
+                                                            <label>Horario Nocturno</label>
+
+                                                            <select class="form-control">
+                                                                <option>Seleccione</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <table class="table table-striped table-bordered table-responsive nowrap datatables-net-format" cellspacing="0" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Tipo de Día</th>
+                                                            <th>H.E. (H.Norm)</th>
+                                                            <th>H.E.(H.Noct)</th>
+                                                            <th>Tiempo</th>
+                                                            <th>Evento</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>000001</td>
+                                                            <td>Horario Normal</td>
+                                                            <td>Mañana</td>
+                                                            <td>08:00:00</td>
+                                                            <td>
+                                                                <a href="#" onclick="eliminarReglaNegocio()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>000002</td>
+                                                            <td>Horario Nocturno</td>
+                                                            <td>Nocturno</td>
+                                                            <td>17:00:00</td>
+                                                            <td>
+                                                                <a href="#" onclick="eliminarReglaNegocio()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>000003</td>
+                                                            <td>Horario Parcial</td>
+                                                            <td>Parcial</td>
+                                                            <td>09:00:00</td>
+                                                            <td>
+                                                                <a href="#" onclick="eliminarReglaNegocio()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>000004</td>
+                                                            <td>Horario Normal</td>
+                                                            <td>Mañana</td>
+                                                            <td>08:00:00</td>
+                                                            <td>
+                                                                <a href="#" onclick="eliminarReglaNegocio()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>000005</td>
+                                                            <td>Horario Nocturno</td>
+                                                            <td>Nocturno</td>
+                                                            <td>17:00:00</td>
+                                                            <td>
+                                                                <a href="#" onclick="eliminarReglaNegocio()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end recent activity -->
+
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content2_2" aria-labelledby="profile-tab">
+
+                                            <!-- start user projects -->
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Método de Cálculo</label>
+                                                        <select class="form-control">
+                                                            <option>Seleccione</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <br />
+                                                    <input type="checkbox" class="js-switch" /> Calcular por fecha de proceso (para marcas con cambio de día)
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Permitir Antes del Horario (Tiempo mínimo)</label>
+                                                        <input type="text" class="form-control" value="01:00" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Permitir Después del Horario(Tiempo mínimo)</label>
+                                                        <input type="text" class="form-control" value="01:00" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Durante Días No Laborables(Tiempo mínimo</label>
+                                                        <br />
+                                                        <input type="text" class="form-control" value="01:00" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <br />
+                                                        <label>Máximo de H.E. por día</label>
+                                                        <input type="text" class="form-control" value="01:00" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="x_content">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="checkbox" class="flat" /> Asumir Horario de acuerdo a Horario de último de laborable
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="checkbox" class="flat" /> Quitar el tiempo de refrigerio al intervalo de Hora Extra
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="checkbox" class="flat" /> Habilitar Horas Extras Automáticas en Feriado
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="checkbox" class="flat" /> Generar H.E. Diumas y Nocturnas de acuerdo al turno del Horario
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="checkbox" class="js-switch" checked /> Prioridad Hora Extra
+                                                    <br />
+                                                    <br />
+                                                    <input type="checkbox" class="flat" /> Configurar Horario Nocturno (Formato 48 Hrs)
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Hora Inicio:</label>
+                                                        <br />
+                                                        <input type="text" class="form-control" value="01:00" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Hora Fin:</label>
+                                                        <br />
+                                                        <input type="text" class="form-control" value="01:00" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="checkbox" class="flat" /> Considerar Horario Nocturno dentro del Horario de Trabajo
+                                                </div>
+                                            </div>
+                                            <!-- end user projects -->
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content2_3" aria-labelledby="profile-tab">
+                                            <!--inicio pestaña 3-->
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Método de Cálculo</label>
+                                                        <select class="form-control">
+                                                            <option>Seleccione</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="checkbox" class="js-switch" /> Calcular por fecha de proceso (para marcas con cambio de día)
+                                                </div>
+                                            </div>
+                                            <!-- final pestaña 3-->
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content2_4" aria-labelledby="profile-tab">
+                                            <p class="legend-border" style="width:240px;">Configuración Horarios y Procesamiento</p>
+                                            <div class="border-section">
+                                                <div class="row">
+                                                    <div class="x_content">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <br />
+                                                                <input type="checkbox" class="js-switch" checked /> Sin Horario
+                                                                <br />
+                                                                <input type="checkbox" class="js-switch" checked /> Personal Sí trabaja de amanecida
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <br />
+                                                                <input type="checkbox" class="js-switch" checked /> Procesar asistencia y Tareo
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="legend-border" style="width:240px;">Gestion de Marcaciones de Refrigerios</p>
+                                            <div class="border-section">
+                                                <div class="row">
+                                                    <div class="x_content">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <br />
+                                                            <input type="checkbox" class="flat" /> Habilitar Gestión de Marcaciones Incompletas en Refrigerio
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <label>Tiempo de Holgura (Inicio Refrigerio)</label>
+                                                                <input type="text" class="form-control" placeholder="01:00">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Tiempo de Holgura (Fin Refrigerio)</label>
+                                                                <input type="text" class="form-control" placeholder="01:00">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="legend-border" style="width:220px;">Gestion por Tardanzas en el Ingreso</p>
+                                            <div class="border-section">
+                                                <div class="row">
+                                                    <div class="x_content">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <label>Rango de Tardanza#1</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                            <label>Rango de Tardanza#2</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                            <label>Tadanza mayor a:</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <label>Castigo #1</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                            <label>Castigo #2</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                            <label>Castigo #3</label>
+                                                            <input type="text" class="form-control" placeholder="01:00">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="step-3" hidden>
+                            <form class="form-horizontal form-label-left">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Responsable Inmediato</label>
+                                            <select class="form-control">
+                                                <option>Seleccione</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Responsable Contractual</label>
+                                            <select class="form-control">
+                                                <option>Seleccione</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Código Pensionista (C.U.S.P)P.</label>
+                                            <input type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Código Salud (EsSalud)</label>
+                                            <input type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" class="flat"> Subsidio por Alimentación
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" class="flat"> Linea de Crédito para Adicionales
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div id="step-4" hidden>
+                            <form class="form-horizontal form-label-left">
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Regla de Negocio</label>
+                                            <select class="form-control">
+                                                <option>Seleccione</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Horario Fijo</label>
+                                            <select class="form-control">
+                                                <option>Seleccione</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Marcadores</label>
+                                            <select class="select2_multiple form-control" multiple="multiple">
+                                                <option>Choose option</option>
+                                                <option>Option one</option>
+                                                <option>Option two</option>
+                                                <option>Option three</option>
+                                                <option>Option four</option>
+                                                <option>Option five</option>
+                                                <option>Option six</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ln_solid"></div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Campo 1</label>
+                                            <input type="text" class="form-control" placeholder="campo 1">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Campo 2</label>
+                                            <input type="text" class="form-control" placeholder="campo 2">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Campo 3</label>
+                                            <input type="text" class="form-control" placeholder="campo 3">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Campo 4</label>
+                                            <input type="text" class="form-control" placeholder="campo 4">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Campo 5</label>
+                                            <input type="text" class="form-control" placeholder="campo 5">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $.post(
+            '/Asistencia/LlenarTipoUM',
+            { strEntidad: 'TGJERARQORG', intIdFiltroGrupo: 0, strGrupo: 'DEPEN', strSubGrupo: '' },
+            (response) => {
+                $('#cboJerar').empty();
+                $('#cboJerar').append('<option value="0" selected>Todos</option>');
+
+                response.forEach(element => {
+                    $('#cboJerar').append('<option value="' + element.intidTipo + '">' + element.strDeTipo + '</option>');
+
+                });
+            });
+
+        TablarReglaNeg();
+
+    }
+    );
+</script>
+<style>
+    ul.bar_tabs > li {
+        border: none;
+        color: #333 !important;
+        margin-top: 0;
+        margin-left: 0;
+        background: #fff;
+        border-bottom: none;
+        border-radius: none;
+    }
+    ul.bar_tabs > li.active {
+        border-right: none;
+        border-top: 0;
+        margin-top: 0;
+        height: 40px;
+    }
+</style>

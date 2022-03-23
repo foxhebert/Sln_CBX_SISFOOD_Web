@@ -1,0 +1,632 @@
+
+@{
+    ViewBag.Title = "PermisoSalida";
+}
+
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="col-lg-6 col-md-5 col-sm-5 col-xs-12">
+                <label class="" style="text-align: right !important;">Buscar </label>
+                <input type="text" id="filtroAusentCom" class="form-control" placeholder="Buscar por Código o N° Documento, Nombres o Apellidos">
+            </div>
+
+            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label">Und. Organizacional</label>
+                <select class="form-control" id="IntIDEmp2">
+                    <option value="0" selected>Todos</option>
+                </select>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label">Estado</label>
+                <select class="form-control" id="filtroActivo">
+                    <option value="2">Todos</option>
+                    <option value="1" selected>Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="col-lg-5 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label" style="width:100%">Filtro de Fechas del Listado de Permisos</label>
+                <div id="campJerar" class="form-control range-datepicker AusentFec" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                    <span>January 01, 2019 - January 28, 2019</span> <b class="caret"></b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Personal</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Permiso</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Empleados</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <input type="button" id="btn-new-AusentisCom" class="btn btn-primary" value="Nuevo Permiso " disabled>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div style="text-align: right;font-weight: bold;font-size: medium;">
+                Seleccione al menos un Empleado antes de Registrar Nuevos Permisos.
+            </div>
+            <br />
+            <div class="clearfix"></div>
+            <div class="x_content">
+                <table id="datatable-AusentismosCom" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;">
+                    @*<table id="datatable-AusentismosCom" class="table table-striped table-bordered table-responsive nowrap " cellspacing="0" width="100%">*@
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="icheckbox_flat-blue" id="All_Horarios_Ause" /></th>
+                            <th> Código</th>
+                            <th>Apellidos y Nombres</th>
+                            <th>N° Documento</th>
+                            <th>Fecha Admisión</th>
+                            <th>Und. Organizacional</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                            <th style="display:none">Id</th>
+                        </tr>
+                    </thead>
+                    <tbody id="form-hide-AsighorarioCom"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="TotalPag" />
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="form-hide-AusentisCom" hidden>
+            <div class="x_panel">
+
+                <!-- Button trigger modal-->
+                <!--VER 13/08/2020-->
+                <div id="VerHistAuse" hidden>
+                    <div class="x_title">
+                        <h2> Listado de Permisos</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+
+                            <li>
+                                <input type="button" id="btn-cancelHistorial" class="btn btn-dark" value="Cerrar">
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+                            <div id="NombresG" class="col-lg-8 col-md-5 col-sm-12 col-xs-12">
+                            </div>
+                            <div class="form-group pull-right" id="11" disabled>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table id="TablaHistoricoConc" class="table table-striped table-bordered table-responsive " cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Permiso</th>
+                                            <th>Fecha</th>
+                                            <th>Acción</th>
+                                            <th style="display:none">Acción</th>
+                                            <th style="display:none">Acción</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="TablaHistoricoHorB"></tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-12 col-md-5 col-sm-12 col-xs-12" style="font-size: 13px;color: #337ab7;font-style: italic;">
+                                [Un Empleado Inactivo no puede Editar o Eliminar sus Permisos].
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--NUEVO-->
+                <div class="x_content">
+                    <div id="NuevoAuse" hidden>
+                        <div class="x_title">
+                            <h2>Nuevo Permiso</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <input type="button" id="btn-save-change-AusentismosCom" class="btn btn-primary" value="Guardar">
+                                    @*<input type="button" id="btn-update-AsighorarioCom" class="btn btn-success" value="Actualizar" hidden>*@
+                                </li>
+                                <li>
+                                    <input type="button" id="btn-cancel-AusentismosCom" class="btn btn-dark" value="Cancelar">
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <form class="form-horizontal form-label-left">
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Justificación (*)</label>
+                                            <select class="form-control" id="IdConCepNew"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Centro de Costo</label>
+                                            <select class="form-control" id="IdCCostoNew"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Fecha Inicio (*)</label>
+                                            <div class="control-group">
+                                                @*<div class="controls" hidden>
+                                                        <div class="input-prepend input-group">
+                                                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                                            <input id="fechaIniNew" type="text" class="form-control" value="" />
+                                                        </div>
+                                                    </div>*@
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                                                    <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                                    <input type="date" class="form-control has-feedback-left" id="fechaIniNew_" style="padding-left: 70px;border: 1px solid #ccc;" max="9999-12-31" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Fecha Fin (*)</label>
+                                            <div class="control-group">
+                                                @*<div class="controls" hidden>
+                                                        <div class="input-prepend input-group">
+                                                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                                            <input id="fechaFinNew" type="text" class="form-control" value="" />
+                                                        </div>
+                                                    </div>*@
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                                                    <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                                    <input type="date" class="form-control has-feedback-left" id="fechaFinNew_" style="padding-left: 70px;border: 1px solid #ccc;" max="9999-12-31" value="">
+                                                </div>
+                                            </div>
+                                            <style>
+                                                .badge-light-label {
+                                                    color: #212529;
+                                                    background-color: #F8F9FA;
+                                                }
+
+                                                .daterangepicker td.active, .daterangepicker td.active:hover {
+                                                    background-color: #536A7F !important;
+                                                    color: #fff !important;
+                                                }
+                                            </style>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row horaRow">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="col-md-9 p-0 form-group">
+                                            <label>Hora Inicio (*)</label>
+                                            <input type="time" id="HoraIniNew" class="form-control" />
+                                        </div>
+                                        <div class="col-md-3 form-group p-0">
+                                            <label>&nbsp;</label>
+                                            <div>
+                                                &nbsp;
+                                                <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt01New">
+                                                <label>Dia Sgt.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="col-md-9 p-0 form-group">
+                                            <label>Hora Fin (*)</label>
+                                            <input type="time" id="HoraFinNew" class="form-control" />
+                                        </div>
+
+                                        <div class="col-md-3 form-group p-0">
+                                            <label>&nbsp;</label>
+                                            <div>
+                                                &nbsp;
+                                                <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt02New">
+                                                <label>Dia Sgt.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div>
+                                            <label>Observaciones</label>
+                                        </div>
+                                        <div>
+                                            <textarea name="textarea" id="strObservacionNew" rows="3" cols="300" style="width:100%"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="flgBitDia">
+                                            <br />
+                                            <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaNew" /> Justifica el día de la Hora Fin
+                                            <br />
+                                        </div>
+                                        <br />
+                                        <div class="flgBitDesontable">
+                                            <input type="checkbox" class="icheckbox_flat-blue" id="BitCompensaNew" /> Permite Compensación
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row especieRow" id="">
+
+                                    <br />
+                                    <p class="legend-border" style="width:175px;">
+                                        <input type="hidden" value="2" id="check_especias_hddNew" />
+                                        <input type="checkbox" class="check_especias" id="BitEspecieValNew" checked /> Especie Valorada
+                                    </p>
+                                    <div class="border-section">
+                                        <div class="x_content">
+                                            <div class="x_content">
+
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group">
+                                                            <label>Tipos de Doc. Sustentatorio (*)</label>
+                                                            <select class="form-control" id="IdTipoDocNew"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group" id="ValCitt">
+                                                            <label>N° Doc. Sustentatorio (*)</label>
+                                                            <input type="text" id="txtNroCittNew" class="form-control" onkeypress="validarCitt(event)" placeholder="A15454551212" maxlength="20" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group" id="ValInsti">
+                                                            <label>Emitido en </label>
+                                                            <input type="text" id="txtEmitidoEnNew" class="form-control" onkeypress="validarDescripcionAll(event)" placeholder="Hospital/Clínica" maxlength="200" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group" id="ValDoc">
+                                                            <label>Emitido Por </label>
+                                                            <input type="text" id="txtEmitidoPorNew" class="form-control" onkeypress="validarDescripcionAll(event)" placeholder="Doctor" maxlength="200" />
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <input id="archivosNew" name="imagenes[]" type="file" multiple class="file-loading">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <h3 class="x_title">Lista de Empleados</h3>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <table id="TablaListEmpAuse" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;">
+                                            @*<table id="TablaListEmpAuse" class="table table-striped table-bordered table-responsive " cellspacing="0" width="100%">*@
+                                            <thead>
+                                                <tr>
+                                                    <th>Código</th>
+                                                    <th>Nombres y Apellidos</th>
+                                                    <th>Doc. Identidad</th>
+                                                    <th>Und. Organizacional</th>
+                                                    <th>Acción</th>
+                                                    <th style="display:none">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="TablaListEmpAuseB"></tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!--EDITAR-->
+                    <div id="EditAusent" hidden>
+                        <div class="x_title">
+                            <h2>Actualizar Permiso</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <input type="button" id="btn-EditHistorial_Edit" onclick="ActualizarAusentismos()" class="btn btn-success" value="Actualizar">
+                                </li>
+                                <li>
+                                    <input type="button" id="btn-cancelHistorial_Edit" class="btn btn-dark" value="Cancelar">
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <h1 id="NomEmpEdit"></h1>
+                                    <input type="hidden" id="IntIdPe" />
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Justificación (*)</label>
+                                        <select class="form-control" id="IdConCep"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Fecha Inicio (*)</label>
+                                        <div class="control-group">
+                                            @*<div class="controls" hidden>
+                                                    <div class="input-prepend input-group">
+                                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                                        <input id="fechaIni" type="text" class="form-control" value="" onchange="copyToFechaFin(event)" />
+                                                    </div>
+                                                </div>*@
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                                                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                                <input type="date" class="form-control has-feedback-left" id="fechaIni_" style="padding-left: 70px;border: 1px solid #ccc;" max="9999-12-31" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Centro de Costo</label>
+                                            <select class="form-control" id="IdCCosto"></select>
+                                        </div>
+                                    </div>*@
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Centro de Costo</label>
+                                        <select class="form-control" id="IdCCosto"></select>
+                                    </div>
+                                </div>
+                                @*<div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Fecha Inicio (*)</label>
+                                            <div class="control-group">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: auto;padding-left: 0px;padding-right: 0px;">
+                                                    <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                                    <input type="date" class="form-control has-feedback-left" id="fechaIni_" style="width: 300px;padding-left: 60px;border: 1px solid #ccc;" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                <div class="col-md-6 col-sm-6 col-xs-6" hidden>
+                                    <div class="form-group">
+                                        <label>Fecha Fin (*)</label>
+                                        <div class="control-group">
+                                            @*<div class="controls" hidden>
+                                                    <div class="input-prepend input-group">
+                                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                                        <input id="fechaFin" type="text" class="form-control" value="" disabled />
+                                                    </div>
+                                                </div>*@
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                                                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                                <input type="date" class="form-control has-feedback-left" id="fechaFin_" style="padding-left: 70px;border: 1px solid #ccc;" max="9999-12-31" value="">
+                                            </div>
+                                        </div>
+                                        <style>
+                                            .badge-light-label {
+                                                color: #212529;
+                                                background-color: #F8F9FA;
+                                            }
+
+                                            .daterangepicker td.active, .daterangepicker td.active:hover {
+                                                background-color: #536A7F !important;
+                                                color: #fff !important;
+                                            }
+                                        </style>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+
+                            <div class="row horaRow">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-md-9 p-0 form-group">
+                                        <label>Hora Inicio (*)</label>
+                                        <input type="time" id="HoraIni" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3 form-group p-0">
+                                        <label>&nbsp;</label>
+                                        <div>
+                                            &nbsp;
+                                            <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt01">
+                                            <label>Dia Sgt.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-md-9 p-0 form-group">
+                                        <label>Hora Fin (*)</label>
+                                        <input type="time" id="HoraFin" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3 form-group p-0">
+                                        <label>&nbsp;</label>
+                                        <div>
+                                            &nbsp;
+                                            <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt02">
+                                            <label>Dia Sgt.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6" id="ValObs">
+                                    <div>
+                                        <label>Observaciones</label>
+                                    </div>
+                                    <div>
+                                        <textarea name="textarea" id="strObservacion" rows="3" cols="300" style="width:100%" maxlength="200"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="flgBitDia">
+                                        <br />
+                                        <input type="checkbox" class="flat" id="BitDia" /> Justifica el día de la Hora Fin
+                                        <br />
+                                    </div>
+                                    <br />
+                                    <div class="flgBitDesontable">
+                                        <input type="checkbox" class="flat" id="BitCompensa" /> Permite Compensación
+                                    </div>
+                                    <input type="text" id="intID" class="form-control" hidden />
+
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row especieRow" id="">
+
+                                <br />
+                                <p class="legend-border" style="width:175px;">
+                                    <input type="hidden" value="2" id="check_especias_hdd" />
+                                    <input type="checkbox" class="check_especias" id="BitEspecieVal" checked /> Especie Valorada
+                                </p>
+                                <div class="border-section">
+                                    <div class="x_content">
+                                        <div class="x_content">
+
+                                            <div class="row">
+
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="form-group">
+                                                        <label>Tipos de Doc. Sustentatorio (*)</label>
+                                                        <select class="form-control" id="IdTipoDoc"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="form-group" id="ValCitt">
+                                                        <label>N° Doc. Sustentatorio (*)</label>
+                                                        <input type="text" id="txtNroCitt" class="form-control" onkeypress="validarCitt(event)" placeholder="A15454551212" maxlength="20" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="form-group" id="ValInsti">
+                                                        <label>Emitido en </label>
+                                                        <input type="text" id="txtEmitidoEn" class="form-control" onkeypress="validarDescripcionAll(event)" placeholder="Hospital/Clínica" maxlength="200" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="form-group" id="ValDoc">
+                                                        <label>Emitido Por </label>
+                                                        <input type="text" id="txtEmitidoPor" class="form-control" onkeypress="validarDescripcionAll(event)" placeholder="Doctor" maxlength="200" />
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="file-loading">
+                                    <input id="archivos" name="imagenes[]" type="file" multiple class="file-loading">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-lg" id="modaldetalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="modal-title" id="myModalLabel">Permisos Observados </h4>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <button class="btn btn-success" id="btnEmpContinuar">Continuar</button>
+                            <button class="btn btn-dark" data-dismiss="modal" id="btnEmpCerrar">Cerrar</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-body mb-4 pb-4 min-height-350">
+                    <div>
+                        <h4>
+                            De los <b><span id="totalEmpleados">X</span></b> Empleados seleccionados, <b><span id="totalEmpleadosObs">X</span></b> <span id="textoModal">empleado(s) ya tienen un permiso registrado para el rango de fechas.</span>
+                        </h4>
+                    </div>
+                    <br />
+                    <table id="TablaListEmpObserv" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;">
+                        @*<table id="TablaListEmpObserv" class="table table-striped table-bordered table-responsive " cellspacing="0" width="100%">*@
+                        <thead>
+                            <tr>
+
+                                <th>Código</th>
+                                <th>Nombres y Apellidos</th>
+                                <th>Observación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="TablaListEmpObservB"></tbody>
+
+                    </table>
+                    <div>
+                        <br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/util/Papeleta.js"></script>
+    <script src="~/Scripts/doc/fileinput.min.js"></script>
+    <script src="/Scripts/doc/fileinput_locale_es.js"></script>
+    <script src="/Scripts/doc/fas/theme.js"></script>
+    <script src="/Scripts/doc/explorer-fas/theme.js"></script>
+    <link href="~/Content/doc/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+    <link href="~/Content/doc/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css" />
+

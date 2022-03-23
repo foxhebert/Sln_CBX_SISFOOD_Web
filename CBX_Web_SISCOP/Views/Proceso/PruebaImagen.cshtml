@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "PruebaImagen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!doctype html>
+<html>
+<head>
+    <title>Cargar imagen</title>
+    <meta charset="utf-8" />
+
+    <script type="text/javascript">
+
+      document.addEventListener("DOMContentLoaded", inicio, false);
+
+      function inicio()
+      {
+        var nuevaImagen = new Image();
+
+        alert("Se procede a la carga en memoria de la imagen");
+
+        nuevaImagen = cargarImagen("ejemplo.png");
+      }
+
+      function cargarImagen(url)
+      {
+        var imagen = new Image();
+        imagen.onload = imagenCargada;
+        imagen.src = url;
+        return imagen;
+      }
+
+      function imagenCargada()
+      {
+        alert("La imagen se ha cargado correctamente");
+      }
+
+    </script>
+
+</head>
+
+<body>
+</body>
+
+</html>

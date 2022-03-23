@@ -1,0 +1,101 @@
+<form class="form-horizontal form-label-left">
+    <div class="row">
+        <div style="text-align:right;">
+            <label id="_lbl_"></label>
+            <input type="checkbox" id="chk-activo-TiPers" class="js-switch" checked />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Dependencia Jerárquica (*)</label>
+                @Html.DropDownList("cboJerarquia", (SelectList)ViewBag.CampJerar, "Seleccione", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <div>
+                    <label class="col-md-7 col-sm-7 col-xs-6"> Und. Organizacional </label>
+                    <div class="col-md-5 col-sm-5 col-xs-6 text-right">
+                    </div>
+                </div>
+
+                <select id="cbounidsupe" disabled class="form-control">
+                    <option>Seleccione</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="ln_solid"></div>*@
+
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group" id="ValCode">
+                    <label>Código (*)</label>
+                    <input id="txt-cod-TiPers" type="text" name="codigo" class="form-control" @*pattern="^([A-Za-z0-9])+"*@ placeholder="Código" maxlength="8" onkeypress="validarCodigoAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group" id="Valdes">
+                    <label>Descripción (*)</label>
+                    <input id="txt-desc-TiPers" type="text" class="form-control" placeholder="Descripción" maxlength="50" onkeypress="validarDescripcionAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    @*<div class="ln_solid"></div>*@
+    <div id="containerCamposea">
+        @*<div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label>Campo 1</label>
+                        <input id="txt-cam1-Cargo" type="text" class="form-control" placeholder="campo 1">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label>Campo 2</label>
+                        <input id="txt-cam2-Cargo" type="text" class="form-control" placeholder="campo 2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label>Campo 3</label>
+                        <input id="txt-cam3-Cargo" type="text" class="form-control" placeholder="campo 3">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label>Campo 4</label>
+                        <input id="txt-cam4-Cargo" type="text" class="form-control" placeholder="campo 4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label>Campo 5</label>
+                        <input id="txt-cam5-Cargo" type="text" class="form-control" placeholder="campo 5">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+
+                </div>
+            </div>*@
+    </div>
+    <script>
+        //CamposAdicionales();
+
+        // Validaciones();
+        CamposAdicionalesTipoPersonal();
+    </script>
+</form>

@@ -1,0 +1,294 @@
+﻿<form class="form-horizontal form-label-left">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <label>
+                <input type="checkbox" class="flat" id="checkPrincipal"> Principal
+            </label>
+        </div>
+        <div style="text-align:right;">
+            <label id="_lbl_"></label>
+            <input type="checkbox" id="chk-activo-Hor" class="js-switch" checked />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Dependencia Jerárquica (*)</label>
+                    <select class="form-control" id="cboJerar"></select>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Und. Organizacional (*)</label>
+                    <select class="form-control" id="cboUndOrg" disabled></select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group" id="ValCode">
+                    <label>Código (*)</label>
+                    <input type="text" name="codigo" id="txt_Cod_Hor" class="form-control"  maxlength="8" placeholder="Código" onkeypress="validarCodigoAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group" id="Valdes">
+                    <label>Descripción (*)</label>
+                    <input type="text" id="txt_Desc_Hor" class="form-control" placeholder="Descripción" onkeypress="validarDescripcionAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <center><h1> Horario </h1></center>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Inicia en (*)</label>
+                    <select class="form-control" id="TipoDia"></select>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Duración en Días (*)</label>
+                    <div class="input-group">
+                        <div>
+                            <input type="number" step="1" min="1" @*pattern="[0-9]+"*@ id="txt_Num_Dias" class="form-control" placeholder="Días" onkeypress="return validarSoloNum(event)" max="365" maxlength="3" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                        <div class="input-group-btn" id="btn_change_num">
+                            <label class="btn btn-primary" id="btn-genra-horario" title="Generar Horario">Crear</label>
+                            <label class="btn btn-success" id="btn-edita-dias" title="Editar Dias" hidden>Editar</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+
+            <table id="Dias" class="table table-striped table-bordered table-responsive nowrap" cellspacing="0" width="100%">
+                <thead id="Header">
+
+                </thead>
+                <tbody id="cuerpo"></tbody>
+            </table>
+            <br>
+            <br>
+            <br>
+            <div id='wrap'>
+
+                <div id='external-events'>
+                    <div id='external-events-listing' class="draggable-items">
+
+                    </div>
+
+                </div>
+
+                <div style='clear:both'></div>
+
+            </div>
+        </div>
+    </div>
+
+    <br /><br />
+    <div id="containerCampose"></div>
+    <br />
+
+
+    <div class="draggable-items" hidden>
+        <div class="row">
+            <div class="col">
+                <div class="card bg-light my-3" draggable="true">
+                    <div class="card-header">Titulo</div>
+                    <div class="card-body">
+                        <p class="card-text">Hola hora</p>
+                    </div>
+                </div>
+                ...
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row dropzones" hidden>
+        <div class="col">
+            <div class="my-3 p-3 border rounded dropzone">
+                <span class="text-muted">Eliminar</span>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    @*<script>
+
+            function allowDrop(ev) {
+                ev.preventDefault();
+
+            }
+            function drag(ev) {
+                console.log(ev)
+                ev.dataTransfer.setData("text", ev.target.id);
+                let el = null;
+
+                // ev.preventDefault();
+                el = ev.target.cloneNode(true)
+                //   el.removeAttribute('draggable');
+
+            }
+
+            function drop(ev) {
+                console.log(ev)
+                //var data = ev.dataTransfer.getData("text");
+                //ev.target.appendChild(document.getElementById(data));
+
+                //obtener siempre el padre TD
+                var elemento = ev.target.localName;
+                var target = $(ev.target);
+                if (elemento != "td") {
+                    target = $(ev.target).parents("td")
+                }
+
+                //validar duplicidad
+                ev.preventDefault();
+                if (!target.hasClass('notDrop')) {
+                    if (target.find(".dragJornada").length == 0) {
+                        ev.target.appendChild(el.children[0]);
+                    }
+                    else {
+                        new PNotify({
+                            title: 'Horario',
+                            text: 'Solo puede ingresar una jornada por día',
+                            type: 'info',
+                            delay: 3000,
+                            styling: 'bootstrap3',
+                            addclass: 'dark'
+                        });
+                    }
+                } else {
+                    new PNotify({
+                        title: 'Horario',
+                        text: 'Asignar Jornadas en los días válidos (casillas sin X__).',
+                        type: 'info',
+                        delay: 3000,
+                        styling: 'bootstrap3',
+                        addclass: 'dark'
+                    });
+                }
+
+
+
+                el = null;
+
+            }
+            //function dragstart(ev) {
+            //    console.log("dragstart")
+            //    let el = null;
+
+
+            //    //var data = ev.dataTransfer.getData("text");
+            //    //ev.target.appendChild(document.getElementById(data));
+            //    ev.preventDefault();
+            //    ev.target.appendChild(el);
+            //    el = null;
+
+            //}
+            const dropzones = document.querySelector('.dropzones');
+            let el = null;
+
+            document
+                .querySelector('.draggable-items')
+                .addEventListener('dragstart', e => {
+                    el = e.target.cloneNode(true)
+                    el.removeAttribute('draggable');
+                })
+
+            dropzones.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            })
+            dropzones.addEventListener('dragenter', (e) => {
+                if (e.target.classList.contains('dropzone')) {
+                    e.target.classList.add('solid-border');
+                }
+            })
+            dropzones.addEventListener('drop', (e) => {
+                e.preventDefault();
+                e.target.appendChild(el);
+                el = null;
+                e.target.classList.remove('solid-border');
+            })
+
+            dropzones.addEventListener('dragleave', (e) => {
+                if (e.target.classList.contains('dropzone')) {
+                    e.target.classList.remove('solid-border');
+                }
+            })
+
+        </script>*@
+
+
+</form>
+
+
+
+<style>
+    .arrastrable {
+        display: inline-block;
+        padding: 0px;
+        background: #aaa;
+    }
+
+    .contenedor {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .receptor {
+        width: 90%;
+        height: 400px;
+        background: #000;
+        color: gainsboro;
+        display: inline-block;
+    }
+
+
+
+
+    #external-events {
+        width: 100%;
+        padding: 0 10px;
+        text-align: left;
+    }
+
+        #external-events h4 {
+            font-size: 16px;
+            margin-top: 0;
+            padding-top: 1em;
+        }
+
+        #external-events p {
+            margin: 1.5em 0;
+            font-size: 11px;
+            color: #666;
+        }
+
+            #external-events p input {
+                margin: 0;
+                vertical-align: middle;
+            }
+</style>

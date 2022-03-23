@@ -1,0 +1,468 @@
+@{
+    ViewBag.Title = "Marca Manual";
+}
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <label class="control-label">&nbsp;</label>
+                <input type="text" id="filtroMarcaManual" class="form-control" placeholder="Buscar por Código, Nro. Documento, Nombres o Apellidos">
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <label style="text-align:right;" class="control-label">Und. Organizacional</label>
+                <select class="form-control" id="IntIDEmp2">
+                    <option value="0" selected>Todos</option>
+                </select>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label">Estado</label>
+                <select class="form-control" id="filtroActivo">
+                    <option value="2">Todos</option>
+                    <option value="1" selected>Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+                <label class="control-label" style="width:100%">Fechas de Marcación</label>
+                <div id="campJerar" class="form-control range-datepicker AusentFec" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                    <span>January 01, 2019 - January 28, 2019</span> <b class="caret"></b>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Asistencia</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Marca Manual</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Empleados</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="datatable-AusentismosCom" class="table table-striped table-bordered table-responsive nowrap " cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            @*<th><input type="checkbox" class="icheckbox_flat-blue" id="All_Horarios_Ause" /></th>*@
+                            <th> Código</th>
+                            <th>Apellidos y Nombres</th>
+                            <th>Doc. Identidad</th>
+                            <th>Fecha Admisión</th>
+                            <th>Und. Organizacional</th>
+                            <th>Acción</th>
+                            <th style="display:none">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="form-hide-AsighorarioCom"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @*<input type="hidden" id="TotalPag" />*@
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="form-hide-AusentisCom" hidden>
+            <div class="x_panel">
+
+                <!-- Button trigger modal-->
+                <!--VER 13/08/2020-->
+                <div id="VerHistAuse" hidden>
+                    <div class="x_title">
+                        <h2>Listado de Marcas</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <input type="button" id="btn-cancelHistorial" class="btn btn-dark" value="Cerrar">
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="NombresG">
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table id="TablaAsistencia" class="table table-striped table-bordered table-responsive " cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Marca(Fecha - Hora)</th>
+                                            <th>Marcador</th>
+                                            <th>Tipo Marca</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+
+                </div>
+
+                <!--NUEVO-->
+                <div class="x_content">
+                    <div id="NuevoAuse" hidden>
+                        <div class="x_title">
+                            <h2>Nueva Marca Manual</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <input type="button" id="btn-save-change-AusentismosCom" class="btn btn-primary" value="Guardar">
+                                    @*<input type="button" id="btn-update-AsighorarioCom" class="btn btn-success" value="Actualizar" hidden>*@
+                                </li>
+                                <li>
+                                    <input type="button" id="btn-cancel-AusentismosCom" class="btn btn-dark" value="Cancelar">
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div id="NombresGN">
+                            </div>
+                            <br />
+                            <form class="form-horizontal form-label-left">
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Tipo de Marca (*)</label>
+                                            @*<select class="form-control" id="IdTipoNew"></select>*@
+                                            <button type="button" class="btn btn-primary btn-block dropdown-toggle" id="IdTipoNew" data-toggle="dropdown" aria-expanded="true">
+                                                Seleccione
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu col-md-11 col-sm-11 col-xs-12" aria-labelledby="toggleOptions" role="menu" id="chekeameTipoMarca" style="max-height: 200px;overflow-y: auto;margin-left: 9px;"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Marcador (*)</label>
+                                            <select class="form-control" id="IdMarcadorNew"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Modo de Marcación</label>
+                                            <select class="form-control" id="idMarcaOpcionNew">
+                                                <option value="0" selected>Marca con Hora por Defecto (Por Horario)</option>
+                                                <option value="1">Marca con Hora ingresada Manualmente</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Motivo</label>
+                                            <select class="form-control" id="IdMotivoNew"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <br />
+                                            <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaNew" /> &nbsp;<label>Repetir Marca</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="borderFechas2 pt-3" hidden>
+                                        <div class="container">
+                                            <div class='col-sm-6 div01' hidden>
+                                                <div class="form-group">
+                                                    <label>Entrada</label>
+                                                    <div class='input-group date' id='dateEntrada'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-6 div03' hidden>
+                                                <div class="col-md-9 col-xs-9  p-0 form-group">
+                                                    <label>Salida Refrigerio</label>
+                                                    <div class='input-group date' id='dateSalidaRe'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 form-group p-0">
+                                                    <label>&nbsp;</label>
+                                                    <div>
+                                                        &nbsp;
+                                                        <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt03">
+                                                        <label>Dia Sgt.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-6 div04' hidden>
+                                                <div class="col-md-9 col-xs-9 p-0 form-group">
+                                                    <label>Entrada Refrigerio</label>
+                                                    <div class='input-group date' id='dateEntradaRe'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 form-group p-0">
+                                                    <label>&nbsp;</label>
+                                                    <div>
+                                                        &nbsp;
+                                                        <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt04">
+                                                        <label>Dia Sgt.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-6 div02' hidden>
+                                                <div class="col-md-9 col-xs-9 p-0 form-group">
+                                                    <label>Salida</label>
+                                                    <div class='input-group date' id='dateSalida'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 form-group p-0">
+                                                    <label>&nbsp;</label>
+                                                    <div>
+                                                        &nbsp;
+                                                        <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt02">
+                                                        <label>Dia Sgt.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-6 div05' hidden>
+                                                <div class="col-md-9 col-xs-9 p-0 form-group">
+                                                    <label>Entrada Hora Extra</label>
+                                                    <div class='input-group date' id='dateEntradaHE'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 form-group p-0">
+                                                    <label>&nbsp;</label>
+                                                    <div>
+                                                        &nbsp;
+                                                        <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt05">
+                                                        <label>Dia Sgt.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-6 div06' hidden>
+                                                <div class="col-md-9 col-xs-9 p-0 form-group">
+                                                    <label>Salida Hora Extra</label>
+                                                    <div class='input-group date' id='dateSalidaHE'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 form-group p-0">
+                                                    <label>&nbsp;</label>
+                                                    <div>
+                                                        &nbsp;
+                                                        <input type="checkbox" class="icheckbox_flat-blue" id="BitDiaSgt06">
+                                                        <label>Dia Sgt.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script type="text/javascript">
+                                                $(function () {
+                                                    moment.locale('es')
+                                                    $('#dateEntrada,#dateSalida,#dateSalidaRe,#dateEntradaRe,#dateEntradaHE,#dateSalidaHE').datetimepicker({
+                                                        format: 'YYYY-MM-DD HH:mm:ss'
+                                                    });
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!--EDITAR-->
+                    <div id="EditAusent" hidden>
+                        <input type="text" id="txtIdAsistencia" value="" hidden>
+                        
+                        <div class="x_title">
+                            <h2 id="TituloEdit">Actualizar Marca Manual</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <input type="button" id="btn-EditHistorial_Edit" onclick="ActualizarAusentismos()" class="btn btn-success" value="Actualizar">
+                                </li>
+                                <li>
+                                    <input type="button" id="btn-cancelHistorial_Edit" class="btn btn-dark" value="Cancelar">
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div id="NombresGE">
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Tipo de Marca (*)</label>
+                                        <select class="form-control" id="IdTipo"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Marcador (*)</label>
+                                        <select class="form-control" id="IdMarcador"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Modo de Marcación</label>
+                                        <select class="form-control" id="idMarcaOpcion">
+                                            <option value="0" selected>Marca con Hora por Defecto (Por Horario)</option>
+                                            <option value="1">Marca con Hora ingresada Manualmente</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Motivo</label>
+                                        <select class="form-control" id="IdMotivo"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="pt-3">
+                                    <div class="container">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="col-md-9 p-0 divFecha">
+                                                <label id="txtTipo"></label>
+                                                <div class='input-group date' id='dateFecha'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 form-group p-0 divFecha divCheckFecha">
+                                                <label>&nbsp;</label>
+                                                <div>
+                                                    &nbsp;
+                                                    <input type="checkbox" class="icheckbox_flat-blue" id="BitFecha">
+                                                    <label>&nbsp;Dia Sgt.</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 form-group p-0 divRutaFoto">
+                                                <div class="form-group">
+                                                    <label>Dirección:</label>
+                                                    <textarea class="form-control" id="txtDireccion" rows="5" disabled></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 divRutaFoto text-center">
+                                            <div class="col-md-11 col-sm-11 col-xs-11">
+                                                <img id="imgId" src="/DirEmpleadosRuta/descarga(1).jpg" class="p-3" style="max-height: 226px;">
+                                            </div>
+                                            <div class="col-md-1 col-sm-1 col-xs-1 p-0">
+                                                <button class="btn btn-default btn-xs" onclick="descargarImagen()"><i class="fa fa-download" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                        
+                                        <script type="text/javascript">
+                                            $(function () {
+                                                $('#dateFecha').datetimepicker({
+                                                    format: 'YYYY-MM-DD HH:mm:ss'
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-example-modal-lg" id="modaldetalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Papeletas Observadas </h4>
+                </div>
+                <div class="modal-body mb-4 pb-4 min-height-350">
+                    <div>
+                        <h4>
+                            De los <b><span id="totalEmpleados">X</span></b> Empleados seleccionados, los siguientes <b><span id="totalEmpleadosObs">X</span></b> empleados ya cuentan con una Papeleta registrada para el rango de fechas
+                        </h4>
+                    </div>
+                    <br />
+                    <table id="TablaListEmpObserv" class="table table-striped table-bordered table-responsive " cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+
+                                <th>Código</th>
+                                <th>Nombres y Apellidos</th>
+                                <th>Observación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="TablaListEmpObservB"></tbody>
+
+                    </table>
+                    <div>
+                        <br><br><br>
+                    </div>
+                </div>
+                <div class="modal-footer mt-4">
+                    <button class="btn btn-success" id="btnEmpContinuar">Continuar</button>
+                    <button class="btn btn-default" data-dismiss="modal" id="btnEmpCerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/util/MarcaManual.js"></script>
+<style>
+    .borderFechas2 {
+        border-color: #cccccc;
+        border-style: solid;
+        border-width: thin;
+    }
+    /*.borderFechas {
+        border-color: black;
+        border-style: solid;
+        border-width: thin;
+    }*/
+</style>

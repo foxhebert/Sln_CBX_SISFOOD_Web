@@ -1,0 +1,339 @@
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <!-- FILTRO INPUT Buscar -->
+            <div class="control-label col-md-4 col-sm-4 col-xs-12">
+                <label class="" style="text-align: right !important;">Buscar </label>
+                <input type="text" class="form-control" id="filtroUsuario" placeholder="Buscar por Usuario o Nombre">
+            </div>
+
+
+            <!-- FILTRO COMBO PERFIL -->
+            <div class="control-label col-md-4 col-sm-4 col-xs-12">
+                <label class="" style="text-align: right !important;">Perfil</label>
+                <div class="">
+                    <select class="form-control" id="CampPerfiles">
+                        <option value="0" selected>Todos</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- FILTRO COMBO ACTIVO/INACTIVO -->
+            <div class="control-label col-md-4 col-sm-4 col-xs-12">
+                <label class="" style="text-align: right !important;">Estado</label>
+                <div class="">
+                    <select class="form-control" id="ActivoUsuario">
+                        <option value="2">Todos</option>
+                        <option value="1" selected="selected">Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row" hidden>
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <div class="control-label col-md-4 col-sm-4 col-xs-12">
+                <div class="">
+                    <input type="text" class="form-control" id="filtroUsuario111" placeholder="Buscar por Usuario o Nombre">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- PANEL TITULO -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb d-flex">
+            <a href="#" id="PadreMenu_txt" class="breadcrumb__step breadcrumb__step--active">SEGURIDAD</a>
+            <a id="HijoMenu_txt" class="breadcrumb__step">nom mantenimiento</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <!-- PANEL LISTADO DE USUARIOS -->
+    @*<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Listado de Usuarios</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-new-Usuario" class="btn btn-primary" value="Nuevo Usuario">
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <table id="tablaUsuarios" class="table table-striped table-bordered table-responsive pre-wrap " cellspacing="0" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th style="display:none">intIdUniOrg</th>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Perfil</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>*@
+
+
+
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Usuarios</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <input type="button" id="btn-new-Usuario" class="btn btn-primary" value="Nuevo Usuario">
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="tablaUsuarios" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;">
+
+                    <thead>
+                        <tr>
+                            <th style="display:none">intIdUniOrg</th>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Perfil</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUsuarios"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEGUNDO PANEL NUEVO/EDITAR-->
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="form-hide-Usuario" hidden>
+
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Información del Usuario</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-save-change-Usuario" class="btn btn-primary" value="Guardar">
+                            <input type="button" id="btn-update-Usuario" class="btn btn-success" value="Actualizar" hidden>
+                        </li>
+                        <li>
+                            <input type="button" id="btn-cancel-Usuario" class="btn btn-dark" value="Cancelar">
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+
+
+                <div class="x_content">
+
+                    @*<div class="row">
+                            <div style="text-align:right; margin-right:20px;">
+
+                                <input type="checkbox" class="js-switch" id="chk-activo-Usuario" checked="" />
+                                <label>Activo</label>
+
+                            </div>
+                        </div>*@
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                        </div>
+                        <div style="text-align:right;" id="11">
+                        </div>
+                    </div>
+                    <div class="border-section">
+                        <div class="x_content" style="padding-bottom:80px;">
+                            <div class="x_content">
+
+
+                                <div class="row">
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group" id="strUsUsuar">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group" id="strCoPassw">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group p-relative" id="strNoUsuar">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Perfil (*)</label>
+                                            <select class="form-control" id="CampPerfil"></select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <br />
+
+                        </div>
+
+                        <!--NECESARIO PARA MOSTRAR MAS ESPACIO EN LA PARTE INFERIOR-->
+                        <div class="col-md-12 col-sm-12 col-xs-12"></div>
+
+                    </div>
+
+                </div>
+                <br />
+
+
+                <div class="form-horizontal form-label-left" id="Existe_filtro" hidden>
+
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="Filtros" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#EMPRESA" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">EMPRESA</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#LOCAL" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">LOCAL</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#AREA" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">AREA</a>
+                            </li>
+
+                        </ul>
+                        <div id="Filtrados" class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane active in" id="EMPRESA" aria-labelledby="home-tab">
+
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="LOCAL" aria-labelledby="profile-tab">
+
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="AREA" aria-labelledby="profile-tab">
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <script>
+
+
+                    </script>
+                </div>
+
+
+                @*<div class="ln_solid"></div>*@
+
+                <input type="hidden" id="intidUsuario" />
+
+                <div class="row" id="containerCampose">  </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<style type="text/css">
+    #claveValidar_usu {
+        position: absolute;
+        z-index: 99;
+        /*width: 100%;*/
+        background: #ffffff;
+        /*top: 60px;*/
+        border: 1px solid #ccc;
+        height: auto;
+        padding: 2px 5px;
+        display: none;
+        margin-right: 10px;
+    }
+
+        #claveValidar_usu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #claveValidar_usu h5 {
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+    #ojitoMuestraEscondeClave {
+        background-color: #fff;
+    }
+</style>
+
+@* Estilo para los checkbox azules *@
+<link href="~/Content/app.css" rel="stylesheet" />
+
+@section vue{
+
+    <script>
+
+        $(document).ready(function () {
+
+            CombosUsuario(); //CombosUsuario
+            TablaUsuario();
+        });
+
+    </script>
+
+    <script src="~/Scripts/util/Usuarios.js"></script>
+
+
+
+}
+
+
+
+

@@ -1,0 +1,324 @@
+﻿@using CBX_Web_SISCOP.wsConfiguracion;
+@model object[]
+@{
+    /**/
+
+    JerarquiaOrg objJer = (JerarquiaOrg)Model[0];
+    List<CamposAdicionales> listCA = (List<CamposAdicionales>)Model[2];
+    List<DetalleJerarquiaOrg> listDetalleJer = (List<DetalleJerarquiaOrg>)Model[3];
+    DetalleJerarquiaOrg objJerCamp = (DetalleJerarquiaOrg)Model[5];
+}
+
+<form class="form-horizontal form-label-left">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+        </div>
+        <div id="11" style="text-align:right;">
+            @if (objJer.FlActivo.bitFlActivo == true)
+            {
+                <label id="_lbl_">Activo</label> <input type="checkbox" id="chk-activo-JO" class="js-switch" checked />
+                <script>switcheryLoad();</script>
+            }
+            else
+            {
+                <label id="_lbl_">Inactivo</label> <input type="checkbox" id="chk-activo-JO" class="js-switch" />
+                <script>switcheryLoad();</script>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Nivel Jerárquico (*)</label>
+                @Html.DropDownList("cboNivel-JO", (SelectList)Model[1], null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <div>
+                    <label class="col-md-7 col-sm-7 col-xs-6"> Jerarquía Superior </label>
+
+                </div>
+                @if (ViewBag.JER_PADRE != null)
+                {
+                    @Html.DropDownList("cboJerPadre-JO", (SelectList)Model[4], null, new { @class = "form-control" })
+                }
+                else
+                {
+                    <select class="form-control" id="cboJerPadre-JO" disabled>
+                        <option value="">Seleccione</option>
+                    </select>
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="border-section">
+            <!--Datos para la actualización de la Jeraquía Organizacional-->
+            <div class="form-group">
+                <input type="hidden" class="form-control  CodJerOrg" id="txt-intId-JO" value="@objJer.IntIdJerOrg">
+                <input type="hidden" class="form-control" id="txt-strCoInt-JO" value="@objJer.strCoIntJO">
+                <input type="hidden" class="form-control" id="txt-strIntidCamp-JO" value="">
+
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Código (*)</label>
+                    <input type="text" name="codigo" class="form-control" id="txt-cod-JO"  placeholder="Código"  value="@objJer.strCoJerOrg" onkeypress = "validarCodigoAll(event)" >
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Descripción (*)</label>
+                    <input type="text" class="form-control" id="txt-desc-JO" placeholder="Descripción" value="@objJer.strNomJerOrg" onkeypress = "validarDescripcionAll(event)" >
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 col-sm-6 col-xs-6">
+            <div class="campo">
+                <center><h3> Asignar Campos Personalizados </h3></center>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="campo">
+                <label id="CamposSel">
+                    Todos los Campos <input id="AllCampos" type="checkbox" class="flat obl">
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="obligatorio">
+                <label>
+                    <strong> Todos Obligatorios </strong><input id="AllObligatorios" type="checkbox" class="flat " />
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="border-section">
+            <div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="campo">
+                        <label id="CamposSel_">
+                            <strong> CAMPOS</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="obligatorio_">
+                        <center>
+                            <label>
+                                <strong> OBLIGATORIO</strong>
+                            </label>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="vacio_">
+                        <center>
+                            <label>
+                            </label>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            @foreach (CamposAdicionales item in listCA)
+            {
+                string checkk = "";
+                string switchh = "";
+                var lista = listDetalleJer.Where(x => x.intIdCampo == item.IntIdCampo);
+                if (lista.Count() == 1)
+                {
+                    checkk = "checked";
+                    if (lista.FirstOrDefault().bitObligatorio)
+                    {
+                        switchh = "checked";
+                    }
+
+                }
+                <div class="div-campos-adicio">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="campo">
+                            <label>
+                                <input type="checkbox" id="@item.IntIdCampo" class="flat chkCampAdic case  @item.IntIdCampo+Switch" data-intidcampo="@item.IntIdCampo" data-strcocampo="@item.strCoCampo" @checkk> @item.strDesCampo
+
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="obligatorio">
+                            <center>
+                                <label>
+                                    @if (item.strCoCampo == "REPLEG" || item.strCoCampo == "PERRESP")
+                                    {
+                                        <input id="D" type="checkbox" class="flat chkOb case1 X" disabled />
+                                    }
+                                    else
+                                    {
+                                        <input id="@item.IntIdCampo+Switch" type="checkbox" class="flat chkObligatorio case1 @item.IntIdCampo" @switchh />
+
+                                    }
+                                </label>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="vacio_">
+                            <center>
+                                <label>
+                                </label>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="ln_solid" style="margin: 24px 0;"></div>
+
+            }
+
+        </div>
+    </div>
+
+</form>
+
+<title>jQuery Get ID of Multiple Elements</title>
+<button type="button" id="myBtn" hidden>Show ID List</button>
+<script>
+
+    $(document).ready(function () {
+        $("#myBtn").click(function () {
+            var idArr = [];
+            $(".form-control").each(function () {
+                idArr.push($(this).attr("id"));
+            });
+
+            // Join array elements and display in alert
+            alert(idArr.join(", "));
+        });
+    });
+</script>
+
+<script>
+    //LINEAS DESARROLLADAS PARA LA SOLUCION EN EL DOCUMENTO “_PartialEditarJerarquía.cshtml” - HG 06.04.2021
+    //-----------------------------------------------------------------------------------------
+    //CAMPOS ADICIONALES
+    var count_elements = $('.campo').length;
+    var count_elements_checked = $('.campo input:checked').length;
+    if (count_elements_checked == count_elements - 1) {
+
+        $('#AllCampos').iCheck('check');
+
+    }
+
+    //OBLIGATORIO
+    var count_elements_o = $('.obligatorio').length;
+    var count_elements_checked_o = $('.obligatorio input:checked').length;
+    if (count_elements_checked_o == count_elements_o - 1) {
+
+        $('#AllObligatorios').iCheck('check');
+
+    }
+    //-----------------------------------------------------------------------------------------
+
+    $('#AllCampos').on('ifChanged', function (event) {
+        if ($('#AllCampos').is(':checked') == true) {
+
+            $('.chkCampAdic').iCheck('check');
+        }
+        if ($('#AllCampos').is(':checked') == false) {
+
+            $('.chkCampAdic').iCheck('uncheck');
+
+        }
+    });
+
+    $('.chkObligatorio').on('ifChanged', function (event) {
+
+        if ($(".case1").length == $(".case1:checked").length) {
+            $('#AllObligatorios').iCheck('check');
+
+        }
+
+        if ($(".case1:checked").length == 0) {
+            $('#AllObligatorios').iCheck('uncheck');
+
+        }
+
+    });
+
+
+    $('.chkCampAdic').on('ifChanged', function (event) {
+
+        if ($(".case").length == $(".case:checked").length) {
+            $('#AllCampos').iCheck('check');
+
+        }
+
+        if ($(".case:checked").length == 0) {
+            $('#AllCampos').iCheck('uncheck');
+
+        }
+
+    });
+
+    $('#AllObligatorios').on('ifChanged', function (event) {
+        if ($('#AllObligatorios').is(':checked') == true) {
+
+            $('.chkObligatorio').iCheck('check');
+        }
+        if ($('#AllObligatorios').is(':checked') == false) {
+
+            $('.chkObligatorio').iCheck('uncheck');
+
+        }
+    });
+
+
+    $(".chkObligatorio").on('ifChanged', function () {
+        if ($(this).is(':checked')) {
+            // Hacer algo si el checkbox ha sido seleccionado
+            var id = $(this).attr("id");
+
+            var idnew = id.substr(0, 1);
+            if (idnew < 10) {
+
+                $('#' + idnew + '').iCheck('check');
+            }
+
+            if (idnew = 1) {
+                var idnew2 = id.substr(0, 2);
+
+                $('#' + idnew2 + '').iCheck('check');
+            }
+        } else {
+            // Hacer algo si el checkbox ha sido deseleccionado
+        }
+    });
+
+    $(".chkCampAdic").on('ifChanged', function () {
+        var idCamp = $(this).attr("id");
+
+
+        if ($(this).is(':checked')) {
+            // Hacer algo si el checkbox ha sido seleccionado
+
+        } else {
+
+            $('.' + idCamp + '').iCheck('uncheck');
+
+        }
+    });
+
+
+</script>

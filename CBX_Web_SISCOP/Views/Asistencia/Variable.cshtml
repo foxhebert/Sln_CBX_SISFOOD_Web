@@ -1,0 +1,552 @@
+
+@{
+    ViewBag.Title = "Variable";
+}
+@*<div class="loader"></div>
+    <style>
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(../../images/pageLoader.gif) 50% 50% no-repeat rgb(249,249,249);
+            opacity: .95;
+        }
+    </style>*@
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>*@
+
+@*<script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        });
+
+    </script>*@
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <label class="" style="text-align: right !important;">Buscar </label>
+                <input type="text" class="form-control" id="filtroVar" placeholder="Buscar por Código o Descripción">
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <label class="control-label">Tipo Variable</label>
+                <select class="form-control" id="campTipoVar">
+                    <option value="0" selected>Todos</option>
+                </select>
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <label class="control-label">Estado</label>
+                <select class="form-control" id="filActiVar">
+                    <option value="2">Todos</option>
+                    <option value="1" selected>Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Asistencia</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Variable</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- PANEL TABLA -->
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Variables</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <input type="button" id="btn-new-variable" class="btn btn-primary" value="Nueva Variable">
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="tablaVariable" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;">
+                    @* <table id="tablaVariable" class="table table-striped table-bordered table-responsive nowrap" cellspacing="0" width="100%">*@
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th>Tipo Variable</th>
+                            <th>Und. Medida</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                            <th style="display:none">5</th>
+                            @*<th style="display:none">intIdCargo</th>*@
+                            <th style="display:none">strCargoCampo1</th>
+                            <th style="display:none">strCargoCampo2</th>
+                            <th style="display:none">strCargoCampo3</th>
+                            <th style="display:none">strCargoCampo4</th>
+                            <th style="display:none">strCargoCampo5</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBodyVariable"></tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SEGUNDO PANEL -->
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="form-hide-variable" hidden>
+
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Información de la Variable</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-save-change-variable" class="btn btn-primary" value="Guardar">
+                            <input type="button" id="btn-update-variable" class="btn btn-success" value="Actualizar" hidden>
+                        </li>
+                        <li>
+                            <input type="button" id="btn-cancel-variable" class="btn btn-dark" value="Cancelar">
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" hidden>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <label>Tipo e (*)</label>
+                                    <select class="form-control">
+                                        <option>Descontable</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <div>
+                                        <label class="col-md-7 col-sm-7 col-xs-6"> Und. de Medida (*)</label>
+                                        <div class="col-md-5 col-sm-5 col-xs-6 text-right">
+                                            <input type="checkbox" class=" js-switch" /> Activo
+                                        </div>
+                                    </div>
+
+                                    <select class="form-control">
+                                        <option>Horas</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="border-section">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Código (*)</label>
+                                        <input type="text" class="form-control" placeholder="Nº Terminal">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Descripción (*)</label>
+                                        <input type="text" class="form-control" placeholder="Descripción ">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Código Planilla (*)</label>
+                                        <input type="text" class="form-control" placeholder="Código">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Código Externo (*)</label>
+                                        <input type="text" class="form-control" placeholder="Código">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                    <p>
+                                        <input type="radio" class="flat" name="iCheck"> Incidencia
+                                    </p>
+                                    <p>
+                                        <input type="radio" class="flat" name="iCheck"> Ausencia
+                                    </p>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                    <p>
+                                        <input type="radio" class="flat" name="iCheck1"> Bono Total
+                                    </p>
+                                    <p>
+                                        <input type="radio" class="flat" name="iCheck1"> Bono Específico
+                                    </p>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                    <p>
+                                        <input type="radio" class="flat" name="iCheck2"> Permite marcas
+                                    </p>
+                                    <p>
+                                        <input type="radio" class="flat" name="iCheck2"> Requiere Marcas
+                                    </p>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                    <p>
+                                        <input type="radio" class="flat" name="iCheck3"> Horarios Específicos
+                                    </p>
+                                    <p>
+                                        <input type="radio" class="flat" name="iCheck3"> Todos los Horarios
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p class="legend-border" style="width:70px;">Aplicable a:</p>
+                            <div class="border-section">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="flat"> Todos los días
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="flat" checked="checked"> Día Laborable
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="flat" checked="checked"> Día de Descanso
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="flat" checked="checked"> Día Feriado
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="flat" checked="checked"> Día Sábado
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="flat" checked="checked"> Día Domingo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br />
+
+                        <!-- start accordion -->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                                    <div class="panel">
+                                        <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne">
+                                            <h4 class="panel-title">Redondeo de Horas</h4>
+                                        </a>
+                                        <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Tipo de Redondeo</label>
+                                                        <select class="form-control">
+                                                            <option>Inferior</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Aplicar Por</label>
+                                                        <select class="form-control">
+                                                            <option>00:05</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Factor de Redondeo(Tiempo)</label>
+                                                        <select class="form-control">
+                                                            <option>Días</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Forma de Redondeo</label>
+                                                        <select class="form-control">
+                                                            <option>Por Intervalo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo">
+                                            <h4 class="panel-title">Configuración de Bonificaciones</h4>
+                                        </a>
+                                        <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <input type="text" id="range" value="" name="range" />
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Tolerancia (*)</label>
+                                                        <input type="time" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Tiempo Mínimo</label>
+                                                        <input type="time" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
+                                            <h4 class="panel-title">Horarios Específicos</h4>
+                                        </a>
+                                        <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <a class="btn-link pull-left">Marcar todos</a>
+                                                    <a class="btn-link pull-right">Desmarcar todos</a>
+                                                </div>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <select class="select2_multiple form-control" multiple="multiple">
+                                                        <option>Choose option</option>
+                                                        <option>Option one</option>
+                                                        <option>Option two</option>
+                                                        <option>Option three</option>
+                                                        <option>Option four</option>
+                                                        <option>Option five</option>
+                                                        <option>Option six</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-12 col-sm-12 col-xs-12 text-right" style="margin-top:5px;">
+                                                    <input type="checkbox" class="js-switch" /> Mostrar Solo Seleccionados
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <a class="panel-heading collapsed" role="tab" id="headingFour1" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1" aria-expanded="false" aria-controls="collapseThree">
+                                            <h4 class="panel-title">Prioridad de HE</h4>
+                                        </a>
+                                        <div id="collapseFour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Aplicar Prioridad</label>
+                                                        <select class="form-control">
+                                                            <option>2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class=" col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Prioridad</th>
+                                                                    <th>Horas Extras</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>1</td>
+                                                                    <td>HE25</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2</td>
+                                                                    <td>HE23</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <a class="panel-heading collapsed" role="tab" id="headingFive1" data-toggle="collapse" data-parent="#accordion1" href="#collapseFive1" aria-expanded="false" aria-controls="collapseThree">
+                                            <h4 class="panel-title">Exportables y Base de Cálculo</h4>
+                                        </a>
+                                        <div id="collapseFive1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body" style="padding:0px;">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <br />
+                                                    <p class="legend-border" style="width:90px;">Acumulable en:</p>
+                                                    <div class="border-section">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Horas trabajadas
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Días Trabajados
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Días Trabajados Efectivos
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <br />
+                                                    <p class="legend-border" style="width:190px;">Exportable a / Base de Cálculo de:</p>
+                                                    <div class="border-section">
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Exportable a planilla
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Exportable a Días Subsidiados
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Exportable a Días no trabajados ni Subsidiados
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Cálculo CTS
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Calidad de Utilidades
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" class="flat" checked="checked"> Cálculo de Gratificación
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="panel">
+                                        <a class="panel-heading collapsed" role="tab" id="headingSix1" data-toggle="collapse" data-parent="#accordion1" href="#collapseSix1" aria-expanded="false" aria-controls="collapseThree">
+                                            <h4 class="panel-title">Campos Adicionales</h4>
+                                        </a>
+                                        <div id="collapseSix1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group">
+                                                            <label>Campo 1</label>
+                                                            <input type="text" class="form-control" placeholder="campo 1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group">
+                                                            <label>Campo 2</label>
+                                                            <input type="text" class="form-control" placeholder="campo 2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group">
+                                                            <label>Campo 3</label>
+                                                            <input type="text" class="form-control" placeholder="campo 3">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group">
+                                                            <label>Campo 4</label>
+                                                            <input type="text" class="form-control" placeholder="campo 4">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="form-group">
+                                                            <label>Campo 5</label>
+                                                            <input type="text" class="form-control" placeholder="campo 5">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end of accordion -->
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        TablaVariable();
+        // GetCampJerar();
+        LlenarTipoVar();
+    }
+    );
+</script>

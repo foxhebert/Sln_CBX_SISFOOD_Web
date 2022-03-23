@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="719b29b8-91a4-4710-a9e3-492ec4ebadbd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:35578/AsistenciaSrv.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AsistenciaSrv2.xsd" MetadataType="Schema" ID="6b77c562-f78d-4fa4-827b-58e5697811ba" SourceId="1" SourceUrl="http://localhost:35578/AsistenciaSrv.svc?xsd=xsd2" />
+    <MetadataFile FileName="AsistenciaSrv3.xsd" MetadataType="Schema" ID="481224c5-39f2-484a-ab2a-1774cf27d998" SourceId="1" SourceUrl="http://localhost:35578/AsistenciaSrv.svc?xsd=xsd3" />
+    <MetadataFile FileName="AsistenciaSrv.xsd" MetadataType="Schema" ID="0b8a533c-d6da-4396-b77a-5e48752fb2a3" SourceId="1" SourceUrl="http://localhost:35578/AsistenciaSrv.svc?xsd=xsd0" />
+    <MetadataFile FileName="AsistenciaSrv1.xsd" MetadataType="Schema" ID="e7797b8b-83c3-4f04-8275-f60378a49324" SourceId="1" SourceUrl="http://localhost:35578/AsistenciaSrv.svc?xsd=xsd1" />
+    <MetadataFile FileName="AsistenciaSrv.wsdl" MetadataType="Wsdl" ID="5f6ab5e7-da82-49d2-92d3-3f4f691dc72e" SourceId="1" SourceUrl="http://localhost:35578/AsistenciaSrv.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

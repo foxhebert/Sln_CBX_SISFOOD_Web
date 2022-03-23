@@ -1,0 +1,1288 @@
+﻿<div id="wizardEmpleado" class="form_wizard wizard_horizontal">
+    <ul class="wizard_steps">
+        <li>
+            <a href="#step-1" id="wizarpaso1">
+                <span class="step_no">1</span>
+                <span class="step_descr">
+                    <small>Datos Personales</small>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#step-2" id="wizarpaso2">
+                <span class="step_no">2</span>
+                <span class="step_descr">
+                    <small>Afiliación</small>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#step-3" id="wizarpaso3">
+                <span class="step_no">3</span>
+                <span class="step_descr">
+                    <small>Beneficios y Responsabilidades</small>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#step-4" id="wizarpaso4">
+                <span class="step_no">4</span>
+                <span class="step_descr">
+                    <small>Comedor</small>
+                </span>
+            </a>
+        </li>
+        <li id="LIwizarpaso5">
+            <a href="#step-5" id="wizarpaso5">
+                <span class="step_no">5</span>
+                <span class="step_descr">
+                    <small>Geolocalización</small>
+                </span>
+            </a>
+        </li>
+    </ul>
+    <div id="step-1">
+        <form class="form-horizontal form-label-left">
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6"></div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group pull-right">
+                        <br />
+                        <label id="_lbl_"></label>
+                        <input type="checkbox" id="estadoEmpleadoActivo" class="js-switch" checked />
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label>Tipo y Número de Doc. Identidad (*)</label>
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <select class="btn btn-default btn-primary" id="TipoDoc">
+                                    <option value="0">Tipo Doc.</option>
+
+                                </select>
+                            </div>
+                            <input type="text" id="txtNumDoc" required class="form-control" style="width:70%;" onkeypress="return validarSoloNumEmp(event)">
+                            <div id="msgVerifDoc"></div>
+                        </div>
+                        <select class="form-control" id="DNI_PER" hidden>
+                            <option value="0">Seleccione</option>
+                        </select>
+                        <input type="hidden" id="codPersonalHideen" />
+                        <input type="hidden" id="numRegistroPersonalHideen" />
+                        <input type="hidden" id="intTipoOperacion" value="1" />
+                        <input type="hidden" id="intIdPersonalReg" value="0" />
+                        <input type="hidden" id="fechaDeCeseValidar" value="" />
+                        <input type="hidden" id="fechaDefechaAdmision" value="" />
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <h6 style="color:green" id="Mensaje_Info"></h6>
+                        <label id="leyenda_" style="color:darkblue;">Digite el Documento y presione Enter para Validar Existencia.</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Apellido Paterno (*)</label>
+                        <input type="text" class="form-control disabled_Doc" placeholder="Apellido Paterno" id="txtApePat" onkeypress="validarDescripcionAll(event)">
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido Materno (*)</label>
+                        <input type="text" class="form-control disabled_Doc" placeholder="Apellido Materno" id="txtApeMat" onkeypress="validarDescripcionAll(event)">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombres (*)</label>
+                        <input type="text" class="form-control disabled_Doc" placeholder="Nombres" id="txtNombres" onkeypress="validarDescripcionAll(event)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha Nacimiento (*)</label>
+                        <div class="control-group">
+                            <div class="controls" hidden>
+                                <div class="input-prepend input-group" id="FechaNac">
+                                    <span class="add-on input-group-addon btn-primary"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                    <input id="txtFechaNac" type="text" class="form-control disabled_Doc" value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                <input type="date" class="form-control has-feedback-left" id="inputSuccess3" style="padding-left: 70px;border: 2px solid #ccc;" value="2018-07-22" max="9999-12-31">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <br />
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="radio" id="chck_mas" class="flat radioMasculino disabled_Doc" checked="checked" name="generoEmpleado"> Masculino
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="radio" id="chck_fem" class="flat disabled_Doc" name="generoEmpleado"> Femenino
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label>Foto</label>
+                    <div class="border-section">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="btn btn-primary btn-upload pull-left" title="Agregar Foto">
+                                <input type="file" id="CargarImagen" style="text-align:right;display:none;" multiple>
+                                <input id="carga" class="sr-only" name="file" accept="image/*">
+                                <span class="docs-tooltip" data-toggle="tooltip" style="text-align:right;">
+                                    <span class="fa fa-upload"></span>
+                                </span>
+                            </label>
+                            <label class="btn btn-danger btn-upload pull-right" title="Eliminar Foto">
+                                <input type="file" id="delete" data-toggle="modal" data-target="#myModal" class="sr-only" name="file">
+                                <span class="fa fa-trash-o"></span>
+                            </label>
+                        </div>  &nbsp;&nbsp;&nbsp;
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div id="VistaPrevia"><img id="imgCarga" src="~/DirEmpleadosRuta/descarga(1).jpg" class="img-rounded img-logo-empleado" /></div>
+                            <input type="text" id="txtRutaEmple" hidden />
+                            <p class="pull-left">&nbsp;&nbsp;Dimensión: 200px X 200px</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label>Sexo</label>
+                            <br />
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio" id="chck_mas" class="flat radioMasculino disabled_Doc" checked="checked" name="generoEmpleado"> Masculino
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio" id="chck_fem" class="flat disabled_Doc" name="generoEmpleado"> Femenino
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                        </div>
+                    </div>
+                </div>*@
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        <div class="input-group">
+                            <div class="input-group-btn ">
+                                <select class="btn btn-primary disabled_Doc" id="TipVia"></select>
+                            </div>
+                            <input type="text" class="form-control disabled_Doc" id="TXTTIPVIA" onkeypress="validarDescripcionAll(event)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <label>Ubigeo </label>
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary disabled_Doc" data-toggle="modal" data-target="#exampleModal">
+                                Ubigeo
+                            </button>
+                        </div>
+                        <input type="text" id="txtUbigeo" class="form-control" disabled="disabled">
+                        <input type="hidden" id="txtIntidUbigeo" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <style>
+
+                .switch6 {
+                    max-width: 17em;
+                    margin: 0 auto;
+                }
+
+                .switch6-light > span, .switch-toggle > span {
+                    color: #000000;
+                }
+
+                .switch6-light span span, .switch6-light label, .switch-toggle span span, .switch-toggle label {
+                    color: #2b2b2b;
+                }
+
+                .switch-toggle a,
+                .switch6-light span span {
+                    display: none;
+                }
+
+                .switch6-light {
+                    display: block;
+                    height: 30px;
+                    position: relative;
+                    overflow: visible;
+                    padding: 0px;
+                    margin-left: 0px;
+                }
+
+                    .switch6-light * {
+                        box-sizing: border-box;
+                    }
+
+                    .switch6-light a {
+                        display: block;
+                        transition: all 0.3s ease-out 0s;
+                    }
+
+                    .switch6-light label,
+                    .switch6-light > span {
+                        line-height: 30px;
+                        vertical-align: middle;
+                    }
+
+                    .switch6-light label {
+                        font-weight: 700;
+                        margin-bottom: px;
+                        max-width: 100%;
+                    }
+
+                    .switch6-light input:focus ~ a, .switch6-light input:focus + label {
+                        outline: 1px dotted rgb(136, 136, 136);
+                    }
+
+                    .switch6-light input {
+                        position: absolute;
+                        opacity: 0;
+                        z-index: 5;
+                    }
+
+                        .switch6-light input:checked ~ a {
+                            right: 0%;
+                        }
+
+                    .switch6-light > span {
+                        position: absolute;
+                        left: -100px;
+                        width: 100%;
+                        margin: 0px;
+                        padding-right: 100px;
+                        text-align: left;
+                    }
+
+                        .switch6-light > span span {
+                            position: absolute;
+                            top: 0px;
+                            left: 0px;
+                            z-index: 5;
+                            display: block;
+                            width: 50%;
+                            margin-left: 100px;
+                            text-align: center;
+                        }
+
+                            .switch6-light > span span:last-child {
+                                left: 50%;
+                            }
+
+                    .switch6-light a {
+                        position: absolute;
+                        right: 50%;
+                        top: 0px;
+                        z-index: 4;
+                        display: block;
+                        width: 50%;
+                        height: 100%;
+                        padding: 0px;
+                    }
+            </style>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Email Principal (*)</label>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="email" id="Email_Emple" onkeypress = "CheckSpace(event)" required class="form-control disabled_Doc" value="" placeholder="email@example.com" />
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Otros E-mails</label>
+                        <label style="font-weight: 200;">Ingresar correos con @@ y .com, luego dar enter para validarlo (se remarcará de verde si es correcto)</label>
+                        <div class="col-md-12 col-sm-12 col-xs-12" id="TagEmailContainer">
+                            <input id="tagsEmail" type="text" class="tags form-control" value="" />
+                            <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Celular Principal </label>
+                        <input type="text" id="celularEmpleado" class="form-control disabled_Doc" value="" placeholder="999 999 999" maxlength="9" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>Otros Números Telefónicos</label>
+                        <label style="font-weight: 200;">Ingresar solo números de 9 dígitos, luego dar enter para validarlo (se remarcará de verde si es correcto)</label>
+                        <div class="col-md-12 col-sm-12 col-xs-12" id="tagTelefonosContainer">
+                            <input id="tagsTelefono" type="text" class="tags form-control" data-default="Añade Telefono" data-delay="" />
+                            <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+
+            <style>
+                input:required {
+                    border: 2px solid red;
+                    /* otras propiedades */
+                }
+
+                input[type="email"]:required:valid {
+                    border: 2px solid red;
+                    /* otras propiedades */
+                }
+            </style>
+        </form>
+    </div>
+    <div id="step-2">
+        <form class="form-horizontal form-label-left configform2">
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Código de Empleado - N° Registro (*)</label>
+                        <input type="text" id="codigoDeRegistro" class="form-control" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Fecha Admisión (*)</label>
+                        <div class="control-group">
+                            <div class="controls" hidden>
+                                <div class="input-prepend input-group " id="FechaAdmi">
+                                    <span class="add-on input-group-addon btn-primary"><i class="glyphicon glyphicon-calendar fa fa-calendar "></i></span>
+                                    <input id="txtFechaAdmi" type="text" class="form-control" value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                <input type="date" class="form-control has-feedback-left" id="inputSuccess2" style="padding-left: 70px;border: 2px solid #ccc;" value="2018-07-22" max="9999-12-31">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Fotocheck (*)</label>
+                        <input type="text" id="fotocheckPersonal" class="form-control" placeholder="Fotocheck" onkeypress="validarCodigoAll(event)">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Código Externo</label>
+                        <input type="text" name="codigoExterno" id="codigoExterno" placeholder="Código Externo" class="form-control" onkeypress="validarCodigoAll(event)" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Fiscalización (*)</label>
+                        <select class="form-control" id="comboFiscalizacion">
+                            <option>Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Nivel de Responsabilidad (*)</label>
+                        <select class="form-control" id="nivelDeResponsabilidad">
+                            <option>Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Empresa (*)</label>
+                        <select class="form-control" id="cboEmpresa">
+                            <option value="0">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Local (*)</label>
+                        <select class="form-control" id="cboLocal">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Dependencia (*)</label>
+                        <select class="form-control" id="cboDependencia">
+                            <option value="0">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Unidad Organizacional (*)</label>
+                        <select class="form-control" id="unidadOrganizacionalCbo">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Cargo (*)</label>
+                        <select class="form-control" id="cargoEmpleado">
+                            <option>Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Planilla(*)</label>
+                        <select class="form-control" id="planillaEmpleado">
+                            <option>Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select class="form-control" id="categoriaEmpleado">
+                            <option>Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Tipo de Personal </label>
+                        <select class="form-control" id="tipoDePersonal">
+                            <option>Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Grupo</label>
+                        <select class="form-control" id="tgGrupoRegistro">
+                            <option>Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Centro de Costo</label>
+                        <select class="form-control" id="centroDeCosto">
+                            <option>Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div id="step-3">
+        <form class="form-horizontal form-label-left configform3">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Responsable Inmediato </label>
+                        <select class="form-control" id="cboResponsableInmediato" style="width: 100%">
+                            <option value="0">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Responsable Contractual </label>
+                        <select class="form-control" id="cboResponsableContractual" style="width: 100%">
+                            <option value="0">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Código Pensionista [C.U.S.P.P.]</label>
+                        <input type="text" class="form-control" id="codigoPensionista" placeholder="Código Pensionista" onkeypress="validarCodigoAll(event)" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Código Salud [EsSalud]</label>
+                        <input type="text" class="form-control" id="codigoDeSalud" placeholder="Código Salud [EsSalud]" onkeypress="validarCodigoAll(event)" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="flat" id="contradoIndeterminado"> Contrato Indeterminado
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="checkbox" id="GestVac_Div">
+                            <label>
+                                <input type="checkbox" class="flat" id="GestVac_"> Activar Gestión de Vacaciones
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* Fila de comedor: *@
+            <div class="row" style="display:none">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="flat" id="subsidioPorAlimentacion"> Subsidio por Alimentación
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="flat" id="liniaDeCreditos"> Línea de Crédito para Adicionales
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <fieldset>
+                    <legend class="m-0" style="width:auto !important; border: none; font-size: 12px;font-weight: 600;">
+                        <input type="checkbox" class="flat" id="fechaCeseChecbox"> Cese
+                    </legend>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label>Fecha de Cese (*)</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="width: 100%;padding-left: 0px;padding-right: 0px;">
+                                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                <input type="date" class="form-control has-feedback-left" id="inputSuccess1" style="padding-left: 70px;border: 1px solid #ccc;" value="" max="9999-12-31" disabled="disabled">
+                                <input id="txtFechaCese" type="text" class="form-control" value="" disabled="disabled" hidden />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Grupo de Liquidación (*)</label>
+                            <select class=" form-control" id="tgTgGrupoliq" disabled="disabled">
+                                <option>Seleccione</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Motivo de Cese</label>
+                            <select class="select2_multiple form-control" id="mativoDeCese" disabled="disabled">
+                                <option>Seleccione</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="ln_solid"></div>
+
+            <div class="row" id="contendorCamposPersonal">
+            </div>
+        </form>
+    </div>
+    <div id="step-4">
+        <form class="form-horizontal form-label-left configform4">
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Regla de Negocio (*)</label>
+                        <select class="form-control" id="reglaDeNegocio">
+                            @*<option>Seleccione</option>*@
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Horario Fijo (*)</label>
+                        <select class="form-control" id="tgHorarioFijo">
+                            @*<option>Seleccione</option>*@
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Marcadores (*)</label>
+                        <select class="select2_multiple form-control" multiple="multiple" id="marcadorMultiple" style="height: 135px !important"></select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <br />
+                    <div class="col-md-12 col-sm-12 col-xs-12 p-0 pb-3">
+                        <label>
+                            <input type="checkbox" class="flat" id="activarUsuarioCbo"> Activar Usuario
+                        </label>
+                    </div>
+                    <fieldset>
+                        <legend class="m-0" style="width:auto !important; border: none; font-size: 12px;font-weight: 600;">
+                            <input type="checkbox" class="flat" id="activarUsuarioAdmin"> Es Usuario Administrador
+                        </legend>
+                        <div class="form-group">
+                            <label>Seleccionar Perfil Administrador</label>
+                            <select class="select2_multiple form-control" id="cboPerfilAdmin">
+                                <option>Seleccione</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </div>
+
+            </div>
+            <br />
+            <!-- Habilitar Marcación con DNI (Toma de Consumos) - FORMULARIO NUEVO -->  <!-- AÑADIDO HG 19.03.21 HEBERT19-->
+            <div class="row">
+                <fieldset>
+                    <legend class="m-0" style="width:auto !important; border: none; font-size: 12px;font-weight: 600;">
+                        <input type="checkbox" class="flat" id="CheckboxVigenciaMarcaConDni"> Habilitar Marcación con DNI (Toma de Consumos)
+                    </legend>
+                    <!-- INICIO DE VIGENCIA -->
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label>Fecha  - Hora Inicio de Vigencia (*)</label>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="input-prepend input-group m-0" id="InicioFechaDeVigencia">
+                                        <span class="add-on input-group-addon btn-primary">
+                                            <i class="glyphicon glyphicon-calendar fa fa-calendar "></i>
+                                        </span>
+                                        <input id="txtFechaInicioVegencia" type="text" class="form-control" value="" disabled="disabled" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN DE VIGENCIA -->
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label>Fecha - Hora Fin de Vigencia (*)</label>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="input-prepend input-group m-0" id="FinFechaDeVigencia">
+                                        <span class="add-on input-group-addon btn-primary">
+                                            <i class="glyphicon glyphicon-calendar fa fa-calendar "></i>
+                                        </span>
+                                        <input id="txtFechaFinVegencia" type="text" class="form-control" value="" disabled="disabled" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <!-- SCRIPT NECESARIO PARA UTILIZAR EL DATAPICKER EN LOS DOS CONTROLES -->
+            <script type="text/javascript">
+                $(function () {
+                    moment.locale('es')
+                    $('#InicioFechaDeVigencia,#FinFechaDeVigencia').datetimepicker({
+                        format: 'YYYY-MM-DD HH:mm:ss'
+                    });
+                });
+            </script>
+            <br />
+            <!-- Habilitar FLAT-Checbox (Toma de Consumos) Supervisor de Comedor-->  <!-- AÑADIDO HG 23.03.21 HEBERT23-->
+            <div class="row">
+                <legend class="m-0" style="width:auto !important; border: none; font-size: 12px;font-weight: 600;">
+                    <input type="checkbox" class="flat" id="CheckboxHabilitarSupervisorDeCom"> Habilitar Supervisor de Comedor
+                </legend>
+
+            </div>
+            <br />
+        </form>
+    </div>
+    <div id="step-5">
+        <form class="form-horizontal form-label-left configform4">
+
+            <div class="p-3" style=" border: 1px solid #cfd4da;">
+                <div class="row x_title">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <h2 class="m-0">Ingresar Geolocalización</h2>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <i style="float:right;" id="btn-limpiar-Intrevalos" class="fa fa-trash-o fa-2x" title="Limpiar"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Coordenada (*)</label>
+                                    <input type="text" class="form-control geoInput" id="txtCoor" placeholder="Coordenada" onkeypress="validarCoordenada(event)" />
+                                    <span class="amt_err"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <div class="checkbox" style="text-align:left">
+                                        <label class="p-0">
+                                            <input type="checkbox" class="flat" id="cboGeoArea"> N° de Geoárea:
+                                        </label>
+                                    </div>
+                                    <br />
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="txtNumGeo" value="1" min="1" disabled>
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-success" style="width: 100%;" id="btnNuevaGeoArea" disabled>Nuevo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Dirección (*)</label>
+                                    <textarea class="form-control" id="txtDireccionCoor" rows="4" onkeypress="validarDescripcionAll(event)"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="">
+                                    <label class="p-0">
+                                        <input type="checkbox" class="flat" id="cboTomarFoto"> Tomar Foto (Asistencia con el App Móvil)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row pt-4">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <h2>Coordenadas Agregadas</h2>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+                    <label class="btn btn-primary" id="btn-add-Geo" title="Agregar Coordenada"><i class="fa fa-plus fa-2x"></i></label>
+                    <label class="btn btn-danger" id="btn-clear-Geo" title="Borrar Todas las Coordenadas"><i class="fa fa-trash-o fa-2x"></i></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table id="tableGeo" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>N° de Geoárea</th>
+                                <th>Coordenada</th>
+                                <th>Dirección</th>
+                                <th>Acción</th>
+                                <th style="display:none">geoArea</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableGeoBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<br />
+
+<style>
+
+    h1, h2 {
+        margin-bottom: .5em;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+
+    input#Pruebase {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 40px;
+        font-family: Verdana;
+        font-size: 16px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#Pruebase:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+
+    input#OtrosEmails {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 40px;
+        font-family: Verdana;
+        font-size: 10px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#OtrosEmails:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#Email_Emple {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 20px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#Email_Emple:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#celularEmpleado {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 20px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#celularEmpleado:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#TXTTIPVIA {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 20px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#TXTTIPVIA:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#txtUbigeo {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 40px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#txtUbigeo:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#txtFechaAdmi {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 40px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#txtFechaAdmi:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#txtNumDoc {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 40px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#txtNumDoc:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#txtApePat {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#txtApePat:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#txtApeMat {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#txtApeMat:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+
+    input#txtNombres {
+        width: 100%;
+        height: 70%;
+        border: 2px solid #ccc;
+        line-height: 40px;
+        color: #333;
+        padding: 5px;
+    }
+
+        input#txtNombres:focus {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+            border-color: rgb(102, 175, 233);
+        }
+</style>
+<script>
+
+
+
+    //<input type="text" name="username" onkeypress="CheckSpace(event)" />
+    //Then the javascript is:
+    function CheckSpace(event) {
+        if (event.which == 32) {
+            event.preventDefault();
+            return false;
+        }
+    }
+
+
+    $('#TipVia').on('change', function () {
+        $('#TXTTIPVIA').val('');
+    })
+
+    //SOLUCION DESARROLLADA POR HGM AÑADIDO 15.12.2021Otros E-mails
+    $('#inputSuccess2').on("change", function () {
+
+        var input1 = $('#inputSuccess3').val();//INPUT DE NACIMIENTO
+        var y1 = parseInt(input1.substring(0, 4));
+        var m1 = parseInt(input1.substring(5, 7));
+        var d1 = parseInt(input1.substring(8, 10));
+
+
+
+        var date = $(this).val();
+
+        var input2 = $('#inputSuccess2').val(); //INPUT DE CONTRATACION
+        var y2 = parseInt(input2.substring(0, 4));
+        var m2 = parseInt(input2.substring(5, 7));
+        var d2 = parseInt(input2.substring(8, 10));
+
+
+        if (y1 > y2 || y1 == y2) {
+
+            if (y1 > y2) {
+
+                new PNotify({
+                    title: 'Actualizar Empleado',
+                    text: 'La fecha de nacimiento no puede ser mayor o igual que la fecha de admisión.',
+                    type: 'info',
+                    delay: 3000,
+                    styling: 'bootstrap3',
+                    addclass: 'dark'
+                });
+
+                return;
+
+            }
+            else {
+
+                if (m1 > m2) {
+
+                    new PNotify({
+                        title: 'Actualizar Empleado',
+                        text: 'La fecha de nacimiento no puede ser mayor o igual que la fecha de admisión.',
+                        type: 'info',
+                        delay: 3000,
+                        styling: 'bootstrap3',
+                        addclass: 'dark'
+                    });
+
+                    return;
+
+                }
+
+                else {
+
+                    if (d1 > d2) {
+
+                        new PNotify({
+                            title: 'Actualizar Empleado',
+                            text: 'La fecha de nacimiento no puede ser mayor o igual que la fecha de admisión.',
+                            type: 'info',
+                            delay: 3000,
+                            styling: 'bootstrap3',
+                            addclass: 'dark'
+                        });
+
+                        return;
+                    }
+                    else {
+                        new PNotify({
+                            title: 'Actualizar Empleado',
+                            text: 'La fecha de nacimiento no puede ser mayor o igual que la fecha de admisión.',
+                            type: 'info',
+                            delay: 3000,
+                            styling: 'bootstrap3',
+                            addclass: 'dark'
+                        });
+                        return;
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+        //SOLUCION DESARROLLADA POR HGM AÑADIDO 15.12.2021
+        /***********************************************************
+        $('#inputSuccess2').on("change", function () {
+            //alert(ln1087);
+            var input1 = $('#inputSuccess3').val();//INPUT DE NACIMIENTO
+            var y1 = parseInt(input1.substring(0, 4));
+            var m1 = parseInt(input1.substring(6, 7));
+            var d1 = parseInt(input1.substring(9, 10));
+
+            var date = $(this).val();
+
+            var input2 = $('#inputSuccess2').val(); //INPUT DE CONTRATACION
+            var y2 = parseInt(input2.substring(0, 4));
+            var m2 = parseInt(input2.substring(6, 7));
+            var d2 = parseInt(input2.substring(9, 10));
+
+
+            if (y1 > y2 || y1 == y2) {
+                //alert('Año Mayor');
+                if (m1 > m2 || m1 == m2) {
+                    //alert('Mes Mayor');
+                    if (d1 > d2 || d1 == d2) {
+                        //alert('Dia Mayor');
+                        new PNotify({
+                            title: 'Nuevo Empleado',
+                            text: 'La fecha de nacimiento no puede ser mayor que la fecha de admisión.',
+                            type: 'info',
+                            delay: 3000,
+                            styling: 'bootstrap3',
+                            addclass: 'dark'
+                        });
+                        $('#inputSuccess2').val(); //Ningun valor
+                        return;
+                    }
+
+                    $('#inputSuccess2').val(); //Ningun valor
+                    return;
+                }
+                $('#inputSuccess2').val(); //Ningun valor
+                return;
+
+            }
+
+        });
+
+         ***********************************************************/
+
+
+
+        /**********************************************************
+        //SOLUCION HGM AÑADIDO 15.12.2021
+        $('#inputSuccess2').change(function () {
+
+
+            //alert('#inputSuccess2 NUEVO');
+
+
+            date1 = $('#inputSuccess3').valueAsDate;
+            date2 = $('#inputSuccess2').valueAsDate;
+            var date = $(this).val();
+
+            if (date1 < date2) {
+
+                new PNotify({
+                    title: 'Nuevo Empleado',
+                    text: 'La fecha de ingreso no puede ser mayor que la fecha de nacimiento.',
+                    type: 'info',
+                    delay: 3000,
+                    styling: 'bootstrap3',
+                    addclass: 'dark'
+                });
+
+                return;
+            }
+
+        });
+
+        ***********************************************************/
+
+        //////////////////////////////////////////////////////////////////
+        @*// VALIDACION DE CARACTERES CORREO Email_Emple
+            //////////////////////////////////////////////////////////////////
+            function validarCorreoAll(evt) {
+                //onkeypress = "validarCorreoAll(event)"
+                //let k = event ? event.which : window.event.keyCode;
+                //if (k == 32) return false;
+
+                var theEvent = evt || window.event;
+                // Handle paste
+                if (theEvent.type === 'paste') {
+                    key = event.clipboardData.getData('text/plain');
+                } else {
+                    // Handle key press
+                    var key = theEvent.keyCode || theEvent.which;
+                    key = String.fromCharCode(key);
+                }
+                var re = new RegExp(' /[0-9]|[a-z]|[A-Z]|\_|\/|\-|\&|\@/');
+                var regex = re;
+                //var regex = /[0-9]|[a-z]|[A-Z]|\_|\/|\-|\&|\@/;
+                if (!regex.test(key)) {
+                    theEvent.returnValue = false;
+                    if (theEvent.preventDefault) theEvent.preventDefault();
+                }
+
+            } *@
+
+        $(document).ready(function () {
+
+            $('#FechaAdmi').datetimepicker({
+                viewMode: 'days',
+                format: 'DD/MM/YYYY',
+                defaultDate: moment(),
+            });
+
+            $('#FechaNac').datetimepicker({
+                viewMode: 'days',
+                format: 'DD/MM/YYYY'
+            });
+
+            $('#FechaDeCese').datetimepicker({
+                viewMode: 'days',
+                format: 'DD/MM/YYYY'
+            });
+
+            //Añadido HG 19.03.21 - Para Toma de Consumos con DNI
+            $('#InicioFechaDeVigencia').datetimepicker({
+                viewMode: 'days',
+                format: 'DD/MM/YYYY'
+            });
+
+            //Añadido HG 19.03.21 - Para Toma de Consumos con DNI
+            $('#FinFechaDeVigencia').datetimepicker({
+                viewMode: 'days',
+                format: 'DD/MM/YYYY'
+            });
+            init_SmartWizard();
+            init_TagsInput();
+        });
+</script>
+
+
+
+

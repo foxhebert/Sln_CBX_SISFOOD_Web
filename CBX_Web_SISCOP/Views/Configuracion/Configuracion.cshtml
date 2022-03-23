@@ -1,0 +1,239 @@
+
+@{
+    ViewBag.Title = "Configuración del Sistema";
+}
+
+<!-- PANEL DE MENUS -->
+
+<div class="">
+    <div class="page-title">
+        <div class="x_title">@*<div class="title_left">*@
+            <div class="col-md-4 col-sm-6  ">
+                    <h3> Configuraciones del Sistema <small></small></h3>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-update-Confi" class="btn btn-success" value="Actualizar">
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-4 col-sm-6  ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2> General <small> para Comedor </small></h2>
+                    <div class="clearfix"></div>
+                    <br />
+                </div>
+                <div class="x_content">
+                    <div class="col-md-12 col-sm-8 col-xs-8">
+                        <div class="form-group">
+                            <label>Longitud del Código de Personal autogenerado (*)</label>
+                            <input id="txtLongCodPer_" class="form-control"
+                                   type="number" maxlength="2"
+                                   placeholder="8"
+                                   onkeypress="return filterEnter(event,this);"
+                                   min="1" max="15" />
+                        </div>
+                        <div class="form-group">
+                            <label>N° máximo de Niveles Jerárquicos (*)</label>
+                            <input id="txtNivelMaxJerar_" class="form-control"
+                                   type="number" maxlength="2"
+                                   placeholder="6"
+                                   onkeypress="return filterEnter(event,this);"
+                                   min="1" max="20" />
+                        </div>
+                        <div class="form-group">
+                            <label>Tiempo entre Marcas (*) </label>
+                            <input type="time" id="tiempo_marca_"  value="00:00"
+                                    min="00:00" max="21:00" placeholder="HH:MM"
+                                   class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <br />
+                            <legend class="m-0" style="width:auto !important; border: none; font-size: 12px;font-weight: 600;">
+                                <input type="checkbox" class="flat" id="ChbTemporizador_"> Habilitar Temporizador en Visor de Toma de Consumo
+                            </legend>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6  ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Integraciones  <small> </small></h2>
+                    <ul class="nav navbar-right panel_toolbox"></ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="col-md-12 col-sm-8 col-xs-8">
+                        @*<div class="form-group">
+                        <br />
+                        <legend class="m-0" style="width:auto !important; border: none; font-size: 12px;font-weight: 600;">
+                            <input type="checkbox" class="flat" id="ChbAlvisoft_"> Habilitar Integración con Alvisoft
+                        </legend>
+                    </div>*@
+                        <br />
+                        <div class="form-group" id="WDMS_Group">
+                            <fieldset>
+                                <legend class="m-0" style="width:auto !important; border: none; font-size: 12px;font-weight: 600;">
+                                    <input type="checkbox" class="flat" id="ChbWdms_"> Habilitar Integración con WDMS
+                                </legend>
+                                <div class="form-group">
+                                    <label class="control-label">Regla de Negocio de Asistencia (Por Defecto)</label>
+                                    <select class="form-control" id="cboRNWDMS"> </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Horario de Asistencia (Por Defecto)</label>
+                                    <select class="form-control" id="cboHORWDMS"> </select>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Generar Ticket  <small> por Consumo </small></h2>
+                    <ul class="nav navbar-right panel_toolbox"></ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    @*<div class="col-md-12 col-sm-8 col-xs-8">
+                    <div class="checkbox">
+                        <label>
+                            <input type="radio" id="chck_0_" class="flat disabled_Doc" name="RDimpTicket">
+                            No Generar Ticket
+                        </label>
+                    </div>
+                </div>*@
+                    <div class="col-md-12 col-sm-8 col-xs-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="radio" id="chck_1_" class="flat disabled_Doc" name="RDimpTicket">
+                                Generar Ticket desde Marca con DNI
+                            </label>
+                            <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Toma de Consumo sin Selección de Servicio)</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-8 col-xs-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="radio" id="chck_2_" class="flat disabled_Doc" name="RDimpTicket">
+                                Generar Ticket desde Visor de Servicio de Comensal
+                            </label>
+                            <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Toma de Consumo con Selección de Servicio)</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-8 col-xs-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="radio" id="chck_3_" class="flat disabled_Doc" name="RDimpTicket">
+                                Generar Ticket desde Atención de Consumos por la Concesionaria
+                            </label>
+                            <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Gestión de Consumo)</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-8 col-xs-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="radio" id="chck_4_" class="flat disabled_Doc" name="RDimpTicket">
+                                Generar Ticket solo desde la Marcación con Reloj
+                            </label>
+                            <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Sin Selección de Servicio)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6  ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Servidor de Correo <small> Servidor de Salida (SMTP)</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="col-md-12 col-sm-8 col-xs-8">
+                        <div class="form-group">
+                            <div class="form-group pull-right" id="cambio_estado_">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label>Nombre del Servidor (*)</label>
+                            <input type="text" id="txtServidor_" class="form-control" placeholder="" onkeypress="return avoidSpaceInput(event)">
+                        </div>
+                        <div class="form-group">
+                            <label>Puerto (*)</label>
+                            <input type="number" id="txtPuerto_" class="form-control" placeholder="587" maxlength="6" onkeypress="return filterEnter(event,this);" min="1" max="999999">
+                        </div>
+                        <div class="form-group">
+                            <label>Correo Remitente (*)</label>
+                            <input type="text" id="txtCorreoRemitente_" class="form-control" placeholder="" onkeypress="return avoidSpaceInput(event)">
+                        </div>
+                        <div class="form-group" id="AUtent_Group">
+                            <fieldset>
+                                <legend class="m-0" style="width:auto !important; border: none; font-size: 12px;font-weight: 600;">
+                                    <input type="checkbox" class="flat" id="ckbAutenticaServidor_"> Requiere Autenticación
+                                </legend>
+                                <label>Contraseña </label>
+                                <div class="form-group" style="display:flex">
+                                    <input type="password" id="txtContraseRemitente_" class="form-control" placeholder="" maxlength="50" required autocomplete="current-password" onkeypress="return avoidSpaceInput(event)">
+                                    <button id="buttomshowpass" onclick="mostrarPass(this)" type="button" class="buttom-show"><i class="fa fa-eye"></i></button>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="form-group">
+                            <label> Firma del Remitente (*)</label>
+                            <input type="text" id="txtFirmaRemitente_" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group" id="URL_" hidden>
+                            <label> Url Sisfood (*)</label>
+                            <input type="text" id="txtUrlRemitente_" class="form-control" placeholder="" onkeypress="return avoidSpaceInput(event)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <br>
+</div>
+
+<script src="~/Scripts/util/Config.js"></script>
+<style>
+    .table-wrap {
+        height: 170px;
+        overflow-y: auto;
+    }
+
+    .rangoFechaIni {
+        color: red;
+    }
+
+    .rangoFechaFin {
+        color: red;
+    }
+
+    ul.bar_tabs > li {
+        border: none;
+        color: #333 !important;
+        margin-top: 0;
+        margin-left: 0;
+        background: #fff;
+        border-bottom: none;
+        border-radius: none;
+    }
+
+    ul.bar_tabs > li.active {
+        border-right: none;
+        border-top: 0;
+        margin-top: 0;
+        height: 40px;
+    }
+
+</style>

@@ -1,0 +1,89 @@
+
+<form class="form-horizontal form-label-left">
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Justificación (*)</label>
+                <select class="form-control" id="IdConCep">
+                    <option>Seleccione</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Centro de Costo</label>
+                <select class="form-control" id="IdCCosto">
+                    <option>Seleccione</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Nombres del Personal</label>
+                    <input type="text" class="form-control" placeholder="Nombres" disabled="disabled">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Apellidos</label>
+                    <input type="text" class="form-control" placeholder="Apellidos" disabled="disabled">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Fecha Inicio</label>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                            <input id="date_desde" type="text" class="form-control" value="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Fecha Inicio</label>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                            <input id="date_desde" type="text" class="form-control" value="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    @*<div class="ln_solid"></div>*@
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="">
+                <label>Doc.Identidad (*)</label>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <select class="btn btn-default" id="IdTipoDoc">
+                            <option>Tipo Doc.</option>
+                            <option>DNI</option>
+                            <option>CE</option>
+                        </select>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6"></div>
+    </div>
+
+</form>

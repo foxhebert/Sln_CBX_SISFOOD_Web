@@ -1,0 +1,166 @@
+@model object[]
+
+
+<form class="form-horizontal form-label-left">
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+        </div>
+        <div style="text-align:right;">
+            <label id="_lbl_"></label>
+            <input type="checkbox" id="chk-activo-Marcador" class="js-switch" checked />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Empresa (*)</label>
+                @Html.DropDownList("cboJerarquiaMarcador", (SelectList)ViewBag.CampJerar, "Seleccione", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            @*<div style="text-align:right;">
+                    <label id="_lbl_"></label>
+                    <input type="checkbox" id="chk-activo-Marcador" class="js-switch" checked />
+                </div>*@
+            <div class="form-group">
+                <div>
+                    <label class="col-md-7 col-sm-7 col-xs-6"> Local (*)</label>
+                    <div class="col-md-5 col-sm-5 col-xs-6 text-right">
+                    </div>
+                </div>
+                <select id="cbounidsupe" class="form-control" disabled>
+                    <option>Seleccione</option>
+                </select>
+                <script>
+                    $("#cboJerarquiaMarcador").change(function () {
+                        var intidEmp = $(this).val()
+                        console.log("Empresa:");
+                        console.log(intidEmp);
+                        if (intidEmp > 0) {
+                            $.post(
+                                '/Personal/ListarCombos',
+                                {
+                                    intIdMenu: 1,
+                                    strEntidad: 'TGPERSONAL',
+                                    intIdFiltroGrupo: intidEmp,
+                                    strGrupo: 'LOCAL',
+                                    strSubGrupo: ''
+                                },
+                                response => {
+                                    $('#cbounidsupe').empty()
+                                    $('#cbounidsupe').attr('disabled', false)
+                                    if (response.length > 0) {
+                                        if (response.length > 1) {
+                                            $('#cbounidsupe').append('<option value="0">Seleccione</option>')
+                                        }
+                                        response.forEach(element => {
+                                            $('#cbounidsupe').append('<option value="' + element.intidTipo + '">' + element.strDeTipo + '</option>')
+                                        })
+                                    } else {
+                                        $('#cbounidsupe').append('<option value="0">No Hay Datos</option>')
+                                        $('#cbounidsupe').attr('disabled', true)
+                                    }
+                                })
+                        } else {
+                            $('#cbounidsupe').append('<option value="0">No Hay Datos</option>')
+                            $('#cbounidsupe').attr('disabled', true)
+                        }
+
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+    @*<div class="ln_solid"></div>*@
+
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Número de Terminal (*)</label>
+                    <input id="txt-Num-Marcador" type="number" class="form-control" max="9999999999" placeholder="Nº Terminal" min="1" onkeypress="validarSoloNum(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group" id="Valdes">
+                    <label>Descripción (*)</label>
+                    <input id="txt-desc-Marcador" type="text" class="form-control" placeholder="Descripción " onkeypress="validarDescripcionAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    @*<div class="ln_solid"></div>*@
+
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Tipo de Marcador (*)</label>
+                @Html.DropDownList("cboTipoComu", (SelectList)ViewBag.CampComu, "Seleccione", new { @class = "form-control" })
+                <script>
+                    //añadir funcion al cambiar combo tipo
+                    $('#cboTipoComu').on('change', function () {
+                        var id = $('#cboTipoComu').val();
+                        if (id == 1) {
+                            $('txt-IP-Marcado').val('');
+                            $('txt-Puerto-Marcador').val('');
+                            $('#Tipo_Fijo').show();
+                        } else {
+                            $('txt-IP-Marcado').val('');
+                            $('txt-Puerto-Marcador').val('');
+                            $('#Tipo_Fijo').hide();
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Tipo de Funcionalidad (*)</label>
+                @Html.DropDownList("cboTipoFuncionalidad", (SelectList)ViewBag.CampFunc, new { @class = "form-control" }) @*MODIFICADO 02.09.2021*@
+                @*@Html.DropDownList("cboTipoFuncionalidad", (SelectList)ViewBag.CampFunc, "Seleccione", new { @class = "form-control" })*@
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="row" id="Tipo_Fijo" hidden>
+        @*Oculto 20.08.2021*@
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group" id="Valip">
+                <label>IP (*)</label>
+                <input id="txt-IP-Marcado" type="text" class="form-control" placeholder="IP" maxlength="15" name="ip" pattern="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group" id="Valpuer">
+                <label>Puerto (*)</label>
+                <input id="txt-Puerto-Marcador" type="number" class="form-control" placeholder="Puerto" min="0" max="65535" name="Puerto">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Tipo de Lector del Marcador (*)</label>
+                @Html.DropDownList("cboTipoMarcador", (SelectList)ViewBag.CampMarc, "Seleccione", new { @class = "form-control" })
+            </div>
+        </div>
+        <div id="containerCampose">
+        </div>
+    </div>
+
+    <script>
+        CamposAdicionalesMarcador();
+    </script>
+</form>

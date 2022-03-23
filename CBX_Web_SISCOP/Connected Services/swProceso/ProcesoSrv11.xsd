@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Dominio.Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Session_Movi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intIdEntid" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesion" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesionMov" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdentity" type="xs:int" />
+      <xs:element minOccurs="0" name="strNomEntid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tinNuOpera" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Session_Movi" nillable="true" type="tns:Session_Movi" />
+  <xs:complexType name="ArrayOfPeriodoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PeriodoData" nillable="true" type="tns:PeriodoData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPeriodoData" nillable="true" type="tns:ArrayOfPeriodoData" />
+  <xs:complexType name="PeriodoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="intIdPeriodo" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoPeriodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDependencia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPeriodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPlani" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strEstadoActivo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strEstadoCerrado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strMesAnio" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PeriodoData" nillable="true" type="tns:PeriodoData" />
+  <xs:complexType name="Periodo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitCerrado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlProyectado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dttFeCiePerio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFeFinPerio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFeIniPerio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFeModif" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intAnioFiscal" type="xs:int" />
+      <xs:element minOccurs="0" name="intCalculado" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdDependencia" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPeriodo" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPlani" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUnidadOrg" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarModif" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarReg" type="xs:int" />
+      <xs:element minOccurs="0" name="intMes" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoPeriodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDependencia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPeriodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPlani" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strEstadoActivo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strEstadoCerrado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strMesAnio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPeriodoCampo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPeriodoCampo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPeriodoCampo3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPeriodoCampo4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPeriodoCampo5" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Periodo" nillable="true" type="tns:Periodo" />
+  <xs:complexType name="ArrayOfGrupoLiquidacionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GrupoLiquidacionData" nillable="true" type="tns:GrupoLiquidacionData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGrupoLiquidacionData" nillable="true" type="tns:ArrayOfGrupoLiquidacionData" />
+  <xs:complexType name="GrupoLiquidacionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="intIdGrupoLiq" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoGrupoLiq" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesGrupoLiq" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPeriodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPlani" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesUO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strEstadoActivo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrupoLiquidacionData" nillable="true" type="tns:GrupoLiquidacionData" />
+  <xs:complexType name="GrupoLiquidacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlCerrado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dttFeModif" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intIdGrupoLiq" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdJerOrg" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPeriodo" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPlanilla" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUniOrg" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarModif" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarReg" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoGrupoLiq" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesGrupoLiq" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPeriodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strEstadoActivo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strGrupoLiqCampo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strGrupoLiqCampo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strGrupoLiqCampo3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strGrupoLiqCampo4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strGrupoLiqCampo5" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrupoLiquidacion" nillable="true" type="tns:GrupoLiquidacion" />
+  <xs:complexType name="ArrayOfGrupoLiquidacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GrupoLiquidacion" nillable="true" type="tns:GrupoLiquidacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGrupoLiquidacion" nillable="true" type="tns:ArrayOfGrupoLiquidacion" />
+  <xs:complexType name="ArrayOfPlanilla">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Planilla" nillable="true" type="tns:Planilla" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlanilla" nillable="true" type="tns:ArrayOfPlanilla" />
+  <xs:complexType name="Planilla">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlActivo" nillable="true" type="tns:Estado" />
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlPrincipal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dttFeModif" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intIdPlanilla" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUniOrg" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarModif" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarReg" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoPlani" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPlani" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDescripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomJerOrg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPlaniCampo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPlaniCampo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPlaniCampo3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPlaniCampo4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPlaniCampo5" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Planilla" nillable="true" type="tns:Planilla" />
+  <xs:complexType name="Estado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="strEstadoActivo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Estado" nillable="true" type="tns:Estado" />
+  <xs:complexType name="ArrayOfPeriodo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Periodo" nillable="true" type="tns:Periodo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPeriodo" nillable="true" type="tns:ArrayOfPeriodo" />
+  <xs:complexType name="ArrayOfCalculoPersonal">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CalculoPersonal" nillable="true" type="tns:CalculoPersonal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCalculoPersonal" nillable="true" type="tns:ArrayOfCalculoPersonal" />
+  <xs:complexType name="CalculoPersonal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFecAdmin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFecCese" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intDiasFaltas" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intDiasTrabajados" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intFeriados" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intHorasAdicionales" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intHorasFuera" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intIdPeriodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+      <xs:element minOccurs="0" name="intTardanza" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intTipo" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoPersonal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDeTipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesGrupoLiq" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPlani" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDescripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strFotocheck" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNoUsuar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomCompleto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNumDoc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CalculoPersonal" nillable="true" type="tns:CalculoPersonal" />
+</xs:schema>

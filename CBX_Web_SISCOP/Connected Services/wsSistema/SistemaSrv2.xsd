@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Dominio.Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Session_Movi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intIdEntid" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesion" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesionMov" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdentity" type="xs:int" />
+      <xs:element minOccurs="0" name="strNomEntid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tinNuOpera" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Session_Movi" nillable="true" type="tns:Session_Movi" />
+  <xs:complexType name="ArrayOfConsumo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Consumo" nillable="true" type="tns:Consumo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConsumo" nillable="true" type="tns:ArrayOfConsumo" />
+  <xs:complexType name="Consumo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantC" type="xs:int" />
+      <xs:element minOccurs="0" name="CantS" type="xs:int" />
+      <xs:element minOccurs="0" name="FlCancelado" type="xs:int" />
+      <xs:element minOccurs="0" name="Sim" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalC" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalS" type="xs:decimal" />
+      <xs:element minOccurs="0" name="bitFlCancelado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlConsumido" type="xs:int" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitMarcaDNI" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitTodosTS" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dttFeHoraAutor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFeHoraDesha" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFeModif" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFecha" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttFechaHora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dttHora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="imgFoto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intCantMaxConsumo" type="xs:int" />
+      <xs:element minOccurs="0" name="intCantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdAsistencia" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdConsumo" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdReglaNeg" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdServicio" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdTipServ" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarModif" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarReg" type="xs:int" />
+      <xs:element minOccurs="0" name="intTipoPeriodoConsumo" type="xs:int" />
+      <xs:element minOccurs="0" name="monCostoServ" type="xs:decimal" />
+      <xs:element minOccurs="0" name="strApePaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strCantidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strClase" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesEmp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesMarcador" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesTipMenu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesTipServicio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDescripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strFotocheck" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strHorarioAtencion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNombres" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNombresCompletos" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNumDoc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strObservacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strPrecio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strTipoServicio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strUsuarAutor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strUsuarDesha" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Consumo" nillable="true" type="tns:Consumo" />
+</xs:schema>

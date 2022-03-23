@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Dominio.Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfJerarquiaOrg">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JerarquiaOrg" nillable="true" type="tns:JerarquiaOrg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJerarquiaOrg" nillable="true" type="tns:ArrayOfJerarquiaOrg" />
+  <xs:complexType name="JerarquiaOrg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlActivo" nillable="true" type="tns:Estado" />
+      <xs:element minOccurs="0" name="IntIdJerOrg" type="xs:int" />
+      <xs:element minOccurs="0" name="IntIdUsuarModif" type="xs:int" />
+      <xs:element minOccurs="0" name="IntIdUsuarReg" type="xs:int" />
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dttFeModif" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intNivelJer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strCoIntJO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strCoJerOrg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strCoJerPadre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strJerarCampo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strJerarCampo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strJerarCampo3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strJerarCampo4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strJerarCampo5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomJerOrg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomJerPadre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JerarquiaOrg" nillable="true" type="tns:JerarquiaOrg" />
+  <xs:complexType name="Estado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="strEstadoActivo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Estado" nillable="true" type="tns:Estado" />
+  <xs:complexType name="ArrayOfDetalleJerarquiaOrg">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DetalleJerarquiaOrg" nillable="true" type="tns:DetalleJerarquiaOrg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDetalleJerarquiaOrg" nillable="true" type="tns:ArrayOfDetalleJerarquiaOrg" />
+  <xs:complexType name="DetalleJerarquiaOrg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IntIdJerOrg" type="xs:int" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitObligatorio" type="xs:boolean" />
+      <xs:element minOccurs="0" name="intIdCampo" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdJerCampo" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoCampo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strCoIntJO" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DetalleJerarquiaOrg" nillable="true" type="tns:DetalleJerarquiaOrg" />
+  <xs:complexType name="ArrayOfCamposAdicionales">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CamposAdicionales" nillable="true" type="tns:CamposAdicionales" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCamposAdicionales" nillable="true" type="tns:ArrayOfCamposAdicionales" />
+  <xs:complexType name="CamposAdicionales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IntIdCampo" type="xs:int" />
+      <xs:element minOccurs="0" name="IntIdUsuarModif" type="xs:int" />
+      <xs:element minOccurs="0" name="IntIdUsuarReg" type="xs:int" />
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dttFeModif" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="strCoCampo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesCampo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strLongitud" type="xs:int" />
+      <xs:element minOccurs="0" name="strNomCampo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strTipoDato" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CamposAdicionales" nillable="true" type="tns:CamposAdicionales" />
+  <xs:complexType name="ArrayOfEntidade">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Entidade" nillable="true" type="tns:Entidade" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEntidade" nillable="true" type="tns:ArrayOfEntidade" />
+  <xs:complexType name="Entidade">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="intIdEntid" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+      <xs:element minOccurs="0" name="strCampAdic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strCoCampo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesCampo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesEntid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strIdCampo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomEntid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strTablaEntid" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Entidade" nillable="true" type="tns:Entidade" />
+  <xs:complexType name="Session_Movi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intIdEntid" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesion" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesionMov" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdentity" type="xs:int" />
+      <xs:element minOccurs="0" name="strNomEntid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tinNuOpera" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Session_Movi" nillable="true" type="tns:Session_Movi" />
+  <xs:complexType name="ArrayOfTGTipo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TGTipo" nillable="true" type="tns:TGTipo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTGTipo" nillable="true" type="tns:ArrayOfTGTipo" />
+  <xs:complexType name="TGTipo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeSubGrupo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IntIdTipo" type="xs:int" />
+      <xs:element minOccurs="0" name="strAbreviatura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strCoTipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDeTipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strGrupo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strSubGrupo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TGTipo" nillable="true" type="tns:TGTipo" />
+  <xs:complexType name="EN_TMEncuesta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FEC_ENCUESTA_COMPLETADA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID_ENCUESTA_PREGUNTA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID_ENCUESTA_PREGUNTA_OPCION_RESPUESTA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IND_OPERACION" type="xs:int" />
+      <xs:element minOccurs="0" name="NOM_ENCUESTA_PREGUNTA_OPCION" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EN_TMEncuesta" nillable="true" type="tns:EN_TMEncuesta" />
+</xs:schema>

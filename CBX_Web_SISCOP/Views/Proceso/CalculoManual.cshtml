@@ -1,0 +1,253 @@
+
+<div class="row">
+
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 divUniOrg">
+                <label class="control-label">Unid Organizacional</label>
+                <select class="form-control" id="cboUniOrg">
+                    <option value="0" selected>Seleccione</option>
+                </select>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 divUniOrg">
+                <label class="control-label">Planilla</label>
+                <select class="form-control" id="cboPlanilla">
+                    <option value="0" selected>Seleccione</option>
+                </select>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 divUniOrg">
+                <label class="control-label">&nbsp;</label>
+                <button type="button" class="btn btn-primary btn-block dropdown-toggle" id="Periodo_Pago" data-toggle="dropdown" aria-expanded="true" disabled>
+                    Periodos de Pago
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu col-md-11 col-sm-11 col-xs-12" aria-labelledby="toggleOptions" role="menu" id="chekeamePeriodos" style="max-height: 200px;overflow-y: auto;margin-left: 9px;"></ul>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <label class="control-label">&nbsp;</label>
+                <button type="button" class="btn btn-primary btn-block dropdown-toggle" id="GrupoLiqui" data-toggle="dropdown" aria-expanded="true" disabled>
+                    Grupo de Liquidación
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu col-md-11 col-sm-11 col-xs-12" aria-labelledby="toggleOptions" role="menu" id="chekeameGruposLiquidacion" style="margin-left:9px;"></ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label">&nbsp;</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar por Fotocheck, N° de Documento, Apellidos y Nombres" id="buscarId">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Proceso</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Cálculo Manual</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- PANEL TABLA -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                    <h2 style="width:100%">Listado de Empleados a Procesar</h2>
+                </div>
+
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12">
+                    <button type="button" class="btn btn-round btn-block dropdown-toggle" id="columnHida" data-toggle="dropdown" aria-expanded="true">
+                        Columnas
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu col-md-11 col-sm-11 col-xs-12" aria-labelledby="toggleOptions" role="menu" style="margin-left:9px;">
+                        <li><label>&nbsp;&nbsp;<input id="3" type="checkbox" class="columnHide">&nbsp;Documento</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="4" type="checkbox" class="columnHide">&nbsp;Fotocheck</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="5" type="checkbox" class="columnHide">&nbsp;Unidad Organizacional</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="6" type="checkbox" class="columnHide">&nbsp;Fiscalización</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="7" type="checkbox" class="columnHide">&nbsp;Grupo de Liquidación</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="9" type="checkbox" class="columnHide">&nbsp;Fecha Cese</label></li>
+                    </ul>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-6">
+                    <button style="width: 100%;" type="button" class="bg-white btn btn-xs btnPeriodo" data-toggle="modal" data-target="#exampleModal" id="0" data-backdrop="static" data-keyboard="false" disabled>
+                        <h4><i class="fa fa-lock text-danger" aria-hidden="true"> <span style="color: red;font-family: Calibri;">CERRAR</span></i></h4>
+                    </button>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-6">
+                    <button style="width: 100%;" type="button" class="bg-white btn btn-xs btnPeriodo" data-toggle="modal" data-target="#exampleModal" id="1" data-backdrop="static" data-keyboard="false" disabled>
+                        <h4><i class="fa fa-unlock text-success" aria-hidden="true"> <span style="color: green;font-family: Calibri;">ABRIR</span></i></h4>
+                    </button>
+                </div>
+                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                    <button style="width: 100%;" class="btn btn-success" type="button" id="btnExportarReporte" disabled>Excel</button>
+                </div>
+                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                    <button style="width: 100%;" class="btn btn-primary" type="button" id="btnCalcular" disabled>Calcular</button>
+                </div>
+                @*<div class="col-md-5 col-sm-5 col-xs-12" style="text-align:right;">
+            <button type="button" class="btn btn-primary dropdown-toggle" id="toggleOptions" data-toggle="dropdown" style="width:100px;" aria-expanded="true">
+                Calcular
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="toggleOptions" role="menu">
+                <li role="presentation">
+                    <label class="checkbox-inline" onclick="SinDetalle();">
+                        Sin Detalle
+                    </label>
+                </li>
+                <li role="presentation">
+                    <label id="compose" onclick="init_EasyPieChart();" class="checkbox-inline">
+                        Listar Detalle
+                    </label>
+                </li>
+            </ul>
+
+
+        </div>*@
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-12">
+                <div><h5><b>Periodos Seleccionados : </b><span id="periodosSeleccionados">0</span></h5></div>
+                <div><h5><b>Periodos Calculados : </b><span id="periodosCalculados"></span></h5></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <br />
+                    <table id="TablaCalculo" class="table table-striped table-bordered table-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="icheckbox_flat-blue" id="All_Calcular" /></th>
+                                <th>Código - Registro</th>
+                                <th>Apellidos y Nombres</th>
+                                <th>N° Documento</th>
+                                <th>Fotocheck</th>
+                                <th>Unidad Organizacional</th>
+                                <th>Fiscalización</th>
+                                <th>Grupo de Liquidación</th>
+                                <th>Fecha de Admisión</th>
+                                <th>Fecha de Cese</th>
+                                <th>Procesado</th>
+                                <th>Días Trabajados</th>
+                                <th>Días Faltas</th>
+                                <th>Horas Adicionales</th>
+                                <th>Feriados</th>
+                                <th>Horas Fuera</th>
+                                <th>Tardanza</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    Seleccionados <span id="seleccionados">0</span> de <span id="total">0</span> Empleados
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><b>PROCESANDO LOS CÁLCULOS PARA LA PLANILLA "<span id="tituloLoading"></span>"</b></h2>
+
+            </div>
+
+            <div class="modal-body">
+                <div id="alerts"></div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div id="progresLoader" class="progress-bar progress-bar-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0">0%</div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <textarea id="message" style="min-height:150px;" class="form-control" name="message" disabled></textarea>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 text-center text-success flex-error" style="height: 150px">
+                                <button id="btnExcelLoading" intIdProc="" style="background-color: white;border: none;"><i class="fa fa-file-excel-o" aria-hidden="true" style="font-size: 10em;"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <p> Periodos procesados <span id="procesados">XX/XX</span></p>
+                </div>
+
+            </div>
+
+            <div class="modal-footer" style="text-align:right;">
+                <div class="row">
+                    <div style="text-align:left;" class="col-md-6 col-sm-6 col-xs-6">
+                        <p> Tiempo Transcurrido: <span id="tiempo">XX:XX:XX</span></p>
+                    </div>
+                    <div style="text-align:right;" class="col-md-6 col-sm-6 col-xs-6">
+
+                    </div>
+                    <button id="grabar" class="btn btn-sm btn btn-success" type="button" hidden>Grabar</button>
+                    <button id="cancelar" class="btn btn-sm btn btn-default" type="button">Cancelar</button>
+                    <button id="send" class="btn btn-sm btn btn-primary" type="button">Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <h3 id="txtPeriodo">Listado de Periodos Abiertos</h3>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 text-right">
+                        <button type="button" class="btn btn-danger" id="btnPeriodo">Cerrar</button>
+                        <button type="button" class="btn btn-dafult" id="btnClose">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row container-fluid">
+                    <table id="TablaPeriodo" class="table table-striped table-bordered table-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="icheckbox_flat-blue" id="All_Periodo" /></th>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Fecha Cierre</th>
+                                <th>Mes - Año</th>
+                                <th>Planilla</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/util/Calculo.js"></script>
+<style>
+</style>

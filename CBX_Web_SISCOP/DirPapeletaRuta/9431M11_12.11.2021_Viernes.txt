@@ -1,0 +1,67 @@
+ACTIVIDADES Viernes 12/11
+-------------------------------------------------------
+*******************************************
+** HUELLASWEB
+*******************************************
+
+3. VENTANA REGISTRO DE SEDES: Si el sistema se va a integrar con Siscop Web, ya no se necesitaría ---> (80%)  
+una ventana de ello, pero si no fuese el caso, si debería existir una ventana que registre Sedes.  
+Este es un nuevo mantenimiento que se ha desarrollado hoy y ya realiza los procesos de: Listar, Registrar, Actualizar, Eliminar y Cambiar de Estado.
+Se presentan algunos arreglos por realizar.
+3.1.- Al listar todos los datos se muestran en color rojo
+3.2.- Al entrar a esta ventana el de marcaciones parece como seleccioando. 
+3.3.- Al cambiasr de estado de inactivo a inactivo no realiza el proceso correctamentey desaparece el registro de la lista.
+
+***  Respecto a la corrección del punto desarrollado ayer estimo ---> 60min
+
+5.- Actividad Asignada ---> Miércoles 11/11  ---> 50% (No esta concluido)
+Respecto al Doc v3, Obs. 2.4
+Cuando se da clic en el botón “Agregar Huella”, el sistema demora mas de 3 segundos en mostrar la ventana.
+Se quedó en añadir el mensaje de "Cargando" para que se muestre al usuario este mensaje
+mientras la ventana aparezca.
+- No se ha solucionado el inconveniente de que el modal siempre aparece por encima de cualquier elemento.
+
+
+***************************************************************************
+
+
+
+ACTIVIDADES Viernes 12/11
+-------------------------------------------
+*******************************************
+** HUELLASWEB
+*******************************************
+
+1. VENTANA REGISTRO DE SEDES: Si el sistema se va a integrar con Siscop Web, ya no se necesitaría ---> (80%)  
+una ventana de ello, pero si no fuese el caso, si debería existir una ventana que registre Sedes.  
+Este es un nuevo mantenimiento que se ha desarrollado hoy y ya realiza los procesos de: Listar, Registrar, Actualizar, Eliminar y Cambiar de Estado.
+Se presentan algunos arreglos por realizar.
+3.1.- Al listar todos los datos se muestran en color rojo  ---> CERRADO
+3.2.- Al entrar a esta ventana el de marcaciones parece como seleccioando. 
+3.3.- Al cambiasr de estado de inactivo a inactivo no realiza el proceso correctamentey desaparece el registro de la lista.
+
+
+2.- Actividad Asignada ---> Miércoles 11/11  ---> CERRADO
+Respecto al Doc v3, Obs. 2.4
+Cuando se da clic en el botón “Agregar Huella”, el sistema demora mas de 3 segundos en mostrar la ventana.
+Se quedó en añadir el mensaje de "Cargando" para que se muestre al usuario este mensaje
+mientras la ventana aparezca.
+- Se soluciono a nivel de js y html 
+
+*******************************************
+** OBSERVACIONES
+*******************************************
+1.- Cambiar el input de tipo texto a numerico para el actualizar el tiempo d marca. ---> CERRADO
+
+3.- Convertir lo que contiene el imput del punto anterior a entero, para ser grabado en la tabla configuraciones. ---> CERRADO
+
+3.- Replicar los mismos iconos en el listado de sedes para el boton de cambiar estado. ---> CERRADO
+
+4.- Corregir la validacion para direccion como campo no obligatorio ---> CERRADO
+
+
+
+
+
+
+

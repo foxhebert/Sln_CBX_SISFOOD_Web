@@ -1,0 +1,932 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OrganizacionSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:35578/OrganizacionSrv.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:35578/OrganizacionSrv.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:35578/OrganizacionSrv.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOrganizacionSrv_LlenarUbigeoInverso_InputMessage">
+    <wsdl:part name="parameters" element="tns:LlenarUbigeoInverso" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_LlenarUbigeoInverso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LlenarUbigeoInversoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarUnidadOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUnidadOrg" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarUnidadOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUnidadOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarDistrict_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDistrict" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarDistrict_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDistrictResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarProvincias_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProvincias" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarProvincias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProvinciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCampoJerarquía_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoJerarquía" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCampoJerarquía_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoJerarquíaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCampoUnidSup_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoUnidSup" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCampoUnidSup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoUnidSupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarResponsable_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarResponsable" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarResponsable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarResponsableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarUbigeo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUbigeo" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarUbigeo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUbigeoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarDirecFiscal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDirecFiscal" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarDirecFiscal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDirecFiscalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarRepLegal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRepLegal" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarRepLegal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRepLegalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarPaises_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPaises" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarPaises_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPaisesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarFiltroCampJer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFiltroCampJer" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarFiltroCampJer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFiltroCampJerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUUnidadOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUUnidadOrg" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUUnidadOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUUnidadOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminmarUnidadOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminmarUnidadOrg" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminmarUnidadOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminmarUnidadOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleUndOrgCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleUndOrgCod" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleUndOrgCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleUndOrgCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCamposAdicionalesUO_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionalesUO" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCamposAdicionalesUO_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionalesUOResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ObtenerOrganizacionporsuPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOrganizacionporsuPK" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ObtenerOrganizacionporsuPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOrganizacionporsuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ObtenerUbigeosyListas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUbigeosyListas" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ObtenerUbigeosyListas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUbigeosyListasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCargos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCargos" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCargos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCargosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUCargo_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUCargo" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUCargo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUCargoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarCargo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCargo" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarCargo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCargoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleCargoxCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleCargoxCod" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleCargoxCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleCargoxCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCampoUnidOrga_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoUnidOrga" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCampoUnidOrga_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoUnidOrgaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCategorias_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCategorias" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCategorias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCategoriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleCategoriaxCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleCategoriaxCod" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleCategoriaxCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleCategoriaxCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarTipoPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTipoPerson" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarTipoPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTipoPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUTipoPersonal_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUTipoPersonal" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUTipoPersonal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUTipoPersonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarTipo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarTipo" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarTipo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarTipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleTipoPerxCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleTipoPerxCod" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleTipoPerxCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleTipoPerxCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleGrupoxCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleGrupoxCod" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleGrupoxCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleGrupoxCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUGrupo_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUGrupo" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUGrupo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarGrupos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGrupos" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarGrupos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGruposResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarGrup_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarGrup" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarGrup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarGrupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetallePlanillaxCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetallePlanillaxCod" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetallePlanillaxCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetallePlanillaxCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarPlanilla_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPlanilla" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarPlanilla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPlanillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUPlanilla_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUPlanilla" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUPlanilla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUPlanillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarPlanilla_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPlanilla" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarPlanilla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPlanillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleCCostoxCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleCCostoxCod" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleCCostoxCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleCCostoxCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUCCosto_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUCCosto" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUCCosto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUCCostoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCCosto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCCosto" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCCosto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCCostoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarCCosto_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCCosto" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarCCosto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCCostoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleMarcadorxCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleMarcadorxCod" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ConsultarDetalleMarcadorxCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleMarcadorxCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarMarcador_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMarcador" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarMarcador_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMarcadorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUMarcador_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUMarcador" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_IUMarcador_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUMarcadorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarMarcador_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarMarcador" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_EliminarMarcador_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarMarcadorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCamposAdicionales_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionales" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizacionSrv_ListarCamposAdicionales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionalesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IOrganizacionSrv">
+    <wsdl:operation name="LlenarUbigeoInverso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/LlenarUbigeoInverso" message="tns:IOrganizacionSrv_LlenarUbigeoInverso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/LlenarUbigeoInversoResponse" message="tns:IOrganizacionSrv_LlenarUbigeoInverso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUnidadOrg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarUnidadOrg" message="tns:IOrganizacionSrv_ListarUnidadOrg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarUnidadOrgResponse" message="tns:IOrganizacionSrv_ListarUnidadOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDistrict">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarDistrict" message="tns:IOrganizacionSrv_ListarDistrict_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarDistrictResponse" message="tns:IOrganizacionSrv_ListarDistrict_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarProvincias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarProvincias" message="tns:IOrganizacionSrv_ListarProvincias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarProvinciasResponse" message="tns:IOrganizacionSrv_ListarProvincias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoJerarquía">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCampoJerarquía" message="tns:IOrganizacionSrv_ListarCampoJerarquía_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCampoJerarquíaResponse" message="tns:IOrganizacionSrv_ListarCampoJerarquía_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoUnidSup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCampoUnidSup" message="tns:IOrganizacionSrv_ListarCampoUnidSup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCampoUnidSupResponse" message="tns:IOrganizacionSrv_ListarCampoUnidSup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarResponsable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarResponsable" message="tns:IOrganizacionSrv_ListarResponsable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarResponsableResponse" message="tns:IOrganizacionSrv_ListarResponsable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUbigeo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarUbigeo" message="tns:IOrganizacionSrv_ListarUbigeo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarUbigeoResponse" message="tns:IOrganizacionSrv_ListarUbigeo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDirecFiscal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarDirecFiscal" message="tns:IOrganizacionSrv_ListarDirecFiscal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarDirecFiscalResponse" message="tns:IOrganizacionSrv_ListarDirecFiscal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarRepLegal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarRepLegal" message="tns:IOrganizacionSrv_ListarRepLegal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarRepLegalResponse" message="tns:IOrganizacionSrv_ListarRepLegal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPaises">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarPaises" message="tns:IOrganizacionSrv_ListarPaises_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarPaisesResponse" message="tns:IOrganizacionSrv_ListarPaises_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFiltroCampJer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarFiltroCampJer" message="tns:IOrganizacionSrv_ListarFiltroCampJer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarFiltroCampJerResponse" message="tns:IOrganizacionSrv_ListarFiltroCampJer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUUnidadOrg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUUnidadOrg" message="tns:IOrganizacionSrv_IUUnidadOrg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUUnidadOrgResponse" message="tns:IOrganizacionSrv_IUUnidadOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminmarUnidadOrg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminmarUnidadOrg" message="tns:IOrganizacionSrv_EliminmarUnidadOrg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminmarUnidadOrgResponse" message="tns:IOrganizacionSrv_EliminmarUnidadOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleUndOrgCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleUndOrgCod" message="tns:IOrganizacionSrv_ConsultarDetalleUndOrgCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleUndOrgCodResponse" message="tns:IOrganizacionSrv_ConsultarDetalleUndOrgCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCamposAdicionalesUO">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCamposAdicionalesUO" message="tns:IOrganizacionSrv_ListarCamposAdicionalesUO_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCamposAdicionalesUOResponse" message="tns:IOrganizacionSrv_ListarCamposAdicionalesUO_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrganizacionporsuPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ObtenerOrganizacionporsuPK" message="tns:IOrganizacionSrv_ObtenerOrganizacionporsuPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ObtenerOrganizacionporsuPKResponse" message="tns:IOrganizacionSrv_ObtenerOrganizacionporsuPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUbigeosyListas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ObtenerUbigeosyListas" message="tns:IOrganizacionSrv_ObtenerUbigeosyListas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ObtenerUbigeosyListasResponse" message="tns:IOrganizacionSrv_ObtenerUbigeosyListas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCargos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCargos" message="tns:IOrganizacionSrv_ListarCargos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCargosResponse" message="tns:IOrganizacionSrv_ListarCargos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUCargo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUCargo" message="tns:IOrganizacionSrv_IUCargo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUCargoResponse" message="tns:IOrganizacionSrv_IUCargo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCargo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarCargo" message="tns:IOrganizacionSrv_EliminarCargo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarCargoResponse" message="tns:IOrganizacionSrv_EliminarCargo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleCargoxCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCargoxCod" message="tns:IOrganizacionSrv_ConsultarDetalleCargoxCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCargoxCodResponse" message="tns:IOrganizacionSrv_ConsultarDetalleCargoxCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoUnidOrga">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCampoUnidOrga" message="tns:IOrganizacionSrv_ListarCampoUnidOrga_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCampoUnidOrgaResponse" message="tns:IOrganizacionSrv_ListarCampoUnidOrga_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCategorias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCategorias" message="tns:IOrganizacionSrv_ListarCategorias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCategoriasResponse" message="tns:IOrganizacionSrv_ListarCategorias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarCategoria" message="tns:IOrganizacionSrv_EliminarCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarCategoriaResponse" message="tns:IOrganizacionSrv_EliminarCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUCategoria" message="tns:IOrganizacionSrv_IUCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUCategoriaResponse" message="tns:IOrganizacionSrv_IUCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleCategoriaxCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCategoriaxCod" message="tns:IOrganizacionSrv_ConsultarDetalleCategoriaxCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCategoriaxCodResponse" message="tns:IOrganizacionSrv_ConsultarDetalleCategoriaxCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarTipoPerson" message="tns:IOrganizacionSrv_ListarTipoPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarTipoPersonResponse" message="tns:IOrganizacionSrv_ListarTipoPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUTipoPersonal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUTipoPersonal" message="tns:IOrganizacionSrv_IUTipoPersonal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUTipoPersonalResponse" message="tns:IOrganizacionSrv_IUTipoPersonal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTipo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarTipo" message="tns:IOrganizacionSrv_EliminarTipo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarTipoResponse" message="tns:IOrganizacionSrv_EliminarTipo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleTipoPerxCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleTipoPerxCod" message="tns:IOrganizacionSrv_ConsultarDetalleTipoPerxCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleTipoPerxCodResponse" message="tns:IOrganizacionSrv_ConsultarDetalleTipoPerxCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleGrupoxCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleGrupoxCod" message="tns:IOrganizacionSrv_ConsultarDetalleGrupoxCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleGrupoxCodResponse" message="tns:IOrganizacionSrv_ConsultarDetalleGrupoxCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUGrupo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUGrupo" message="tns:IOrganizacionSrv_IUGrupo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUGrupoResponse" message="tns:IOrganizacionSrv_IUGrupo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarGrupos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarGrupos" message="tns:IOrganizacionSrv_ListarGrupos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarGruposResponse" message="tns:IOrganizacionSrv_ListarGrupos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGrup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarGrup" message="tns:IOrganizacionSrv_EliminarGrup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarGrupResponse" message="tns:IOrganizacionSrv_EliminarGrup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetallePlanillaxCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetallePlanillaxCod" message="tns:IOrganizacionSrv_ConsultarDetallePlanillaxCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetallePlanillaxCodResponse" message="tns:IOrganizacionSrv_ConsultarDetallePlanillaxCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPlanilla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarPlanilla" message="tns:IOrganizacionSrv_EliminarPlanilla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarPlanillaResponse" message="tns:IOrganizacionSrv_EliminarPlanilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUPlanilla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUPlanilla" message="tns:IOrganizacionSrv_IUPlanilla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUPlanillaResponse" message="tns:IOrganizacionSrv_IUPlanilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPlanilla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarPlanilla" message="tns:IOrganizacionSrv_ListarPlanilla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarPlanillaResponse" message="tns:IOrganizacionSrv_ListarPlanilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleCCostoxCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCCostoxCod" message="tns:IOrganizacionSrv_ConsultarDetalleCCostoxCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCCostoxCodResponse" message="tns:IOrganizacionSrv_ConsultarDetalleCCostoxCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUCCosto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUCCosto" message="tns:IOrganizacionSrv_IUCCosto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUCCostoResponse" message="tns:IOrganizacionSrv_IUCCosto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCCosto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCCosto" message="tns:IOrganizacionSrv_ListarCCosto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCCostoResponse" message="tns:IOrganizacionSrv_ListarCCosto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCCosto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarCCosto" message="tns:IOrganizacionSrv_EliminarCCosto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarCCostoResponse" message="tns:IOrganizacionSrv_EliminarCCosto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleMarcadorxCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleMarcadorxCod" message="tns:IOrganizacionSrv_ConsultarDetalleMarcadorxCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleMarcadorxCodResponse" message="tns:IOrganizacionSrv_ConsultarDetalleMarcadorxCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMarcador">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarMarcador" message="tns:IOrganizacionSrv_ListarMarcador_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarMarcadorResponse" message="tns:IOrganizacionSrv_ListarMarcador_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUMarcador">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUMarcador" message="tns:IOrganizacionSrv_IUMarcador_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/IUMarcadorResponse" message="tns:IOrganizacionSrv_IUMarcador_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMarcador">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarMarcador" message="tns:IOrganizacionSrv_EliminarMarcador_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/EliminarMarcadorResponse" message="tns:IOrganizacionSrv_EliminarMarcador_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCamposAdicionales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCamposAdicionales" message="tns:IOrganizacionSrv_ListarCamposAdicionales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizacionSrv/ListarCamposAdicionalesResponse" message="tns:IOrganizacionSrv_ListarCamposAdicionales_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IOrganizacionSrv" type="tns:IOrganizacionSrv">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LlenarUbigeoInverso">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/LlenarUbigeoInverso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUnidadOrg">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarUnidadOrg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDistrict">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarDistrict" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarProvincias">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarProvincias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoJerarquía">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarCampoJerarquía" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoUnidSup">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarCampoUnidSup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarResponsable">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarResponsable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUbigeo">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarUbigeo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDirecFiscal">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarDirecFiscal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRepLegal">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarRepLegal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPaises">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarPaises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFiltroCampJer">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarFiltroCampJer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUUnidadOrg">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/IUUnidadOrg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminmarUnidadOrg">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/EliminmarUnidadOrg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleUndOrgCod">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleUndOrgCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCamposAdicionalesUO">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarCamposAdicionalesUO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOrganizacionporsuPK">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ObtenerOrganizacionporsuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUbigeosyListas">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ObtenerUbigeosyListas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCargos">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarCargos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUCargo">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/IUCargo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCargo">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/EliminarCargo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleCargoxCod">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCargoxCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoUnidOrga">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarCampoUnidOrga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCategorias">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarCategorias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCategoria">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/EliminarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUCategoria">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/IUCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleCategoriaxCod">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCategoriaxCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoPerson">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarTipoPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUTipoPersonal">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/IUTipoPersonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTipo">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/EliminarTipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleTipoPerxCod">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleTipoPerxCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleGrupoxCod">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleGrupoxCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUGrupo">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/IUGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarGrupos">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarGrupos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGrup">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/EliminarGrup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetallePlanillaxCod">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ConsultarDetallePlanillaxCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPlanilla">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/EliminarPlanilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUPlanilla">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/IUPlanilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPlanilla">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarPlanilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleCCostoxCod">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleCCostoxCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUCCosto">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/IUCCosto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCCosto">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarCCosto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCCosto">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/EliminarCCosto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleMarcadorxCod">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ConsultarDetalleMarcadorxCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMarcador">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarMarcador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUMarcador">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/IUMarcador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMarcador">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/EliminarMarcador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCamposAdicionales">
+      <soap:operation soapAction="http://tempuri.org/IOrganizacionSrv/ListarCamposAdicionales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrganizacionSrv">
+    <wsdl:port name="BasicHttpBinding_IOrganizacionSrv" binding="tns:BasicHttpBinding_IOrganizacionSrv">
+      <soap:address location="http://localhost:35578/OrganizacionSrv.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProcesoSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:35578/ProcesoSrv.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:35578/ProcesoSrv.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:35578/ProcesoSrv.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:35578/ProcesoSrv.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProcesoSrv_ListPeriodoPago_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListPeriodoPago" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListPeriodoPago_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListPeriodoPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_EliminarPeriodo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPeriodo" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_EliminarPeriodo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ObtenerPeriodoPorsuPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPeriodoPorsuPK" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ObtenerPeriodoPorsuPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPeriodoPorsuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_IUperiodo_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUperiodo" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_IUperiodo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUperiodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListGrupoLiquidacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListGrupoLiquidacion" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListGrupoLiquidacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListGrupoLiquidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_EliminarGrupoLiquidacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarGrupoLiquidacion" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_EliminarGrupoLiquidacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarGrupoLiquidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ObtenerGrupoLiquidacionPorsuPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerGrupoLiquidacionPorsuPK" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ObtenerGrupoLiquidacionPorsuPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerGrupoLiquidacionPorsuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_IUGrupoLiq_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUGrupoLiq" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_IUGrupoLiq_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUGrupoLiqResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListarGrupoLiqxPeriodo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGrupoLiqxPeriodo" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListarGrupoLiqxPeriodo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGrupoLiqxPeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListarCampoPlanillaAbierta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoPlanillaAbierta" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListarCampoPlanillaAbierta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoPlanillaAbiertaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListarCampoPeriodoxPlanilla_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoPeriodoxPlanilla" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_ListarCampoPeriodoxPlanilla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoPeriodoxPlanillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_GetListarPersonal_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListarPersonal" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_GetListarPersonal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListarPersonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_Calcular_InputMessage">
+    <wsdl:part name="parameters" element="tns:Calcular" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_Calcular_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CalcularResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_getPeriodoxPlanilla_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPeriodoxPlanilla" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_getPeriodoxPlanilla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPeriodoxPlanillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_updatePeriodo_InputMessage">
+    <wsdl:part name="parameters" element="tns:updatePeriodo" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_updatePeriodo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updatePeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_GuardarCalculo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarCalculo" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_GuardarCalculo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarCalculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_LimpiarTemporal_InputMessage">
+    <wsdl:part name="parameters" element="tns:LimpiarTemporal" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_LimpiarTemporal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LimpiarTemporalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_getPersonalCalculo_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPersonalCalculo" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_getPersonalCalculo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPersonalCalculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_getPersonalNoProc_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPersonalNoProc" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_getPersonalNoProc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPersonalNoProcResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_getExportEmpleados_InputMessage">
+    <wsdl:part name="parameters" element="tns:getExportEmpleados" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_getExportEmpleados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getExportEmpleadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_validarPeriodo_InputMessage">
+    <wsdl:part name="parameters" element="tns:validarPeriodo" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoSrv_validarPeriodo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:validarPeriodoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IProcesoSrv">
+    <wsdl:operation name="ListPeriodoPago">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/ListPeriodoPago" message="tns:IProcesoSrv_ListPeriodoPago_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/ListPeriodoPagoResponse" message="tns:IProcesoSrv_ListPeriodoPago_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPeriodo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/EliminarPeriodo" message="tns:IProcesoSrv_EliminarPeriodo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/EliminarPeriodoResponse" message="tns:IProcesoSrv_EliminarPeriodo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPeriodoPorsuPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/ObtenerPeriodoPorsuPK" message="tns:IProcesoSrv_ObtenerPeriodoPorsuPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/ObtenerPeriodoPorsuPKResponse" message="tns:IProcesoSrv_ObtenerPeriodoPorsuPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUperiodo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/IUperiodo" message="tns:IProcesoSrv_IUperiodo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/IUperiodoResponse" message="tns:IProcesoSrv_IUperiodo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListGrupoLiquidacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/ListGrupoLiquidacion" message="tns:IProcesoSrv_ListGrupoLiquidacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/ListGrupoLiquidacionResponse" message="tns:IProcesoSrv_ListGrupoLiquidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGrupoLiquidacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/EliminarGrupoLiquidacion" message="tns:IProcesoSrv_EliminarGrupoLiquidacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/EliminarGrupoLiquidacionResponse" message="tns:IProcesoSrv_EliminarGrupoLiquidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerGrupoLiquidacionPorsuPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/ObtenerGrupoLiquidacionPorsuPK" message="tns:IProcesoSrv_ObtenerGrupoLiquidacionPorsuPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/ObtenerGrupoLiquidacionPorsuPKResponse" message="tns:IProcesoSrv_ObtenerGrupoLiquidacionPorsuPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUGrupoLiq">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/IUGrupoLiq" message="tns:IProcesoSrv_IUGrupoLiq_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/IUGrupoLiqResponse" message="tns:IProcesoSrv_IUGrupoLiq_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarGrupoLiqxPeriodo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/ListarGrupoLiqxPeriodo" message="tns:IProcesoSrv_ListarGrupoLiqxPeriodo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/ListarGrupoLiqxPeriodoResponse" message="tns:IProcesoSrv_ListarGrupoLiqxPeriodo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoPlanillaAbierta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/ListarCampoPlanillaAbierta" message="tns:IProcesoSrv_ListarCampoPlanillaAbierta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/ListarCampoPlanillaAbiertaResponse" message="tns:IProcesoSrv_ListarCampoPlanillaAbierta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoPeriodoxPlanilla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/ListarCampoPeriodoxPlanilla" message="tns:IProcesoSrv_ListarCampoPeriodoxPlanilla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/ListarCampoPeriodoxPlanillaResponse" message="tns:IProcesoSrv_ListarCampoPeriodoxPlanilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListarPersonal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/GetListarPersonal" message="tns:IProcesoSrv_GetListarPersonal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/GetListarPersonalResponse" message="tns:IProcesoSrv_GetListarPersonal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Calcular">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/Calcular" message="tns:IProcesoSrv_Calcular_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/CalcularResponse" message="tns:IProcesoSrv_Calcular_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoxPlanilla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/getPeriodoxPlanilla" message="tns:IProcesoSrv_getPeriodoxPlanilla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/getPeriodoxPlanillaResponse" message="tns:IProcesoSrv_getPeriodoxPlanilla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePeriodo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/updatePeriodo" message="tns:IProcesoSrv_updatePeriodo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/updatePeriodoResponse" message="tns:IProcesoSrv_updatePeriodo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarCalculo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/GuardarCalculo" message="tns:IProcesoSrv_GuardarCalculo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/GuardarCalculoResponse" message="tns:IProcesoSrv_GuardarCalculo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LimpiarTemporal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/LimpiarTemporal" message="tns:IProcesoSrv_LimpiarTemporal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/LimpiarTemporalResponse" message="tns:IProcesoSrv_LimpiarTemporal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPersonalCalculo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/getPersonalCalculo" message="tns:IProcesoSrv_getPersonalCalculo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/getPersonalCalculoResponse" message="tns:IProcesoSrv_getPersonalCalculo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPersonalNoProc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/getPersonalNoProc" message="tns:IProcesoSrv_getPersonalNoProc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/getPersonalNoProcResponse" message="tns:IProcesoSrv_getPersonalNoProc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getExportEmpleados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/getExportEmpleados" message="tns:IProcesoSrv_getExportEmpleados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/getExportEmpleadosResponse" message="tns:IProcesoSrv_getExportEmpleados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="validarPeriodo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoSrv/validarPeriodo" message="tns:IProcesoSrv_validarPeriodo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoSrv/validarPeriodoResponse" message="tns:IProcesoSrv_validarPeriodo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IProcesoSrv" type="tns:IProcesoSrv">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListPeriodoPago">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/ListPeriodoPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPeriodo">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/EliminarPeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPeriodoPorsuPK">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/ObtenerPeriodoPorsuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUperiodo">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/IUperiodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListGrupoLiquidacion">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/ListGrupoLiquidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGrupoLiquidacion">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/EliminarGrupoLiquidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerGrupoLiquidacionPorsuPK">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/ObtenerGrupoLiquidacionPorsuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUGrupoLiq">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/IUGrupoLiq" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarGrupoLiqxPeriodo">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/ListarGrupoLiqxPeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoPlanillaAbierta">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/ListarCampoPlanillaAbierta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoPeriodoxPlanilla">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/ListarCampoPeriodoxPlanilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListarPersonal">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/GetListarPersonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Calcular">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/Calcular" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoxPlanilla">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/getPeriodoxPlanilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePeriodo">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/updatePeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarCalculo">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/GuardarCalculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LimpiarTemporal">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/LimpiarTemporal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonalCalculo">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/getPersonalCalculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonalNoProc">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/getPersonalNoProc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getExportEmpleados">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/getExportEmpleados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarPeriodo">
+      <soap:operation soapAction="http://tempuri.org/IProcesoSrv/validarPeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProcesoSrv">
+    <wsdl:port name="BasicHttpBinding_IProcesoSrv" binding="tns:BasicHttpBinding_IProcesoSrv">
+      <soap:address location="http://localhost:35578/ProcesoSrv.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

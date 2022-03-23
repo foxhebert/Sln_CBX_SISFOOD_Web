@@ -1,0 +1,63 @@
+
+<form class="form-horizontal form-label-left">
+    <div id="11" style="text-align:right;">
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Dependencia Jerárquica (*)</label>
+                @Html.DropDownList("cboJerarquia", (SelectList)ViewBag.CampJerar, "Seleccione", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <div>
+                    <label class="col-md-7 col-sm-7 col-xs-6"> Und. Organizacional </label>
+
+                </div>
+
+                <select id="cbounidsupe" disabled class="form-control">
+                    <option>Seleccione</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="ln_solid"></div>*@
+
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group Valcod">
+                    <label>Código (*)</label>
+                    <input id="txt-cod-TiPers" name="codigo" type="text" class="form-control" @*pattern="^([A-Za-z0-9])+"*@ maxlength="8" placeholder="Código" onkeypress="validarCodigoAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group Valdes">
+                    <label>Descripción (*)</label>
+                    <input id="txt-desc-TiPers" type="text" class="form-control" placeholder="Descripción " onkeypress="validarDescripcionAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    @*<div class="ln_solid"></div>*@
+    <div id="containerCamposea">
+
+    </div> <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group" id="txtIdTipPers" hidden>
+            <label>IntIdTipoPerson</label>
+            <input type="hidden" class="form-control">
+        </div>
+    </div>
+    <script>
+
+
+        // Validaciones();
+        BuscarUnidades();
+    </script>
+</form>

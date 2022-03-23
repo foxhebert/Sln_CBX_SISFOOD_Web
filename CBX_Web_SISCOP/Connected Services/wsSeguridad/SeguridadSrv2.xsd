@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Dominio.Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfTS_PERFIL">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TS_PERFIL" nillable="true" type="tns:TS_PERFIL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTS_PERFIL" nillable="true" type="tns:ArrayOfTS_PERFIL" />
+  <xs:complexType name="TS_PERFIL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlAdmin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitTipoPerfil" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dttFeModif" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFeReg" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intIdPerfil" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarModif" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarReg" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoPerfil" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesPerfil" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strFlActivo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strTipoPerfil" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TS_PERFIL" nillable="true" type="tns:TS_PERFIL" />
+  <xs:complexType name="ArrayOfTS_MENU">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TS_MENU" nillable="true" type="tns:TS_MENU" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTS_MENU" nillable="true" type="tns:ArrayOfTS_MENU" />
+  <xs:complexType name="TS_MENU">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="contador" type="xs:int" />
+      <xs:element minOccurs="0" name="intDeModos" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdMosai" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+      <xs:element minOccurs="0" name="intIsSelecc" type="xs:int" />
+      <xs:element minOccurs="0" name="intNuIndexLista" type="xs:int" />
+      <xs:element minOccurs="0" name="intNuOrden" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoMenu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strCoMenuRela" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesFormu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesMenu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomFormu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomMenu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strSubMenu" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TS_MENU" nillable="true" type="tns:TS_MENU" />
+  <xs:complexType name="ArrayOfTT_TSPERFIL_MENU">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TT_TSPERFIL_MENU" nillable="true" type="tns:TT_TSPERFIL_MENU" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTT_TSPERFIL_MENU" nillable="true" type="tns:ArrayOfTT_TSPERFIL_MENU" />
+  <xs:complexType name="TT_TSPERFIL_MENU">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPerfM" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPerfil" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TT_TSPERFIL_MENU" nillable="true" type="tns:TT_TSPERFIL_MENU" />
+  <xs:complexType name="ArrayOfTG_USUARIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TG_USUARIO" nillable="true" type="tns:TG_USUARIO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTG_USUARIO" nillable="true" type="tns:ArrayOfTG_USUARIO" />
+  <xs:complexType name="TG_USUARIO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlAdmin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitPrimerPassw" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitTipoUsuar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dttFchBloqueo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFchCaduca" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFchUltPass" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFeModif" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dttFeReg" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="imgFoto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intCodValida" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPerfil" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdPersonal" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesion" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuar" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarModif" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuarReg" type="xs:int" />
+      <xs:element minOccurs="0" name="intMarcadorTomaConsumo" type="xs:int" />
+      <xs:element minOccurs="0" name="strCoPassw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDesEmp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDetalleValida" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strEstadoActivo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strMotivoEst" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNoUsuar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomPerfil" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strUsUsuar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strstrDesPerfil" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tinFlEstado" nillable="true" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TG_USUARIO" nillable="true" type="tns:TG_USUARIO" />
+  <xs:complexType name="ArrayOfTSUSUAR_PERFI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TSUSUAR_PERFI" nillable="true" type="tns:TSUSUAR_PERFI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTSUSUAR_PERFI" nillable="true" type="tns:ArrayOfTSUSUAR_PERFI" />
+  <xs:complexType name="TSUSUAR_PERFI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlPrincipal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="intIdPerfil" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsPerf" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuar" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TSUSUAR_PERFI" nillable="true" type="tns:TSUSUAR_PERFI" />
+  <xs:complexType name="ArrayOfTT_TSUSUAR_FILTRO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TT_TSUSUAR_FILTRO" nillable="true" type="tns:TT_TSUSUAR_FILTRO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTT_TSUSUAR_FILTRO" nillable="true" type="tns:ArrayOfTT_TSUSUAR_FILTRO" />
+  <xs:complexType name="TT_TSUSUAR_FILTRO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bitFlActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bitFlEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="intIdArea" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdEmp" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdLocal" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsFiltro" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuar" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TT_TSUSUAR_FILTRO" nillable="true" type="tns:TT_TSUSUAR_FILTRO" />
+  <xs:complexType name="Session_">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dttFeSesio" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intIDTerminal" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesion" type="xs:long" />
+      <xs:element minOccurs="0" name="intIdSitua" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuar" type="xs:int" />
+      <xs:element minOccurs="0" name="strIpHost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNoHost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNuHost" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Session_" nillable="true" type="tns:Session_" />
+  <xs:complexType name="ArrayOfTS_MENU_PADRE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TS_MENU_PADRE" nillable="true" type="tns:TS_MENU_PADRE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTS_MENU_PADRE" nillable="true" type="tns:ArrayOfTS_MENU_PADRE" />
+  <xs:complexType name="TS_MENU_PADRE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="menu" nillable="true" type="tns:ArrayOfTS_MENU" />
+      <xs:element minOccurs="0" name="strCoMenuRela" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strMenu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strNomFormu" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TS_MENU_PADRE" nillable="true" type="tns:TS_MENU_PADRE" />
+  <xs:complexType name="Session_Movi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dttFeRegistro" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="intIdEntid" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdMenu" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesion" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSesionMov" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdSoft" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="intIdentity" type="xs:int" />
+      <xs:element minOccurs="0" name="strNomEntid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tinNuOpera" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Session_Movi" nillable="true" type="tns:Session_Movi" />
+</xs:schema>

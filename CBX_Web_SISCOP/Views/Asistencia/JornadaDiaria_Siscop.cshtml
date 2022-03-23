@@ -1,0 +1,427 @@
+
+@{
+    ViewBag.Title = "JornadaDiaria";
+}
+@*<div class="loader"></div>
+<style>
+    .loader {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(../../images/pageLoader.gif) 50% 50% no-repeat rgb(249,249,249);
+        opacity: .95;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $(".loader").fadeOut("slow");
+    });
+
+</script>*@
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <label class="control-label">&nbsp;</label>
+                <input type="text" class="form-control" id="filtro1" placeholder="Buscar por Código y Descripción">
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <label class="control-label" style="text-align:right !important">Tipo Jornada</label>
+                <select class="form-control" id="filtojer1">
+                    <option value="0" selected>Todos</option>
+                </select>
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <label class="control-label" style="text-align:right !important">Estado</label>
+                <select class="form-control" id="filActi1">
+                    <option value="2">Todos</option>
+                    <option value="1" selected>Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Asistencia</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt">Jornada Diaria</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- PANEL TABLA -->
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listado de Jornadas Diarias</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <input type="button" id="btn-new-JornadaDiaria" class="btn btn-primary" value="Nueva Jornada">
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table id="tablaJornada" class="table table-striped table-bordered table-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th>Tipo Jornada</th>
+                            <th>Tipo de Refrigerio</th>
+                            <th>Entrada</th>
+                            <th>Salida</th>
+                            <th>Dependencia</th>
+                            <th>Und. Organizacional</th>
+                            <th>Acción</th>
+                            <th style="display:none">sss</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBodyJornada"></tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- SEGUNDO PANEL -->
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="form-hide-JornadaDiaria" hidden>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Información de la Jornada Diaria</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <input type="button" id="btn-save-change-JornadaDiaria" class="btn btn-primary" value="Guardar">
+                            <input type="button" id="btn-update-JornadaDiaria" class="btn btn-success" value=" Actualizar" hidden>
+                        </li>
+                        <li>
+                            <input type="button" id="btn-cancel-JornadaDiaria" class="btn btn-dark" value="Cancelar">
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal-dropzone form-label-left">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <br />
+                                    <label>Tipo de jornada (*)</label>
+                                    <select class="form-control">
+                                        <option>Laborable</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div style="text-align:right;">
+                                    <label>Activo</label>
+                                    <input type="checkbox" class="js-switch" id="chk-activo-JO" checked />
+                                </div>
+                                <div class="form-group">
+                                    <label>Tipo de Refrigerio</label>
+                                    <select class="form-control">
+                                        <option>Refrigerio con Marca</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="border-section">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Código (*)</label>
+                                        <input type="text" class="form-control" placeholder="Código">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Descripción (*)</label>
+                                        <input type="text" class="form-control" placeholder="Descripción">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Dependencia Jerárquica</label>
+                                        <select class="form-control">
+                                            <option>Locales</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label>Dependencia Jerárquica</label>
+                                        <select class="form-control">
+                                            <option>Locales</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <label>Color</label>
+                                    <div class="input-group demo2">
+                                        <input type="text" value="#e01ab5" class="form-control" />
+                                        <span class="input-group-addon"><i></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <br />
+                                    <br />
+                                    <input type="checkbox" class="flat" /> Con Cambio de Día (48 Hrs)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <label>Aplicar Bonificación</label>
+                                    <select class="form-control">
+                                        <option>Bonificación Nocturna</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <br />
+                                    <input type="checkbox" class="flat" /> Jornada Pertenece a la Fecha Fin de la Jornada (al Día Siguiente)
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ln_solid">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <label>Campo 1</label>
+                                    <input type="text" class="form-control" placeholder="campo 1">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <label>Campo 2</label>
+                                    <input type="text" class="form-control" placeholder="campo 2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <label>Campo 3</label>
+                                    <input type="text" class="form-control" placeholder="campo 3">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <label>Campo 4</label>
+                                    <input type="text" class="form-control" placeholder="campo 4">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <label>Campo 5</label>
+                                    <input type="text" class="form-control" placeholder="campo 5">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                            </div>
+                        </div>
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Detalle de Intervalos</h2>
+                                <div style="text-align:right;">
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li>
+                                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="oculto" hidden>
+
+                                <div class="x_content">
+
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Tipo de Intervalo (*)</label>
+                                                <select class="form-control">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Turno (*)</label>
+                                                <select class="form-control">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Hora de Inicio (*)</label>
+                                                <input type="text" class="form-control" placeholder="HH:MM">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Duración</label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Tolerancia</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Hora de Fin (*)</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <br />
+                                            <br />
+                                            <input type="checkbox" class="flat" /> Considerar Como Horas Trabajadas (HT)
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Tiempo Máximo Efectivo</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Tipo de Servicio en Comedor</label>
+                                                <select class="form-control">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+
+                                        <br />
+
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div>
+                                        <input type="text" class="range_min_max" value="" name="range" />
+                                        <br />
+                                        <br />
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                    <table class="table table-striped table-bordered table-responsive " cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo de Intervalo</th>
+                                                <th>Turno</th>
+                                                <th>Intervalo</th>
+                                                <th>Duración</th>
+                                                <th>Evento</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>ORD.</td>
+                                                <td>Noche</td>
+                                                <td>20:00 - + 04:00</td>
+                                                <td>08 Hrs</td>
+                                                <td>
+                                                    <a href="#" onclick="editarJornadaDiaria()" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                                                    <a href="#" onclick="eliminarJornadaDiaria()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <a href="#" onclick="editarJornadaDiaria()" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                                                    <a href="#" onclick="eliminarJornadaDiaria()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td> </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <a href="#" onclick="editarJornadaDiaria()" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                                                    <a href="#" onclick="eliminarJornadaDiaria()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <a href="#" onclick="editarJornadaDiaria()" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                                                    <a href="#" onclick="eliminarJornadaDiaria()" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        CombosJornadaDiaria();
+        TablaJornada();
+    }
+    );
+</script>

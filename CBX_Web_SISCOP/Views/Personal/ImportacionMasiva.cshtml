@@ -1,0 +1,296 @@
+﻿
+@{
+    ViewBag.Title = "Importación Masiva";
+}
+<style>
+    /*Estilos para el boton Choose File de importar excel masivo HGM 04.11.2021*/
+    .inline {
+        display: inline-block;
+        margin: 0px;
+    }
+
+    .inline-2 {
+        background-color: transparent;
+        border-radius: 4px;
+        width: 60px;
+        margin: 0px;
+        padding-left: 20px;
+        padding-right: 80%;
+    }
+</style>
+
+
+
+<div class="row">
+    <!--INICIO PANEL-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                    <label class="control-label">Tipo Importación1</label>
+                    <select class="form-control" id="cboPlantilla"></select>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                    <label class="control-label">Formato Fecha</label>
+                    <select class="form-control" id="cboFormato">
+                        <option value="0" selected>Seleccione</option>
+                    </select>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                    <label class="control-label">&nbsp;</label>
+                    <div class="form-check">
+                        <input type="checkbox" class="flat" id="checkActualizar">
+                        <label class="form-check-label">Actualizar Registros</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- NUEVO BOTON CHOOSE FILE HGM 04.11.2021 -->
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label">&nbsp;</label>
+                    <div class="custom-file inline-flex">
+                        <div>
+                            <div class='inline'>
+                                <div id="btnExplorar">
+                                    <label class="btn btn-secondary" style=" background: #364b5f; border-color:gray; color:white;">
+                                        <i class="fa fa-file-excel-o"></i>&nbsp; Seleccionar Excel
+                                        <input type="file" class="custom-file-input btn btn-default" id="excelMasivo" lang="es"
+                                               disabled style="display: none; background: #efefef;"
+                                               accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='inline inline-1' style=" width: 80%;">
+                                @*<div class='inline inline-2'>*@
+                                <div>
+                                    <label class="custom-file-label" style="margin-top:7px; "></label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- BOTON ANTERIOR CHOOSE FILE DESESTIMADO (hidden)-->
+            <div class="row" hidden>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label">&nbsp;</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input btn btn-default" id="excelMasivo" lang="es" disabled style="width: 100%;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                        <label class="custom-file-label" for="customFileLang"></label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row divPlantillas" hidden>
+                <div class="col-md-12 col-sm-12 col-xs-12 divImportEmp" hidden>
+                    Descargar : <a style="color:blue" href="~/Plantillas/Importar Empleados/Plantilla_Empleados.xls">Plantilla</a> y <a style="color:blue" href="~/Plantillas/Importar Empleados/Anexo 01_Empleados.xls">Anexos</a>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 divImportPerm" hidden>
+                    Descargar : <a style="color:blue" href="~/Plantillas/Importar Permisos/Plantilla_Permisos.xls">Plantilla</a> y <a style="color:blue" href="~/Plantillas/Importar Permisos/Anexo 01_Permisos.xls">Anexos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PANEL DE MENUS -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb">
+            <a class="breadcrumb__step breadcrumb__step--active" href="#" id="PadreMenu_txt">Proceso</a>
+            <a class="breadcrumb__step" href="#" id="HijoMenu_txt"></a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- PANEL TABLA -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">
+                    <h2 id="txt_titulo_tabla">Datos importados</h2>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12" id="DivColumnas" hidden>
+                    <button type="button" class="btn btn-round btn-block dropdown-toggle" id="columnHida" data-toggle="dropdown" aria-expanded="true">
+                        Columnas
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu col-md-11 col-sm-11 col-xs-12 " id="UlColumnas" aria-labelledby="toggleOptions" role="menu" style="margin-left:9px;margin-left: 9px;OVERFLOW-Y: HIDDEN;HEIGHT: 250PX;overflow: scroll;width: 250px !important;">
+                        <li><label>&nbsp;&nbsp;<input id="0" type="checkbox" class="columnHide">&nbsp;CÓDIGO EMPRESA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="1" type="checkbox" class="columnHide">&nbsp;RUC EMPRESA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="3" type="checkbox" class="columnHide">&nbsp;CÓDIGO LOCAL</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="4" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN LOCAL</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="5" type="checkbox" class="columnHide">&nbsp;CÓDIGO GERENCIA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="6" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN GERENCIA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="7" type="checkbox" class="columnHide">&nbsp;CÓDIGO AREA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="8" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN AREA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="9" type="checkbox" class="columnHide">&nbsp;CÓDIGO PLANILLA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="10" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN PLANILLA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="11" type="checkbox" class="columnHide">&nbsp;CÓDIGO CARGO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="12" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN CARGO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="13" type="checkbox" class="columnHide">&nbsp;CÓDIGO CATEGORÍA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="14" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN CATEGORÍA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="15" type="checkbox" class="columnHide">&nbsp;CÓDIGO GRUPO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="16" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN GRUPO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="17" type="checkbox" class="columnHide">&nbsp;CÓDIGO TIPO PERSONAL</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="18" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN TIPO PERSONAL</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="19" type="checkbox" class="columnHide">&nbsp;CÓDIGO CENTRO DE COSTO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="20" type="checkbox" class="columnHide">&nbsp;DESCRIPCIÓN CENTRO DE COSTO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="21" type="checkbox" class="columnHide">&nbsp;CÓDIGO FISCALIZACIÓN</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="22" type="checkbox" class="columnHide">&nbsp;CÓDIGO RESPONSABILIDAD</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="23" type="checkbox" class="columnHide">&nbsp;CÓDIGO EMPLEADO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="27" type="checkbox" class="columnHide">&nbsp;FECHA DE NACIMIENTO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="28" type="checkbox" class="columnHide">&nbsp;GÉNERO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="31" type="checkbox" class="columnHide">&nbsp;ESTADO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="32" type="checkbox" class="columnHide">&nbsp;CÓDIGO REGLA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="33" type="checkbox" class="columnHide">&nbsp;CÓDIGO HORARIO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="34" type="checkbox" class="columnHide">&nbsp;CÓDIGO RESP. INMEDIATO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="35" type="checkbox" class="columnHide">&nbsp;CÓDIGO RESP. CONTRACTUAL</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="36" type="checkbox" class="columnHide">&nbsp;CORREO EMPLEADO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="37" type="checkbox" class="columnHide">&nbsp;CUENTA USUARIO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="38" type="checkbox" class="columnHide">&nbsp;PERFIL ADMINISTRADOR</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="39" type="checkbox" class="columnHide">&nbsp;TIPO DE VIA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="40" type="checkbox" class="columnHide">&nbsp;DIRECCIÓN EMPLEADO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="41" type="checkbox" class="columnHide">&nbsp;UBIGEO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="42" type="checkbox" class="columnHide">&nbsp;CUSSP</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="43" type="checkbox" class="columnHide">&nbsp;ESSALUD</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="44" type="checkbox" class="columnHide">&nbsp;TELÉFONO EMPLEADO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="45" type="checkbox" class="columnHide">&nbsp;TIPO CONTRATO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="46" type="checkbox" class="columnHide">&nbsp;FECHA CESE</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="47" type="checkbox" class="columnHide">&nbsp;CÓDIGO MOTIVO</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="48" type="checkbox" class="columnHide">&nbsp;CÓDIGO G. LIQUIDACION</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="49" type="checkbox" class="columnHide">&nbsp;COORDENADA</label></li>
+                        <li><label>&nbsp;&nbsp;<input id="50" type="checkbox" class="columnHide">&nbsp;DIRECCIÓN COORDENADA</label></li>
+
+
+                    </ul>
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12">
+                    <input type="button" id="btn-import-masivo" class="btn btn-success" value="Importar" disabled style="width:100%">
+                </div>
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12">
+                    <input type="button" id="btn-save-masivo" class="btn btn-primary" value="Guardar" disabled style="width:100%">
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row" id="divTotales" hidden>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="font-size:14px">
+                    <b>Total de Registros Correctos: </b> <span id="txtEmpleadosOk"></span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="font-size:14px">
+                    <b>Total de Registros Observados: </b><span id="txtEmpleadosObs"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 divEmpSave" style="font-size:14px" hidden>
+                    <b>Total de Empleados Registrados: </b><span style="color:green" id="txtEmpleadosGuardados"></span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 divEmpUpdate" style="font-size:14px" hidden>
+                    <b>Total de Empleados Actualizados: </b><span style="color:black" id="txtEmpleadosActualizados"></span>
+                </div>
+            </div>
+            <br />
+            <div id='my_file_output'></div>
+            <div class="x_content">
+                <table id="datatable-Masivo" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;" hidden>
+                    <thead>
+                        <tr>
+                            <th style="display:none">CÓDIGO EMPRESA</th>
+                            <th style="display:none">RUC EMPRESA</th>
+                            <th>RAZÓN SOCIAL EMPRESA</th>
+                            <th style="display:none">CÓDIGO LOCAL</th>
+                            <th style="display:none">DESCRIPCIÓN LOCAL</th>
+                            <th style="display:none">CÓDIGO GERENCIA</th>
+                            <th style="display:none">DESCRIPCIÓN GERENCIA</th>
+                            <th style="display:none">CÓDIGO AREA</th>
+                            <th style="display:none">DESCRIPCIÓN AREA</th>
+                            <th style="display:none">CÓDIGO PLANILLA</th>
+                            <th style="display:none">DESCRIPCIÓN PLANILLA</th>
+                            <th style="display:none">CÓDIGO CARGO</th>
+                            <th style="display:none">DESCRIPCIÓN CARGO</th>
+                            <th style="display:none">CÓDIGO CATEGORÍA</th>
+                            <th style="display:none">DESCRIPCIÓN CATEGORÍA</th>
+                            <th style="display:none">CÓDIGO GRUPO</th>
+                            <th style="display:none">DESCRIPCIÓN GRUPO</th>
+                            <th style="display:none">CÓDIGO TIPO PERSONAL</th>
+                            <th style="display:none">DESCRIPCIÓN TIPO PERSONAL</th>
+                            <th style="display:none">CÓDIGO CENTRO DE COSTO</th>
+                            <th style="display:none">DESCRIPCIÓN CENTRO DE COSTO</th>
+                            <th style="display:none">CÓDIGO FISCALIZACIÓN</th>
+                            <th style="display:none">CÓDIGO RESPONSABILIDAD</th>
+                            <th style="display:none">CÓDIGO EMPLEADO</th>
+                            <th>TIPO DE DOCUMENTO</th>
+                            <th>DOCUMENTO</th>
+                            <th>NOMBRES</th>
+                            <th style="display:none">FECHA DE NACIMIENTO</th>
+                            <th style="display:none">GÉNERO</th>
+                            <th>FOTOCHECK</th>
+                            <th>FECHA DE ADMISIÓN </th>
+                            <th style="display:none">ESTADO</th>
+                            <th style="display:none">CÓDIGO REGLA</th>
+                            <th style="display:none">CÓDIGO HORARIO</th>
+                            <th style="display:none">CÓDIGO RESP. INMEDIATO</th>
+                            <th style="display:none">CÓDIGO RESP. CONTRACTUAL</th>
+                            <th style="display:none">CORREO EMPLEADO</th>
+                            <th style="display:none">CUENTA USUARIO</th>
+                            <th style="display:none">PERFIL ADMINISTRADOR</th>
+                            <th style="display:none">TIPO DE VIA</th>
+                            <th style="display:none">DIRECCIÓN EMPLEADO</th>
+                            <th style="display:none">UBIGEO</th>
+                            <th style="display:none">CUSSP</th>
+                            <th style="display:none">ESSALUD</th>
+                            <th style="display:none">TELÉFONO EMPLEADO</th>
+                            <th style="display:none">TIPO CONTRATO</th>
+                            <th style="display:none">FECHA CESE</th>
+                            <th style="display:none">CÓDIGO MOTIVO</th>
+                            <th style="display:none">CÓDIGO G. LIQUIDACION</th>
+                            <th style="display:none">COORDENADA</th>
+                            <th style="display:none">DIRECCIÓN COORDENADA</th>
+                            <th style="display:none">PROCESO </th>
+                            <th>OBSERVACIÓN</th>
+                            <th style="display:none">FLOBSERVADO</th>
+                            <th style="display:none">ESTADO</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <table id="datatable-MasivoPermiso" class="table table-striped table-bordered table-responsive pre-wrap" cellspacing="0" style="width:100%;" hidden>
+                    <thead>
+                        <tr>
+                            <th>EMPRESA</th>
+                            <th>CÓDIGO EMPLEADO</th>
+                            <th>NOMBRES</th>
+                            <th>CÓDIGO PERMISO</th>
+                            <th>PERMISO</th>
+
+                            <th>FECHA DE INICIO </th>
+                            <th>FECHA FIN </th>
+                            <th>N° DÍAS </th>
+                            <th>HORA DE INICIO </th>
+                            <th>HORA FIN </th>
+                            <th>CAMBIO DE DÍA </th>
+
+                            <th>COMENTARIO </th>
+                            <th style="display:none">PROCESO </th>
+                            <th>OBSERVACIÓN</th>
+                            <th style="display:none">FLOBSERVADO</th>
+                            <th style="display:none">ESTADO</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/util/ImportacionMasiva.js?version=1.0.3"></script>
+<style>
+</style>

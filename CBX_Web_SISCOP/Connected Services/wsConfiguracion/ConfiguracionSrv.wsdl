@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ConfiguracionSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:35578/ConfiguracionSrv.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:35578/ConfiguracionSrv.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:35578/ConfiguracionSrv.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:35578/ConfiguracionSrv.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:35578/ConfiguracionSrv.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades.Sistema" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IConfiguracionSrv_ListarJerarquiaOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarJerarquiaOrg" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarJerarquiaOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarJerarquiaOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarJerarquíaSuperior_xNivel_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarJerarquíaSuperior_xNivel" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarJerarquíaSuperior_xNivel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarJerarquíaSuperior_xNivelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarNivelJerarquico_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarNivelJerarquico" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarNivelJerarquico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarNivelJerarquicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ConsultarDetalleJerarquia_xCod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleJerarquia_xCod" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ConsultarDetalleJerarquia_xCod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarDetalleJerarquia_xCodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_GetNumJeraquia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNumJeraquia" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_GetNumJeraquia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNumJeraquiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ConsultarJerarquiaOrg_xId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarJerarquiaOrg_xId" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ConsultarJerarquiaOrg_xId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarJerarquiaOrg_xIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_IUJerarquiaOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUJerarquiaOrg" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_IUJerarquiaOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUJerarquiaOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_EliminarJerarquiaOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarJerarquiaOrg" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_EliminarJerarquiaOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarJerarquiaOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarCampoJerarquía_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoJerarquía" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarCampoJerarquía_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCampoJerarquíaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarCamposAdicionales_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionales" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarCamposAdicionales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCamposAdicionalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListaraEntidades_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListaraEntidades" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListaraEntidades_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListaraEntidadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarTGTipo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTGTipo" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarTGTipo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTGTipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_IUTGTipo_InputMessage">
+    <wsdl:part name="parameters" element="tns:IUTGTipo" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_IUTGTipo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IUTGTipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_EliminarTGTipo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarTGTipo" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_EliminarTGTipo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarTGTipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConfig" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ListarConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ActualizarConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarConfig" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_ActualizarConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_Datos_EnviarRespuesta_Encuesta_JSql_InputMessage">
+    <wsdl:part name="parameters" element="tns:Datos_EnviarRespuesta_Encuesta_JSql" />
+  </wsdl:message>
+  <wsdl:message name="IConfiguracionSrv_Datos_EnviarRespuesta_Encuesta_JSql_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Datos_EnviarRespuesta_Encuesta_JSqlResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IConfiguracionSrv">
+    <wsdl:operation name="ListarJerarquiaOrg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarJerarquiaOrg" message="tns:IConfiguracionSrv_ListarJerarquiaOrg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarJerarquiaOrgResponse" message="tns:IConfiguracionSrv_ListarJerarquiaOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarJerarquíaSuperior_xNivel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarJerarquíaSuperior_xNivel" message="tns:IConfiguracionSrv_ListarJerarquíaSuperior_xNivel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarJerarquíaSuperior_xNivelResponse" message="tns:IConfiguracionSrv_ListarJerarquíaSuperior_xNivel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarNivelJerarquico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarNivelJerarquico" message="tns:IConfiguracionSrv_ListarNivelJerarquico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarNivelJerarquicoResponse" message="tns:IConfiguracionSrv_ListarNivelJerarquico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleJerarquia_xCod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ConsultarDetalleJerarquia_xCod" message="tns:IConfiguracionSrv_ConsultarDetalleJerarquia_xCod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ConsultarDetalleJerarquia_xCodResponse" message="tns:IConfiguracionSrv_ConsultarDetalleJerarquia_xCod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNumJeraquia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/GetNumJeraquia" message="tns:IConfiguracionSrv_GetNumJeraquia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/GetNumJeraquiaResponse" message="tns:IConfiguracionSrv_GetNumJeraquia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarJerarquiaOrg_xId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ConsultarJerarquiaOrg_xId" message="tns:IConfiguracionSrv_ConsultarJerarquiaOrg_xId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ConsultarJerarquiaOrg_xIdResponse" message="tns:IConfiguracionSrv_ConsultarJerarquiaOrg_xId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUJerarquiaOrg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/IUJerarquiaOrg" message="tns:IConfiguracionSrv_IUJerarquiaOrg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/IUJerarquiaOrgResponse" message="tns:IConfiguracionSrv_IUJerarquiaOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarJerarquiaOrg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/EliminarJerarquiaOrg" message="tns:IConfiguracionSrv_EliminarJerarquiaOrg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/EliminarJerarquiaOrgResponse" message="tns:IConfiguracionSrv_EliminarJerarquiaOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoJerarquía">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarCampoJerarquía" message="tns:IConfiguracionSrv_ListarCampoJerarquía_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarCampoJerarquíaResponse" message="tns:IConfiguracionSrv_ListarCampoJerarquía_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCamposAdicionales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarCamposAdicionales" message="tns:IConfiguracionSrv_ListarCamposAdicionales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarCamposAdicionalesResponse" message="tns:IConfiguracionSrv_ListarCamposAdicionales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaraEntidades">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListaraEntidades" message="tns:IConfiguracionSrv_ListaraEntidades_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListaraEntidadesResponse" message="tns:IConfiguracionSrv_ListaraEntidades_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTGTipo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarTGTipo" message="tns:IConfiguracionSrv_ListarTGTipo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarTGTipoResponse" message="tns:IConfiguracionSrv_ListarTGTipo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IUTGTipo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/IUTGTipo" message="tns:IConfiguracionSrv_IUTGTipo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/IUTGTipoResponse" message="tns:IConfiguracionSrv_IUTGTipo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTGTipo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/EliminarTGTipo" message="tns:IConfiguracionSrv_EliminarTGTipo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/EliminarTGTipoResponse" message="tns:IConfiguracionSrv_EliminarTGTipo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarConfig">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarConfig" message="tns:IConfiguracionSrv_ListarConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ListarConfigResponse" message="tns:IConfiguracionSrv_ListarConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarConfig">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/ActualizarConfig" message="tns:IConfiguracionSrv_ActualizarConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/ActualizarConfigResponse" message="tns:IConfiguracionSrv_ActualizarConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Datos_EnviarRespuesta_Encuesta_JSql">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfiguracionSrv/Datos_EnviarRespuesta_Encuesta_JSql" message="tns:IConfiguracionSrv_Datos_EnviarRespuesta_Encuesta_JSql_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfiguracionSrv/Datos_EnviarRespuesta_Encuesta_JSqlResponse" message="tns:IConfiguracionSrv_Datos_EnviarRespuesta_Encuesta_JSql_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IConfiguracionSrv" type="tns:IConfiguracionSrv">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarJerarquiaOrg">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ListarJerarquiaOrg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarJerarquíaSuperior_xNivel">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ListarJerarquíaSuperior_xNivel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarNivelJerarquico">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ListarNivelJerarquico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDetalleJerarquia_xCod">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ConsultarDetalleJerarquia_xCod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumJeraquia">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/GetNumJeraquia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarJerarquiaOrg_xId">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ConsultarJerarquiaOrg_xId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUJerarquiaOrg">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/IUJerarquiaOrg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarJerarquiaOrg">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/EliminarJerarquiaOrg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCampoJerarquía">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ListarCampoJerarquía" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCamposAdicionales">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ListarCamposAdicionales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaraEntidades">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ListaraEntidades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTGTipo">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ListarTGTipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IUTGTipo">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/IUTGTipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTGTipo">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/EliminarTGTipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarConfig">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ListarConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarConfig">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/ActualizarConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Datos_EnviarRespuesta_Encuesta_JSql">
+      <soap:operation soapAction="http://tempuri.org/IConfiguracionSrv/Datos_EnviarRespuesta_Encuesta_JSql" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConfiguracionSrv">
+    <wsdl:port name="BasicHttpBinding_IConfiguracionSrv" binding="tns:BasicHttpBinding_IConfiguracionSrv">
+      <soap:address location="http://localhost:35578/ConfiguracionSrv.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

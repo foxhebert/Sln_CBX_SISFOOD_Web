@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SeguridadSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:35578/SeguridadSrv.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:35578/SeguridadSrv.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:35578/SeguridadSrv.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISeguridadSrv_wsVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:wsVersion" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_wsVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:wsVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ListarPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPerfil" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ListarPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ListarMenuSubMenus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMenuSubMenus" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ListarMenuSubMenus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMenuSubMenusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_InsertarOrUpdatePerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarOrUpdatePerfil" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_InsertarOrUpdatePerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarOrUpdatePerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_EliminarPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPerfil" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_EliminarPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ObtenerRegistroPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroPerfil" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ObtenerRegistroPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ListarUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ListarUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_EliminarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_EliminarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_InsertOrUpdateUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_InsertOrUpdateUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ObtenerRegistroUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ObtenerRegistroUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRegistroUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ValidarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ValidarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ValidarUsuario__InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuario_" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ValidarUsuario__OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuario_Response" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_MenuPorUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:MenuPorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_MenuPorUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MenuPorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ActualizarPasswrMx_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPasswrMx" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ActualizarPasswrMx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPasswrMxResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_RestablecerContra_InputMessage">
+    <wsdl:part name="parameters" element="tns:RestablecerContra" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_RestablecerContra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RestablecerContraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_CerrarSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:CerrarSession" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_CerrarSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CerrarSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ValidaServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidaServer" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_ValidaServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidaServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_GenerarServerEncriptado_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarServerEncriptado" />
+  </wsdl:message>
+  <wsdl:message name="ISeguridadSrv_GenerarServerEncriptado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarServerEncriptadoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISeguridadSrv">
+    <wsdl:operation name="wsVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/wsVersion" message="tns:ISeguridadSrv_wsVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/wsVersionResponse" message="tns:ISeguridadSrv_wsVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ListarPerfil" message="tns:ISeguridadSrv_ListarPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ListarPerfilResponse" message="tns:ISeguridadSrv_ListarPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMenuSubMenus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ListarMenuSubMenus" message="tns:ISeguridadSrv_ListarMenuSubMenus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ListarMenuSubMenusResponse" message="tns:ISeguridadSrv_ListarMenuSubMenus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarOrUpdatePerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/InsertarOrUpdatePerfil" message="tns:ISeguridadSrv_InsertarOrUpdatePerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/InsertarOrUpdatePerfilResponse" message="tns:ISeguridadSrv_InsertarOrUpdatePerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/EliminarPerfil" message="tns:ISeguridadSrv_EliminarPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/EliminarPerfilResponse" message="tns:ISeguridadSrv_EliminarPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ObtenerRegistroPerfil" message="tns:ISeguridadSrv_ObtenerRegistroPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ObtenerRegistroPerfilResponse" message="tns:ISeguridadSrv_ObtenerRegistroPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ListarUsuarios" message="tns:ISeguridadSrv_ListarUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ListarUsuariosResponse" message="tns:ISeguridadSrv_ListarUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/EliminarUsuario" message="tns:ISeguridadSrv_EliminarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/EliminarUsuarioResponse" message="tns:ISeguridadSrv_EliminarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/InsertOrUpdateUsuario" message="tns:ISeguridadSrv_InsertOrUpdateUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/InsertOrUpdateUsuarioResponse" message="tns:ISeguridadSrv_InsertOrUpdateUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ObtenerRegistroUsuario" message="tns:ISeguridadSrv_ObtenerRegistroUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ObtenerRegistroUsuarioResponse" message="tns:ISeguridadSrv_ObtenerRegistroUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ValidarUsuario" message="tns:ISeguridadSrv_ValidarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ValidarUsuarioResponse" message="tns:ISeguridadSrv_ValidarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario_">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ValidarUsuario_" message="tns:ISeguridadSrv_ValidarUsuario__InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ValidarUsuario_Response" message="tns:ISeguridadSrv_ValidarUsuario__OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MenuPorUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/MenuPorUsuario" message="tns:ISeguridadSrv_MenuPorUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/MenuPorUsuarioResponse" message="tns:ISeguridadSrv_MenuPorUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPasswrMx">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ActualizarPasswrMx" message="tns:ISeguridadSrv_ActualizarPasswrMx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ActualizarPasswrMxResponse" message="tns:ISeguridadSrv_ActualizarPasswrMx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RestablecerContra">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/RestablecerContra" message="tns:ISeguridadSrv_RestablecerContra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/RestablecerContraResponse" message="tns:ISeguridadSrv_RestablecerContra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CerrarSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/CerrarSession" message="tns:ISeguridadSrv_CerrarSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/CerrarSessionResponse" message="tns:ISeguridadSrv_CerrarSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidaServer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/ValidaServer" message="tns:ISeguridadSrv_ValidaServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/ValidaServerResponse" message="tns:ISeguridadSrv_ValidaServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarServerEncriptado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISeguridadSrv/GenerarServerEncriptado" message="tns:ISeguridadSrv_GenerarServerEncriptado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISeguridadSrv/GenerarServerEncriptadoResponse" message="tns:ISeguridadSrv_GenerarServerEncriptado_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISeguridadSrv" type="tns:ISeguridadSrv">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="wsVersion">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/wsVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPerfil">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ListarPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMenuSubMenus">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ListarMenuSubMenus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarOrUpdatePerfil">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/InsertarOrUpdatePerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfil">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/EliminarPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroPerfil">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ObtenerRegistroPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ListarUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/EliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateUsuario">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/InsertOrUpdateUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegistroUsuario">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ObtenerRegistroUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ValidarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario_">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ValidarUsuario_" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MenuPorUsuario">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/MenuPorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPasswrMx">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ActualizarPasswrMx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RestablecerContra">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/RestablecerContra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CerrarSession">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/CerrarSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaServer">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/ValidaServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarServerEncriptado">
+      <soap:operation soapAction="http://tempuri.org/ISeguridadSrv/GenerarServerEncriptado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SeguridadSrv">
+    <wsdl:port name="BasicHttpBinding_ISeguridadSrv" binding="tns:BasicHttpBinding_ISeguridadSrv">
+      <soap:address location="http://localhost:35578/SeguridadSrv.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

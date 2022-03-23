@@ -1,0 +1,264 @@
+﻿@using CBX_Web_SISCOP.wsOrganizacion;
+@model object[]
+
+<form class="form-horizontal form-label-left">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <label>
+                <input type="checkbox" class="flat" id="checkPrincipal"> Principal
+            </label>
+        </div>
+        <div id="11" style="text-align:right;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Jerarquía (*)</label>
+
+                @Html.DropDownList("cboJerarquia", (SelectList)Model[0], "Seleccione", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <div class="form-group">
+                    <label id="L_UO">Unid. Organizacional Superior (*)</label>
+                    <select class="form-control" id="cbounidsup" disabled></select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="COD" class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group Valcode" id="CodUO">
+                    <label>Código (*)</label>
+                    <input type="text" id="txt-cod-UO" name="codigo" class="form-control" @*maxlength="8"*@ placeholder="Código" onkeypress="validarCodigoAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+            <div id="DES" class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group Valdes" id="DesUO">
+                    <label>Descripción (*)</label>
+                    <input type="text" id="txt-desc-UO" class="form-control" placeholder="Descripción " onkeypress="validarDescripcionAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="row">
+        <div id="REPLEG" hidden class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label id="L_REPLEG">Representante Legal</label>
+                <input id="Legal" class="form-control" placeholder="Representante" />
+            </div>
+        </div>
+        <div id="PERRESP" hidden class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label id="L_PERRESP">Nombre del Responsable</label>
+                <input id="Respon" class="form-control" placeholder="Responsable" />
+            </div>
+        </div>
+        <div id="RUC" hidden class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label id="L_RUC">RUC</label>
+                <input type="text" id="txt-ruc-UO" name="ruc" class="form-control" placeholder="RUC" onkeypress="return validarSoloNum(event)" maxlength="11">
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+        <div id="DIRF" hidden class="col-md-6 col-sm-6 col-xs-6" style="height: 68px;">
+            <div class="form-group">
+                <label id="L_DIRF">Dirección</label>
+                <div class="input-group">
+                    <div class="input-group-btn ">
+                        <select class="btn btn-primary" id="TipVia"></select>
+                    </div>
+                    <input type="text" class="form-control" id="TXTTIPVIA">
+                </div>
+            </div>
+        </div>
+        <div id="UBIGEO" hidden class="col-md-6 col-sm-6 col-xs-6">
+            <label id="L_UBIGEO">Ubigeo </label>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Ubigeo
+                    </button>
+                </div>
+                <input type="text" id="txtUbigeo" class="form-control">
+                <input type="hidden" id="txtIntidUbigeo" class="form-control">
+            </div>
+        </div>
+        <div id="LOGO" hidden class="col-md-6 col-sm-6 col-xs-6">
+            <label id="L_LOGO">Logo</label>
+            <div class="border-section">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label class="btn btn-primary btn-upload pull-left" title="Agregar Logo">
+                        <input type="file" id="fileInput" style="text-align:right;display:none;" multiple>
+                        <input id="carga" class="sr-only" name="file">
+
+                        <span class="docs-tooltip" data-toggle="tooltip" style="text-align:right;">
+                            <span class="fa fa-upload"></span>
+                        </span>
+                    </label>
+                    <label class="btn btn-danger btn-upload pull-right" title="Eliminar Logo">
+                        <input id="delete" onchange="CambieImage(0)" class="sr-only" name="file">
+                        <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;destroy&quot;)">
+                            <span class="fa fa-trash-o"></span>
+                        </span>
+                    </label>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div id="ViewPreview"><img id="imgCarga" src="@System.Configuration.ConfigurationManager.AppSettings["rutaImgUO"]SinImagen.jpg" class="img-rounded img-logo-UO" /></div>
+                </div>
+                <input type="text" id="txt-ruta" class="form-control" hidden>
+                <p class="pull-left">&nbsp;&nbsp; Dimensión: 200px X 200px</p>
+            </div>
+        </div>
+        <div id="FIRMA" class="col-md-6 col-sm-6 col-xs-6" hidden>
+            <label id="L_FIRMA">Firma</label>
+            <div class="border-section">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label class="btn btn-primary btn-upload pull-left" title="Agregar Firma">
+                        <input type="file" id="fileInputF" style="text-align:right;display:none;" multiple>
+                        <input id="cargaF" class="sr-only" name="file">
+
+                        <span class="docs-tooltip" data-toggle="tooltip" style="text-align:right;">
+                            <span class="fa fa-upload"></span>
+                        </span>
+                    </label>
+                    <label class="btn btn-danger btn-upload pull-right" title="Eliminar Firma">
+                        <input id="deleteF" onchange="CambieImage(1)" class="sr-only" name="file">
+                        <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;destroy&quot;)">
+                            <span class="fa fa-trash-o"></span>
+                        </span>
+                    </label>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div id="ViewPreviewF"><img id="imgCargaF" src="@System.Configuration.ConfigurationManager.AppSettings["rutaImgUO"]SinImagen.jpg" class="img-rounded img-logo-UO" /></div>
+                </div>
+                <input type="text" id="txt-rutaF" class="form-control" hidden>
+                <p class="pull-left">&nbsp;&nbsp; Dimensión: 200px X 200px</p>
+
+            </div>
+        </div>
+
+        <input type="hidden" id="idorg" class="form-control">
+        <div id="containerCamposea"></div>
+    </div>
+
+    <input type="hidden" id="idLegal" />
+    <input type="hidden" id="idPerLeg" />
+    <script>
+        $.post(
+            '/Personal/ListarCombos',
+            {
+                intIdMenu: 0,
+                strEntidad: 'TGTIPO_VIA',
+                intIdFiltroGrupo: 0,
+                strGrupo: '',
+                strSubGrupo: '',
+            },
+            response => {
+                $('#TipVia').empty()
+                $('#TipVia').attr('disabled', false)
+                $('#TipVia').append('<option value="">--</option>')
+                response.forEach(element => {
+                    $('#TipVia').append('<option value="' + element.intidTipo + '">' + element.strDeTipo + '</option>')
+                })
+            }
+        )
+
+
+        $('#fileInput').change(function (e) {
+            CargoImagen(0);
+        });
+        $('#fileInputF').change(function (e) {
+            CargoImagen(1);
+        });
+        document.getElementById('delete').onclick = function () {
+            $('#ViewPreview').html('<img src = "/DirLogosRuta/descarga(1).jpg" class="img-rounded img-logo-UO" />');
+            $('#txt-ruta').val('');
+            return false;
+        }
+        document.getElementById('deleteF').onclick = function () {
+            $('#ViewPreviewF').html('<img src = "/DirLogosRuta/SinFirma.png" class="img-rounded img-logo-UO" />');
+            $('#txt-rutaF').val('');
+            return false;
+        }
+
+        function CargoImagen(val) {
+
+            if (val == 0) {
+                var formdata = new FormData(); //FormData object
+                var fileInput = document.getElementById('fileInput');
+                //Iterating through each files selected in fileInput
+                for (i = 0; i < fileInput.files.length; i++) {
+                    //Appending each file to FormData object
+                    formdata.append(fileInput.files[i].name, fileInput.files[i]);
+                }
+                //Creating an XMLHttpRequest and sending
+                var xhr = new XMLHttpRequest();
+                //IMPORTANTE:
+                //Silvia  me dejo una observacion respecto al hecho de que el usuario puede cargar mas
+                // de 10 imagenes al servidor pero solo se registra una pero las otras nuevas si se cargaron
+                //controlar que se visualize tenporalmente y cuando se de registrar recien se efectue la carga
+                //al servidor
+
+                xhr.open('POST', '/Organizacion/Upload');
+                xhr.send(formdata);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        console.log("xhr");
+                        console.log(xhr);
+                        DirLocal = xhr.responseText;
+                        $('#ViewPreview').html('<img id="imgCarga"  src=' + DirLocal + ' class="img-rounded img-logo-UO" />');/*style = "width:100px;height:100px"*/ //modificado 01.09.2021 class
+                        $('#txt-ruta').val(DirLocal);
+                    }
+                }
+                return false;
+            } else {
+                var formdata = new FormData(); //FormData object
+                var fileInput = document.getElementById('fileInputF');
+                //Iterating through each files selected in fileInput
+                for (i = 0; i < fileInput.files.length; i++) {
+                    //Appending each file to FormData object
+                    formdata.append(fileInput.files[i].name, fileInput.files[i]);
+                }
+                //Creating an XMLHttpRequest and sending
+                var xhr = new XMLHttpRequest();
+                //IMPORTANTE:
+                //Silvia  me dejo una observacion respecto al hecho de que el usuario puede cargar mas
+                // de 10 imagenes al servidor pero solo se registra una pero las otras nuevas si se cargaron
+                //controlar que se visualize tenporalmente y cuando se de registrar recien se efectue la carga
+                //al servidor
+
+                xhr.open('POST', '/Organizacion/Upload');
+                xhr.send(formdata);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        console.log("xhr");
+                        console.log(xhr);
+                        DirLocal = xhr.responseText;
+                        $('#ViewPreviewF').html('<img id="imgCargaF"  src=' + DirLocal + ' class="img-rounded img-logo-UO" />');/*style = "width:100px;height:100px"*/ //modificado 01.09.2021 class
+                        $('#txt-rutaF').val(DirLocal);
+                    }
+                }
+                return false;
+
+            }
+
+
+        }
+
+                                                                                    //$('#btnCargarArchivo').click(function () {
+                                                                                    //    $('#form-filtro').prop('submit', null);
+                                                                                    //    $('#form-filtro').unbind();
+                                                                                    //    $("#file-fichero").trigger('click');
+                                                                                    //});
+
+    </script>
+</form>

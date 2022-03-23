@@ -1,0 +1,465 @@
+﻿<form class="form-horizontal form-label-left">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+        </div>
+        <div id="11" style="text-align:right;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Tipo de Variable (*)</label>
+                @Html.DropDownList("cboVariable", (SelectList)ViewBag.CampVar, "Seleccione", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <div>
+                    <label class="col-md-7 col-sm-7 col-xs-6"> Und. de Medida (*)</label>
+                    @*<div class="col-md-5 col-sm-5 col-xs-6 text-right" id="idche">
+                            <input type="checkbox" id="chck_Activo_Var" class=" js-switch" checked /> Activo
+                        </div>*@
+                </div>
+
+                <select class="form-control" id="campTipoum">
+                    <option>Seleccione</option>
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group Valco">
+                    <label>Código (*)</label>
+                    <input type="text" id="txt_cod_Var" name="codigo" class="form-control" placeholder="Código" @*pattern="^([A-Za-z0-9])+"*@ @*maxlength="8"*@ 
+                           onkeypress="validarCodigoAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group Valdes">
+                    <label>Descripción (*)</label>
+                    <input type="text" id="txt_desc_Var" class="form-control" placeholder="Descripción " onkeypress="validarDescripcionAll(event)">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group ValcoPla">
+                    <label>Código de Integración  [Planilla] (*)</label>
+                    <input type="text" id="txt_codPla_Var" name="codigoPlanilla" class="form-control"
+                           onkeypress="validarCodigoAll(event)"
+                           placeholder="Código de Inegración (Planilla)" pattern="^([A-Za-z0-9_@("@")-])+" maxlength="8">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group ValcoExt">
+                    <label>Código de Integración [Externo]</label>
+                    <input type="text" id="txt_codExte_Var" name="codigoExterno" class="form-control" 
+                           onkeypress="validarCodigoAll(event)" 
+                           placeholder="Código de Inegración (Externo)" pattern="^([A-Za-z0-9_@("@")-])+" maxlength="8">
+                    <div class="notifry_error" style="background-color:#4CA4DE;color:white;text-align:center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-3 col-sm-3 col-xs-6" id="Incidencia-det" hidden>
+                <p>
+                    <input type="radio" id="chck_inc" class="flat" checked name="iCheck"> Incidencia
+                </p>
+                <p id="Ausencia-det">
+                    <input type="radio" id="chck_ause" class="flat" name="iCheck"> Ausencia
+                </p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6" id="Marcas-det" hidden>
+                <p>
+                    <input type="checkbox" id="chck_Permite" name="iCheck2A" class="flat"> Permite marcas
+                </p>
+                <p>
+                    <input type="checkbox" id="chck_Requiere" name="iCheck2A" class="flat" onchange="alternar()"> Requiere Marcas
+                </p>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6" id="UsoMax-Det" hidden>
+                <p>Uso máximo anual</p>
+                <input type="number" id="txtMaxUso" class="form-control" placeholder="Máximo" min="0" max="365" maxlength="3" onkeypress="return validarSoloNum(event)" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6" id="horarios-det" hidden>
+                <p>
+                    <input type="radio" id="chck_HorTotal" class="flat" checked name="iCheck3X"> Cualquier Jornada
+                </p>
+                <p>
+                    <input type="radio" id="chck_HorEspeci" class="flat" name="iCheck3X"> Jornadas Específicas
+                </p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6" id="bonificacion-det" hidden>
+                <p>
+                    <input type="radio" id="chck_Total" class="flat" checked name="iCheck1"> Bono Total
+                </p>
+                <p>
+                    <input type="radio" id="chck_Específico" class="flat" name="iCheck1"> Bono Específico
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="GeneralChecks" hidden>
+        <p class="legend-border" style="width:90px;">Aplicable a:</p>
+        <div class="border-section">
+            <div class="row">
+                <div class="col-md-12 col-sm-6 col-xs-6">
+                    <div class="row" id="Todos" hidden>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            &nbsp;&nbsp;&nbsp;<input type="radio" id="chck_DiLab_" class="flat checkJust" name="iCheckJust" checked> Solo Días Laborables
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <input type="radio" id="chck_ToDias" class="flat checkJust" name="iCheckJust"> Todos los Días
+                        </div>
+                    </div>
+                    <div class="row" id="BonificaCheck" hidden>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="checkbox" id="Laborable">
+                                <label>
+                                    <input type="checkbox" id="chck_DiLab" name="icheck11" class="flat"> Día Laborable
+                                </label>
+                            </div>
+                            <div class="checkbox" id="Descanso">
+                                <label>
+                                    <input type="checkbox" id="chck_DiDesc" class="flat"> Día de Descanso
+                                </label>
+                            </div>
+                            <div class="checkbox" id="Feriado">
+                                <label>
+                                    <input type="checkbox" id="chck_DiFer" class="flat"> Día Feriado
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="checkbox" id="Sábado">
+                                <label>
+                                    <input type="checkbox" id="chck_DiSab" class="flat"> Día Sábado
+                                </label>
+                            </div>
+                            <div class="checkbox" id="Domingo">
+                                <label>
+                                    <input type="checkbox" id="chck_DiDom" class="flat"> Día Domingo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row" id="Acumulables" hidden>
+        <p class="legend-border" style="width:90px;">&nbsp;Acumulable en:</p>
+        <div class="border-section">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="chckHorTra" class="flat"> Horas trabajadas
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="chckDiaTra" class="flat"> Días Trabajados
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="chckTraEfec" class="flat"> Horas Trabajadas Efectivas
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+    <!-- start accordion -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                <div class="panel" id="ConfiguracionBonificaciones" hidden>
+                    <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
+                        <h4 class="panel-title">Configuración Bono Específico</h4>
+                    </a>
+                    <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-md-9 pl-0">
+                                    <div class="form-group">
+                                        <label>Hora Inicio (*)</label>
+                                        <input type="time" id="tiempo_in" min="00:00" max="24:00" accept="hh:mm" value="00:00" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3 p-0">
+                                    <label>&nbsp;</label>
+                                    <div>
+                                        <input type="checkbox" class="icheckbox_flat-blue" id="bitBonoEspIni">
+                                        <label>Día Sgt.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-md-9 pl-0">
+                                    <div class="form-group">
+                                        <label>Hora Fin (*)</label>
+                                        <input type="time" id="tiempo_fil" min="00:00" max="24:00" accept="hh:mm" value="00:00" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3 p-0">
+                                    <label>&nbsp;</label>
+                                    <div>
+                                        <input type="checkbox" class="icheckbox_flat-blue" id="bitBonoEspFin">
+                                        <label>Día Sgt.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tolerancia</label>
+                                    <input type="time" id="tiempo_min"
+                                           min="00:00" max="24:00" accept="hh:mm" value="00:00"
+                                           class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tiempo Mínimo</label>
+                                    <input type="time" id="tiempo_tol"
+                                           min="00:00" max="24:00" accept="hh:mm" value="00:00"
+                                           class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel" id="Horas" hidden>
+                    <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne">
+                        <h4 class="panel-title">Redondeo de Horas</h4>
+                    </a>
+                    <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tipo de Redondeo</label>
+                                    @Html.DropDownList("cboTipoRed", (SelectList)ViewBag.CampTRed, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Aplicar Por</label>
+                                    @Html.DropDownList("cboAplica", (SelectList)ViewBag.CampAplic, "Seleccione", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group" id="ChnageRedondeo">
+                                    <label>Factor de Redondeo(Tiempo)</label>
+                                    <select class="form-control" id="Redondeo">
+                                        <option value="0">00:00</option>
+                                        <option value="5">00:05</option>
+                                        <option value="10">00:10</option>
+                                        <option value="15">00:15</option>
+                                        <option value="20">00:20</option>
+                                        <option value="25">00:25</option>
+                                        <option value="30">00:30</option>
+                                        <option value="60">01:00</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Forma de Redondeo</label>
+                                    @Html.DropDownList("cboRedondeo", (SelectList)ViewBag.CampForm, "Seleccione", new { @class = "form-control  Redon " })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel" id="Específicos" hidden>
+                    <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
+                        <h4 class="panel-title">Jornadas Específicas</h4>
+                    </a>
+                    <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div class="col-md-12 col-sm-12 col-xs-12" hidden>
+                                <div class="col-md-12 col-sm-12 col-xs-12 text-right" style="margin-top:5px;">
+                                    <input type="checkbox" id="selects" class="flat" /> Mostrar Seleccionados
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                @Html.DropDownList("ListaHorario", (SelectList)ViewBag.LisHor, new { @class = "select2_multiple form-control", @multiple = "multiple", @style = "height: 150px !important" })
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 text-right" style="margin-top:5px;" hidden>
+                                <input type="checkbox" id="select_All" class="flat" /> Seleccionar Todos
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel" id="extras" hidden>
+                    <a class="panel-heading collapsed" role="tab" id="headingFour1" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1" aria-expanded="false" aria-controls="collapseThree">
+                        <h4 class="panel-title">Prioridad de HE</h4>
+                    </a>
+                    <div id="collapseFour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+
+                            <div class=" col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="TablaExtra">
+                                        <thead>
+                                            <tr>
+                                                <th>Codigo</th>
+                                                <th>Descripción H.E.</th>
+                                                <th>Prioridad Original</th>
+                                                <th>Nueva Prioridad </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_HorasExtras"></tbody>
+                                    </table>
+                                </div>
+                                <div><p><input type="button" class="btn-success" id="Reset" value="Limpiar">&nbsp;&nbsp; Donde "0" es sin prioridad &nbsp;&nbsp;</p></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel" id="Exportables">
+                    <a class="panel-heading collapsed" role="tab" id="headingFive1" data-toggle="collapse" data-parent="#accordion1" href="#collapseFive1" aria-expanded="false" aria-controls="collapseThree">
+                        <h4 class="panel-title">Exportables y Base de Cálculo</h4>
+                    </a>
+                    <div id="collapseFive1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body" style="padding:0px;">
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <br />
+                                        <p class="legend-border" style="width:80px;">&nbsp;Exportable a:</p>
+                                        <div class="border-section">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="chckExpPlan" class="flat"> Exportable a planilla
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="chckExpSubs" class="flat"> Exportable a Días Subsidiados
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="chckExpNoTraNoSubs" class="flat"> Exportable a Días no trabajados ni Subsidiados
+                                                </label>
+                                            </div>
+                                            @*<div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="chckCompensable" class="flat">Compensable
+                                                    </label>
+                                                </div>*@
+                                            <br />
+                                        </div>
+                                        <br />
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <br />
+                                        <p class="legend-border" style="width:115px;">&nbsp;Base de Cálculo de:</p>
+                                        <div class="border-section">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="chckCalculoCTS" class="flat"> Cálculo CTS
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="chckCalidadUtili" class="flat"> Cálculo de Utilidades
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="chckCalculoGrat" class="flat"> Cálculo de Gratificación
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="chckGenerHoras" class="flat"> Generar Horas Adicionales
+                                                </label>
+                                            </div>
+                                            <br />
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <br />
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <a class="panel-heading collapsed" role="tab" id="headingSix1" data-toggle="collapse" data-parent="#accordion1" href="#collapseSix1" aria-expanded="false" aria-controls="collapseThree">
+                        <h4 class="panel-title">Campos Adicionales</h4>
+                    </a>
+                    <div id="collapseSix1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div id="containerCampose">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <input type="hidden" id="txtIdConcepto" />
+            </div>
+        </div>
+
+    </div>
+    <!-- end of accordion -->
+
+    <div id="HE">
+
+    </div>
+
+</form>
+<script>
+    CamposAdicionalesConcepto();
+
+    $('#select_All').on('ifChanged', function () {
+
+        if ($('#select_All').is(':checked') == true) {
+
+            $('#ListaHorario option').prop('selected', true);
+
+        } else {
+            $('#ListaHorario option').prop('selected', false);
+        }
+
+
+    });
+
+
+    $('#selects').on('ifChanged', function () {
+
+        alert('llego');
+        if ($('#selects').is(':checked') == true) {
+
+            $('#ListaHorario option').prop('hidden', true);
+            $('#ListaHorario option:selected').prop('hidden', false);
+
+
+        } else {
+            $('#ListaHorario option').prop('hidden', false);
+        }
+    });
+
+
+</script>

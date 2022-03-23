@@ -1,0 +1,51 @@
+﻿
+@model object[]
+
+
+
+<form class="form-horizontal form-label-left">
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Entidad</label>
+                @Html.DropDownList("cboEntidad", (SelectList)ViewBag.CampEnd, "Seleccione", new { @class = "form-control" })
+
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label>Campo Adicionaasdasl(*)</label>
+                <select class="form-control">
+                    <option>Seleccione</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="border-section">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                    <label>Título para el Campo</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    @*<div class="ln_solid"></div>*@
+
+
+
+</form>
+@*<script>
+        $(document).ready(function () {
+
+            GetCampEntidades();
+            //BuscarGrupo();
+            //  EditarGrupo();
+
+        }
+        );
+    </script>*@
